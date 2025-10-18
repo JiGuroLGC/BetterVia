@@ -1,0 +1,9 @@
+{
+  "versionName": "1.2.0",
+  "updateLog": {
+    "en": "1. Changed the icon\n2. Fixed the display issue of the app icon on higher Android versions\n3. Enhanced module self-check\n4. Added safe repair mode\n5. Fixed the issue that the auto-check-in prompt could not be displayed",
+    "zh-CN": "1. 更换了图标\n2. 解决了软件图标在高版本安卓上的显示问题\n3. 加强模块自校验\n4. 新增了安全修复模式\n5. 修复了自动签到提示不能显示的问题",
+    "zh-TW": "1. 更換了圖標\n2. 解決了軟件圖標在高版本安卓上的顯示問題\n3. 加強模組自校驗\n4. 新增了安全修復模式\n5. 修復了自動簽到提示不能顯示的問題"
+  },
+  "apkUrl": "https://gitee.com/jiguro/wonderless/releases/download/V2.2.0/app_v1.2.0.apk"
+}
