@@ -43,7 +43,7 @@
 
 <p align="center">
     <a href="https://github.com/JiGuroLGC/BetterVia">
-        <img src="https://socialify.git.ci/JiGuroLGC/BetterVia/image?description=1&font=Raleway&language=1&name=1&owner=1&pattern=Circuit+Board&theme=Auto" alt="socialify"/>
+        <img src="http://socialify.git.ci/JiGuroLGC/BetterVia/image?custom_language=Java&description=1&font=Inter&language=1&name=1&owner=1&pattern=Circuit+Board&theme=Auto"/>
     </a>
 </p>
 
