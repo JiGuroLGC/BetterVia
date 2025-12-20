@@ -48,13 +48,11 @@
 **BetterVia** 是一款针对浏览器Via进行优化的模块，旨在使软件的使用更加轻快便捷。
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/main.png" 
-         style="max-width: 200px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/main.png" width="315" height="660">
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/info.png" 
-         style="max-width: 200px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/info.png" width="315" height="660">
 </a>
 
 ## 说明
@@ -114,87 +112,73 @@
 未完待续……
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">设置界面</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings2.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings2.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">设置界面(续)</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/theme.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/theme.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">主题浏览</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/editer.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/editer.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">主题编辑器</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/script.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/script.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">脚本大全</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/adrule.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/adrule.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">广告规则</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">Cookie管理器</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookieinfo.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookieinfo.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">Cookie详情</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/eye.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/eye.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">护眼设置</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/block.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/block.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">屏蔽设置</p>
 
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/beautify.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/beautify.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">美化设置</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/source.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/source.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">美化效果</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cmd.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cmd.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;"快捷命令</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/ua.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/ua.png" width="315" height="660">
          <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">UA大全</p>
 </a>
 
@@ -214,8 +198,7 @@
 下载<a href="https://github.com/LSPosed/LSPatch">LSPatch</a>或其他免Root框架，在给予适当权限后，对Via进行修补，此时您可以决定本地修补或是集成修补，并在修补完成后，安装修补后的包。
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/lspatch.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/lspatch.png" width="315" height="660">
 </a>
 
 在设备上安装安装包，事先阅读并同意 [《软件使用声明》](#statement)，然后在模块管理器中启用模块并勾选模块作用域 (本地修补)。
@@ -224,8 +207,7 @@
 运行Via，您可以在Via的设置界面看到模块的设置按钮：
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/viaset.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/viaset.png" width="315" height="660">
 </a>
 
 进行您的专属设置，然后尽情享受吧 ！
@@ -264,13 +246,11 @@
 在新版本中，我们引入了"安全修复"模式。您只需授予模块 Root 或文件读取权限，并在主页的菜单中找到"安全修复"选项，点击即可解除限制。
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/menu.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/menu.png" width="315" height="660">
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/fix.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/fix.png" width="315" height="660">
 </a>
 
 ### 问题四
@@ -302,8 +282,7 @@
 ```
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/statement.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/statement.png" width="315" height="660">
 </a>
 
 ## 鸣谢
@@ -323,8 +302,7 @@
 我们希望成为一个优秀的开发团队，持续为大家输出优秀的作品，如果您有什么改进意见，请您直接提出来，我们会继续加油。让我们在追梦的道路上不懈奋斗、砥砺前行！感谢大家的帮助与支持！
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/reward.png" 
-         style="max-width: 400px; height: auto; display: block;">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/reward.png" width="300" height="300">
 </a>
 
 版权所有 © 2025 JiGuro
