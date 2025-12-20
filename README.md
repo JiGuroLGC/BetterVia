@@ -51,7 +51,6 @@
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/main.png" width="315" height="660">
 </a>
-
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/info.png" width="315" height="660">
 </a>
@@ -120,12 +119,16 @@
 </p>
 <div align="center">设置界面</div>
 
+<div> </div>
+
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings2.png" width="315" height="660">
 </a>
 </p>
 <div align="center">设置界面(续)</div>
+
+<div> </div>
 
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
@@ -134,12 +137,16 @@
 </p>
 <div align="center">主题浏览</div>
 
+<div> </div>
+
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/editer.png" width="315" height="660">
 </a>
 </p>
 <div align="center">主题编辑器</div>
+
+<div> </div>
 
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
@@ -148,12 +155,16 @@
 </p>
 <div align="center">脚本大全</div>
 
+<div> </div>
+
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/adrule.png" width="315" height="660">
 </a>
 </p>
 <div align="center">广告规则</div>
+
+<div> </div>
 
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
@@ -162,12 +173,16 @@
 </p>
 <div align="center">Cookie管理器</div>
 
+<div> </div>
+
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookieinfo.png" width="315" height="660">
 </a>
 </p>
 <div align="center">Cookie详情</div>
+
+<div> </div>
 
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
@@ -176,12 +191,16 @@
 </p>
 <div align="center">护眼设置</div>
 
+<div> </div>
+
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/block.png" width="315" height="660">
 </a>
 </p>
 <div align="center">屏蔽设置</div>
+
+<div> </div>
 
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
@@ -190,6 +209,8 @@
 </p>
 <div align="center">美化设置</div>
 
+<div> </div>
+
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/source.png" width="315" height="660">
@@ -197,12 +218,16 @@
 </p>
 <div align="center">美化效果</div>
 
+<div> </div>
+
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cmd.png" width="315" height="660">
 </a>
 </p>
 <div align="center">快捷命令</div>
+
+<div> </div>
 
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
