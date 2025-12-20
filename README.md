@@ -43,17 +43,18 @@
     <img src="http://socialify.git.ci/JiGuroLGC/BetterVia/image?custom_language=Java&description=1&font=Inter&language=1&name=1&owner=1&pattern=Circuit+Board&theme=Auto" 
          style="max-width: 800px; height: auto; display: block;">
 </a>
-</p>
+
 
 **BetterVia** 是一款针对浏览器Via进行优化的模块，旨在使软件的使用更加轻快便捷。
 
+<p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/main.png" width="315" height="660">
 </a>
-
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/info.png" width="315" height="660">
 </a>
+</p>
 
 ## 说明
 
@@ -113,8 +114,8 @@
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings.png" width="315" height="660">
-         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">设置界面</p>
 </a>
+<p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">设置界面</p>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings2.png" width="315" height="660">
