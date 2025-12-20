@@ -112,10 +112,7 @@
 
 未完待续……
 
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings.png" width="315" height="660">
-</a>
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">设置界面</center>
+![设置界面](https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings.png)
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings2.png" width="315" height="660">
