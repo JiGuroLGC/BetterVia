@@ -48,7 +48,12 @@
 **BetterVia** 是一款针对浏览器Via进行优化的模块，旨在使软件的使用更加轻快便捷。
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/mai'n.png" 
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/main.png" 
+         style="max-width: 400px; height: auto; display: block;">
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/info.png" 
          style="max-width: 400px; height: auto; display: block;">
 </a>
 
@@ -95,32 +100,102 @@
 > 本项目支持国内版、谷歌版两种版本的Via
 
 ### 功能
+
 - 解除白名单限制
+- 一键主题更换
+- 脚本大全
+- 广告规则下载
+- Cookie管理
 - 超级隐身
 - 截屏防护
 - 护眼模式
 - 屏蔽组件
-- 一键主题更换
-- ……
+
+未完待续……
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings.png" 
          style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">设置界面</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/eye.png" 
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings2.png" 
          style="max-width: 400px; height: auto; display: block;">
-</a>
-
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/block.png" 
-         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">设置界面(续)</p>
 </a>
 
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/theme.png" 
          style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">主题浏览</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/editer.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">主题编辑器</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/script.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">脚本大全</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/adrule.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">广告规则</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">Cookie管理器</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookieinfo.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">Cookie详情</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/eye.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">护眼设置</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/block.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">屏蔽设置</p>
+
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/beautify.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">美化设置</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/source.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">美化效果</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cmd.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;"快捷命令</p>
+</a>
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/ua.png" 
+         style="max-width: 400px; height: auto; display: block;">
+         <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 10px;">UA大全</p>
 </a>
 
 ## 开始使用
@@ -130,10 +205,30 @@
 如果您是特殊区域用户，因为网络环境而无法访问，请您转到[其他问题](#question)查看解答。
 
 ### 2. 安装  
+
+#### 设备已Root
+在你的设备上刷入<a href="https://github.com/LSPosed/LSPosed">LSPosed</a>或其他框架，保证其可用性。
 在设备上安装安装包，事先阅读并同意 [《软件使用声明》](#statement)，然后在模块管理器中启用模块并勾选模块作用域。
 
+#### 设备未Root
+下载<a href="https://github.com/LSPosed/LSPatch">LSPatch</a>或其他免Root框架，在给予适当权限后，对Via进行修补，此时您可以决定本地修补或是集成修补，并在修补完成后，安装修补后的包。
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/lspatch.png" 
+         style="max-width: 400px; height: auto; display: block;">
+</a>
+
+在设备上安装安装包，事先阅读并同意 [《软件使用声明》](#statement)，然后在模块管理器中启用模块并勾选模块作用域 (本地修补)。
+
 ### 3. 运行  
-运行作用域软件 ，然后尽情享受吧 ！
+运行Via，您可以在Via的设置界面看到模块的设置按钮：
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/viaset.png" 
+         style="max-width: 400px; height: auto; display: block;">
+</a>
+
+进行您的专属设置，然后尽情享受吧 ！
 
 <span id="release"></span>
 
@@ -205,6 +300,11 @@
 用户一旦运行或使用本软件，即视为已仔细阅读、完全理解且同意接受本声明的全部内容，并自愿承担因下载、安装、使用本软件所产生的一切法律责任和后果。请务必合法使用本软件，共同维护良好的网络环境和法律秩序。  
 本声明的最终解释权归声明者所有。
 ```
+
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/statement.png" 
+         style="max-width: 400px; height: auto; display: block;">
+</a>
 
 ## 鸣谢
 
