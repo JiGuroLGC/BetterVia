@@ -96,7 +96,7 @@ However, **Via** still has some shortcomings, such as incomplete features and oc
 <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/icon.png" width = "100" height = "100" alt="LOGO"/>
 
 **Via** ( **mark.via** / **mark.via.gp** )  
-*Supports version V6.8.0*  
+*Supports version V6.9.0*  
 
 > This project supports both the Chinese version and the Google version of Via
 
@@ -129,11 +129,6 @@ To be continued...
 </a>
 </p>
 <div align="center">Settings Interface (Continued)</div>
-
-<br>
-
-> [!WARNING]
-> The “Enable Experimental Mode” option in module settings is intended solely for developers. Enabling it may restrict certain features. If issues arise after enabling this mode, please disable it.
 
 <br>
 
@@ -180,6 +175,12 @@ To be continued...
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie.png" width="315" height="660">
+</a>
+</p>
+
+<p align="center">
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie2.png" width="315" height="660">
 </a>
 </p>
 <div align="center">Cookie Manager</div>
@@ -249,6 +250,15 @@ To be continued...
 </p>
 <div align="center">UA Collection</div>
 
+<br>
+
+<p align="center">
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/shisui.png" width="315" height="660">
+</a>
+</p>
+<div align="center">Shihui</div>
+
 ## Getting Started  
 
 ### 1. Download  
@@ -299,7 +309,7 @@ This module is only available for download from the addresses listed above. We a
 ### Question One
 <font color="red">Why is **BetterVia** not functioning correctly on my device?</font>
 
-**BetterVia** was developed by **AIDE Pro** and **Android IDE**, and has been successfully tested on *Android 10 to 15* systems. It should theoretically be compatible with most users, but please ensure your Android version is neither too low nor too high. If, after confirming these conditions, **BetterVia** still fails to function correctly on your device, it may not yet be compatible with your device model or CPU architecture. Please submit your feedback to us and monitor the **LSPosed** update page or follow the channel updates in the [release channels](#release) for the next version update.  
+**BetterVia** was developed by **AIDE Pro** and **Android IDE**, and has been successfully tested on *Android 10 to 16* systems. It should theoretically be compatible with most users, but please ensure your Android version is neither too low nor too high. If, after confirming these conditions, **BetterVia** still fails to function correctly on your device, it may not yet be compatible with your device model or CPU architecture. Please submit your feedback to us and monitor the **LSPosed** update page or follow the channel updates in the [release channels](#release) for the next version update.  
 
 ### Question Two
 <font color="red">Why does **BetterVia** offer relatively limited functionality?</font>
@@ -355,11 +365,13 @@ The final interpretation of this statement is reserved by the declarant.
 
 ## Acknowledgments
 
-| Name         | Link                                                                                  | Details                     |
-|--------------|---------------------------------------------------------------------------------------|--------------------------|
-| AIDE Pro     | ——                                                                                    | Software for development and packaging             |
-| Android IDE  | [Android IDE - GitHub](https://github.com/AndroidIDEOfficial/AndroidIDE)             | Software for development and packaging             |
-| CoolApk @半烟半雨溪桥畔 | [半梦半醒 - Gitee](https://gitee.com/daybreak166/)                      | Provides themes and reference materials           |
+
+| Name | Link | Details |
+| :--- | :--- | :--- |
+| AIDE Pro | —— | Software for development and packaging |
+| Android IDE | [Android IDE - GitHub](https://github.com/AndroidIDEOfficial/AndroidIDE) | Software for development and packaging |
+| CoolApk @半烟半雨溪桥畔 | [半梦半醒 - Gitee](https://gitee.com/daybreak166/) | Provides themes and reference materials |
+| CoolApk @sgfox | [sgfox - 拾穗收集整理](https://www.sgfox.cc/archives/via-shisui.html) | Provide “Shihui” content |
 
 > [!NOTE]
 > Due to the large number of entries, they are not listed individually here. For details, please refer to the respective module pages.

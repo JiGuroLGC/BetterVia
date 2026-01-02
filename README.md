@@ -93,7 +93,7 @@
 <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/icon.png" width = "100" height = "100" alt="LOGO"/>
 
 **Via** ( **mark.via** / **mark.via.gp** )  
-*支持V6.8.0版本*  
+*支持V6.9.0版本*  
 
 > 本项目支持国内版、谷歌版两种版本的Via
 
@@ -126,11 +126,6 @@
 </a>
 </p>
 <div align="center">设置界面(续)</div>
-
-<br>
-
-> [!WARNING]
-> 模块设置中的“开启实验模式”只针对于开发者使用，开启后可能会限制某些功能，如果开启后出现问题，请关闭该功能
 
 <br>
 
@@ -177,6 +172,12 @@
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie.png" width="315" height="660">
+</a>
+</p>
+
+<p align="center">
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie2.png" width="315" height="660">
 </a>
 </p>
 <div align="center">Cookie管理器</div>
@@ -246,6 +247,15 @@
 </p>
 <div align="center">UA大全</div>
 
+<br>
+
+<p align="center">
+<a href="https://github.com/JiGuroLGC/BetterVia">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/shisui.png" width="315" height="660">
+</a>
+</p>
+<div align="center">拾穗</div>
+
 ## 开始使用
 
 ### 1. 下载  
@@ -296,7 +306,7 @@
 ### 问题一
 <font color="red">为什么 **BetterVia** 没有在我的设备上正常运行？</font>
 
-**BetterVia** 由 **AIDE Pro** 和 **Android IDE** 开发，在 *Android 10~15*  系统均测试成功，理论上适用于大多数用户 ，但是请确保您的安卓版本不要过低或过高。如果您在确认完这些条件后， **BetterVia** 还是不能在您的设备上正常运行，可能是 **BetterVia** 还未适配您的设备或 CPU 架构，请您向我们提交意见后，实时查看 **LSPosed** 的更新页面或关注[发行渠道](#release)中的渠道更新，静待下一个版本的更新升级。  
+**BetterVia** 由 **AIDE Pro** 和 **Android IDE** 开发，在 *Android 10~16*  系统均测试成功，理论上适用于大多数用户 ，但是请确保您的安卓版本不要过低或过高。如果您在确认完这些条件后， **BetterVia** 还是不能在您的设备上正常运行，可能是 **BetterVia** 还未适配您的设备或 CPU 架构，请您向我们提交意见后，实时查看 **LSPosed** 的更新页面或关注[发行渠道](#release)中的渠道更新，静待下一个版本的更新升级。  
 
 ### 问题二
 <font color="red"> 为什么 **BetterVia** 的功能相对来说还是比较少？</font>
@@ -352,11 +362,12 @@
 
 ## 鸣谢
 
-| 名称         | 链接                                                                                  | 详情                     |
-|--------------|---------------------------------------------------------------------------------------|--------------------------|
-| AIDE Pro     | ——                                                                                    | 开发打包软件             |
-| Android IDE  | [Android IDE - GitHub](https://github.com/AndroidIDEOfficial/AndroidIDE)             | 开发打包软件             |
-| 酷安 @半烟半雨溪桥畔 | [半梦半醒 - Gitee](https://gitee.com/daybreak166/)                                   | 提供主题等资料参考       |
+| 名称 | 链接 | 详情 |
+| :--- | :--- | :--- |
+| AIDE Pro | —— | 开发打包软件 |
+| Android IDE | [Android IDE - GitHub](https://github.com/AndroidIDEOfficial/AndroidIDE) | 开发打包软件 |
+| 酷安 @半烟半雨溪桥畔 | [半梦半醒 - Gitee](https://gitee.com/daybreak166/) | 提供主题等资料参考 |
+| 酷安 @sgfox | [sgfox - 拾穗收集整理](https://www.sgfox.cc/archives/via-shisui.html) | 提供“拾穗”内容 |
 
 > [!NOTE]
 > 由于人数过多，这里不一一列出，详见模块各详情页面
