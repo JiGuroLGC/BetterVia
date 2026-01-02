@@ -382,4 +382,4 @@
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/reward.png" width="400" height="400">
 </a>
 
-版权所有 © 2025 JiGuro
+版权所有 © 2026 JiGuro
