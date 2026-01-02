@@ -6,13 +6,13 @@
 
   <a href="https://github.com/JiGuroLGC/BetterVia/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/JiGuroLGC/BetterVia?label=stars"></a>
   <a href="https://github.com/pre-commit/pre-commit">
-    <img src="https://img.shields.io/badge/pre--commit-open-brightgreen?logo=pre-commit&logoColor=white" height="20" alt="pre-commit">
+    <img src="https://img.shields.io/github/downloads/JiGuroLGC/BetterVia/total?color=0000CD" height="20" alt="pre-commit">
   </a>
   <a href="https://github.com/JiGuroLGC/BetterVia">
     <img src="https://img.shields.io/github/repo-size/JiGuroLGC/BetterVia" height="20" alt="repo-size">
   </a>
   <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://img.shields.io/github/downloads/JiGuroLGC/BetterVia/total" height="20" alt="Contributions Welcome">
+    <img src="https://img.shields.io/badge/pre--commit-open-brightgreen?logo=pre-commit&logoColor=white" height="20" alt="pre-commit">
   </a>
   <a href="https://github.com/JiGuroLGC/BetterVia/releases">
     <img src="https://img.shields.io/badge/download-lastest_now-white?branch=master&color=FF90E8" height="20" alt="download">
