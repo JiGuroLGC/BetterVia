@@ -382,4 +382,8 @@
     <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/reward.png" width="400" height="400">
 </a>
 
+## 星图
+
+[![Star History Chart](https://api.star-history.com/svg?repos=JiGuroLGC/BetterVia&type=timeline&legend=top-left)](https://www.star-history.com/#JiGuroLGC/BetterVia&type=timeline&legend=top-left)
+
 版权所有 © 2026 JiGuro
