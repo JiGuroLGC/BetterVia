@@ -8,8 +8,8 @@ android {
         applicationId "com.jiguro.bettervia"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 20260101
-        versionName "1.3.0"
+        versionCode 20260111
+        versionName "1.4.0"
     }
 
     buildTypes {

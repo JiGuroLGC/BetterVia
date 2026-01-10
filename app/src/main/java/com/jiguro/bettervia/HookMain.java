@@ -1,5 +1,4 @@
 package com.jiguro.bettervia;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -10,37 +9,20 @@ import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import java.io.File;
 import java.lang.reflect.Method;
-
-/**
- * 免重启调试入口
- * 1. 安装模块后只需重启一次目标 App（无需重启手机）
- * 2. 后续改代码→编译→安装，直接生效
- */
 public class HookMain implements IXposedHookLoadPackage {
-
-	// ↓↓↓ 按实际改成你的 ↓↓↓
-	private final String modulePkg = "com.jiguro.bettervia"; // 模块包名
-	private final String logicClass = "com.jiguro.bettervia.Hook"; // 完整类名
-	private final String logicMethod = "handleLoadPackage"; // 入口方法
-	// ↑↑↑ 按实际改成你的 ↑↑↑
-
+	private final String modulePkg = "com.jiguro.bettervia"; 
+	private final String logicClass = "com.jiguro.bettervia.Hook"; 
+	private final String logicMethod = "handleLoadPackage"; 
 	@Override
 	public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
-		// 只在目标 App 里干活（可选，想全局就删掉 if）
-		// if (!lpparam.packageName.equals("com.kuaiduizuoye.scan")) return;
-
 		XposedHelpers.findAndHookMethod(Application.class, "attach", Context.class, new XC_MethodHook() {
 			@Override
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				Context ctx = (Context) param.args[0];
-				// 把宿主 ClassLoader 替换掉，防止多 dex 找不到类
 				lpparam.classLoader = ctx.getClassLoader();
-
-				// 调试阶段：动态加载 apk 里的最新代码
 				File apk = findApk(ctx, modulePkg);
 				if (apk == null)
 					throw new RuntimeException("找不到模块 apk");
-
 				PathClassLoader pcl = new PathClassLoader(apk.getAbsolutePath(), ClassLoader.getSystemClassLoader());
 				Class<?> clazz = Class.forName(logicClass, true, pcl);
 				Object instance = clazz.newInstance();
@@ -49,8 +31,6 @@ public class HookMain implements IXposedHookLoadPackage {
 			}
 		});
 	}
-
-	/* 根据包名定位本模块 apk */
 	private File findApk(Context ctx, String pkg) {
 		try {
 			Context modCtx = ctx.createPackageContext(pkg,
@@ -61,4 +41,3 @@ public class HookMain implements IXposedHookLoadPackage {
 		}
 	}
 }
-
