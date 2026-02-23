@@ -1,9 +1,9 @@
 {
-  "versionName": "1.6.0",
+  "versionName": "1.7.0",
   "updateLog": {
-    "en": "1. Migrated support to Via 7.0.0\n2. Fixed a permission-related validation error\n3. Added storage management functionality\n4. Officially introduced Monet Moments with further workflow optimizations\n5. Resolved bugs and enhanced user experience\n6. Wishing you all: \nHooves tread snow, greeting the new year’s light; Fortune arrives at the door, blessing the harvest bright",
-    "zh-CN": "1. 转移支持至 Via 7.0.0 版本\n2. 修复了一个因权限问题的检查错误\n3. 新增存储管理功能\n4. 正式引入莫奈时刻，对流程进一步优化\n5. 修复 bug ，增强用户体验\n6. 恭祝各位：\n马蹄踏雪迎新岁，福到门庭贺丰年",
-    "zh-TW": "1. 轉移支持至 Via 7.0.0 版本\n2. 修復因權限問題導致的檢查錯誤\n3. 新增儲存管理功能\n4. 正式導入莫奈時刻，進一步優化流程\n5. 修復錯誤，提升使用者體驗\n6. 恭祝各位：\n馬蹄踏雪迎新歲，福氣滿門慶豐年"
+    "en": "1. Enhanced compatibility with new devices\n2. Add a privacy lock to protect user privacy\n3. Added light mode, dark mode, and their switching function\n4. Beautify UI details for a smoother experience\n5. Fixed some bugs and removed some unnecessary logic\n6. From this version onwards, the official version will be developed and compiled on the Windows platform",
+    "zh-CN": "1. 增强了对新机型的适配\n2. 新增隐私锁，保护用户隐私\n3. 新增黑夜模式 (九阴) 、白天模式 (重阳) 及其切换功能\n4. 美化 UI 细节，体验更流畅\n5. 修复了一些 Bug ，去除了一些不必要的逻辑\n6. 从该版本起，正式版转移至 Windows 端开发和编译",
+    "zh-TW": "1. 增強了對新機型的適配\n2. 新增隱私鎖，保護用戶隱私\n3. 新增黑夜模式 (九陰) 、白天模式 (重陽) 及其切換功能\n4. 美化UI細節，體驗更流暢\n5. 修復了一些 Bug ，去除了一些不必要的邏輯\n6. 從該版本起，正式版轉移至 Windows 端開發和編譯"
   },
-  "apkUrl": "https://github.com/JiGuroLGC/BetterVia/releases/download/20260213_1.6.0/BetterVia_1.6.0.apk"
+  "apkUrl": "https://github.com/JiGuroLGC/BetterVia/releases/download/20260222_1.7.0/BetterVia_1.7.0.apk"
 }
