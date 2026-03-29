@@ -1,9 +1,9 @@
 {
-  "versionName": "1.7.0",
+  "versionName": "1.8.0",
   "updateLog": {
-    "en": "1. Enhanced compatibility with new devices\n2. Add a privacy lock to protect user privacy\n3. Added light mode, dark mode, and their switching function\n4. Beautify UI details for a smoother experience\n5. Fixed some bugs and removed some unnecessary logic\n6. From this version onwards, the official version will be developed and compiled on the Windows platform",
-    "zh-CN": "1. 增强了对新机型的适配\n2. 新增隐私锁，保护用户隐私\n3. 新增黑夜模式 (九阴) 、白天模式 (重阳) 及其切换功能\n4. 美化 UI 细节，体验更流畅\n5. 修复了一些 Bug ，去除了一些不必要的逻辑\n6. 从该版本起，正式版转移至 Windows 端开发和编译",
-    "zh-TW": "1. 增強了對新機型的適配\n2. 新增隱私鎖，保護用戶隱私\n3. 新增黑夜模式 (九陰) 、白天模式 (重陽) 及其切換功能\n4. 美化UI細節，體驗更流暢\n5. 修復了一些 Bug ，去除了一些不必要的邏輯\n6. 從該版本起，正式版轉移至 Windows 端開發和編譯"
+    "en": "1. Added multi-version support and network synchronization features\n2. Add startup execution function\n3. Refactor the theme replacement logic and fix bugs related to the theme\n4. Add the function of fetching URL scheme\n5. The newly added beautification prompt function is more aligned with the Via style\n6. Beautify UI details for a smoother experience",
+    "zh-CN": "1. 添加了多版本支持和网络同步功能\n2. 新增启动执行功能\n3. 重构主题更换逻辑，修复有关主题的 Bug\n4. 新增抓取 URL 方案功能\n5. 新增美化提示功能，更贴近 Via 风格\n6. 美化 UI 细节，体验更流畅",
+    "zh-TW": "1. 添加了多版本支持和網絡同步功能\n2. 新增啟動執行功能\n3. 重構主題更換邏輯，修復有關主題的吧 Bug\n4. 新增抓取 URL 方案功能\n5. 新增美化提示功能，更貼近 Via 風格\n6. 美化 UI 細節，體驗更流暢"
   },
-  "apkUrl": "https://github.com/JiGuroLGC/BetterVia/releases/download/20260222_1.7.0/BetterVia_1.7.0.apk"
+  "apkUrl": "https://github.com/JiGuroLGC/BetterVia/releases/download/20260401_1.8.0/BetterVia_1.8.0.apk"
 }
