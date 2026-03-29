@@ -418,8 +418,7 @@ public class PasswordManager {
 				hintLp.bottomMargin = dp(act, 96);
 				root.addView(hintTv, hintLp);
 				final EditText passwordInput = new EditText(act);
-				passwordInput.setInputType(InputType.TYPE_CLASS_NUMBER
-						| InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+				passwordInput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
 				passwordInput.setHint(LocalizedStringProvider.getInstance().get(context, "pin_lock_hint"));
 				passwordInput.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 				passwordInput.setTextColor(textColor);
@@ -657,10 +656,10 @@ public class PasswordManager {
 		if (MODULE_THEME_AUTO.equals(theme)) {
 			int nightMode = 0;
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    nightMode = ctx.getResources().getConfiguration().isNightModeActive() ? 1 : 0;
-                }
-            } else {
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+					nightMode = ctx.getResources().getConfiguration().isNightModeActive() ? 1 : 0;
+				}
+			} else {
 				try {
 					Object uiModeManager = ctx.getSystemService(Context.UI_MODE_SERVICE);
 					nightMode = (Integer) XposedHelpers.callMethod(uiModeManager, "getNightMode");
@@ -709,11 +708,56 @@ public class PasswordManager {
 				act.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						Toast.makeText(act, message, Toast.LENGTH_SHORT).show();
+						boolean useCustomToast = getPrefBoolean(act, "custom_toast", true);
+						boolean isLongText = message != null && message.length() > 20;
+						int duration = isLongText ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
+						if (useCustomToast) {
+							Toast customToast = createCustomToast(act, message, duration);
+							if (customToast != null) {
+								customToast.show();
+							}
+						} else {
+							Toast.makeText(act, message, duration).show();
+						}
 					}
 				});
 			}
 		} catch (Exception e) {
+		}
+	}
+	private Toast createCustomToast(final Context context, final String msg, final int duration) {
+		if (context == null || msg == null) {
+			return null;
+		}
+		LinearLayout container = new LinearLayout(context);
+		container.setOrientation(LinearLayout.HORIZONTAL);
+		container.setGravity(Gravity.CENTER);
+		GradientDrawable bg = new GradientDrawable();
+		bg.setColor(0xCC1E1E1E); 
+		bg.setCornerRadius(dp(context, 22)); 
+		container.setBackgroundDrawable(bg);
+		int padding = dp(context, 18);
+		int verticalPadding = dp(context, 14);
+		container.setPadding(padding, verticalPadding, padding, verticalPadding);
+		TextView textView = new TextView(context);
+		textView.setText(msg);
+		textView.setTextColor(Color.WHITE); 
+		textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+		textView.setGravity(Gravity.CENTER);
+		textView.setMaxWidth(dp(context, 280)); 
+		container.addView(textView);
+		Toast toast = new Toast(context);
+		toast.setView(container);
+		toast.setDuration(duration);
+		toast.setGravity(Gravity.BOTTOM, 0, dp(context, 122));
+		return toast;
+	}
+	private boolean getPrefBoolean(Context ctx, String key, boolean defaultValue) {
+		try {
+			SharedPreferences prefs = ctx.getSharedPreferences("BetterVia_prefs", Context.MODE_PRIVATE);
+			return prefs.getBoolean(key, defaultValue);
+		} catch (Exception e) {
+			return defaultValue;
 		}
 	}
 	private boolean isLockedOut() {
@@ -776,7 +820,7 @@ public class PasswordManager {
 		} catch (Exception e) {
 		}
 	}
-	private void startCountdown(final Activity act, final TextView hintTv) {
+	private void startCountdown(final Activity act, final TextView hintTv, final String originalHintText) {
 		if (countdownHandler != null && countdownRunnable != null) {
 			countdownHandler.removeCallbacks(countdownRunnable);
 		}
@@ -794,7 +838,7 @@ public class PasswordManager {
 					countdownHandler.postDelayed(this, 1000);
 				} else {
 					secureStorage.putSecureLong(SecurePasswordStorage.KEY_LOCKOUT_END_TIME, 0);
-					hintTv.setText(LocalizedStringProvider.getInstance().get(context, "pattern_lock_verify_hint"));
+					hintTv.setText(originalHintText);
 					hintTv.setTextColor(getHintColor(context));
 					if (currentPatternLock != null) {
 						currentPatternLock.setEnabled(true);
@@ -900,6 +944,7 @@ public class PasswordManager {
 						ViewGroup.LayoutParams.WRAP_CONTENT);
 				hintLp.bottomMargin = dp(act, 16);
 				root.addView(hintTv, hintLp);
+				final String originalHintText = hintText;
 				FrameLayout patternContainer = new FrameLayout(act);
 				LinearLayout.LayoutParams patternContainerLp = new LinearLayout.LayoutParams(
 						ViewGroup.LayoutParams.MATCH_PARENT, dp(act, 300));
@@ -985,7 +1030,7 @@ public class PasswordManager {
 									remainingSeconds);
 							hintTv.setText(message);
 							hintTv.setTextColor(0xFFFF0000);
-							startCountdown(act, hintTv);
+							startCountdown(act, hintTv, originalHintText);
 							return;
 						}
 						if (pattern.size() >= PatternLockView.MIN_PATTERN_LENGTH) {
@@ -1031,7 +1076,7 @@ public class PasswordManager {
 											"pattern_lock_wait_seconds"), remainingSeconds);
 									hintTv.setText(message);
 									hintTv.setTextColor(0xFFFF0000);
-									startCountdown(act, hintTv);
+									startCountdown(act, hintTv, originalHintText);
 								} else {
 									int continuousFailureCount = secureStorage
 											.getSecureInt(SecurePasswordStorage.KEY_CONTINUOUS_FAILURE_COUNT, 0);
@@ -1046,8 +1091,7 @@ public class PasswordManager {
 										@Override
 										public void run() {
 											currentPatternLock.clearPattern();
-											hintTv.setText(LocalizedStringProvider.getInstance().get(context,
-													"pattern_lock_verify_hint"));
+											hintTv.setText(originalHintText);
 											hintTv.setTextColor(hintColor);
 										}
 									}, 1500);
@@ -1063,8 +1107,7 @@ public class PasswordManager {
 								@Override
 								public void run() {
 									currentPatternLock.clearPattern();
-									hintTv.setText(LocalizedStringProvider.getInstance().get(context,
-											"pattern_lock_verify_hint"));
+									hintTv.setText(originalHintText);
 									hintTv.setTextColor(hintColor);
 								}
 							}, 1500);
@@ -1113,7 +1156,7 @@ public class PasswordManager {
 							remainingSeconds);
 					hintTv.setText(message);
 					hintTv.setTextColor(0xFFFF0000);
-					startCountdown(act, hintTv);
+					startCountdown(act, hintTv, originalHintText);
 				}
 				animateDialogEntrance(root, act);
 			}
@@ -1184,9 +1227,9 @@ public class PasswordManager {
 						ViewGroup.LayoutParams.WRAP_CONTENT);
 				hintLp.bottomMargin = dp(act, 96);
 				root.addView(hintTv, hintLp);
+				final String originalPinHintText = hintText;
 				final EditText passwordInput = new EditText(act);
-				passwordInput.setInputType(InputType.TYPE_CLASS_NUMBER
-						| InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+				passwordInput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
 				passwordInput.setHint(LocalizedStringProvider.getInstance().get(context, "pin_lock_hint"));
 				passwordInput.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 				passwordInput.setTextColor(textColor);
@@ -1323,7 +1366,7 @@ public class PasswordManager {
 									remainingSeconds);
 							hintTv.setText(message);
 							hintTv.setTextColor(0xFFFF0000);
-							startCountdown(act, hintTv);
+							startCountdown(act, hintTv, originalPinHintText);
 							return;
 						}
 						boolean isCorrect = verifyPinPassword(inputPassword);
@@ -1370,7 +1413,7 @@ public class PasswordManager {
 										remainingSeconds);
 								hintTv.setText(message);
 								hintTv.setTextColor(0xFFFF0000);
-								startCountdown(act, hintTv);
+								startCountdown(act, hintTv, originalPinHintText);
 							} else {
 								int continuousFailureCount = secureStorage
 										.getSecureInt(SecurePasswordStorage.KEY_CONTINUOUS_FAILURE_COUNT, 0);
@@ -1419,7 +1462,7 @@ public class PasswordManager {
 							remainingSeconds);
 					hintTv.setText(message);
 					hintTv.setTextColor(0xFFFF0000);
-					startCountdown(act, hintTv);
+					startCountdown(act, hintTv, originalPinHintText);
 				}
 				animateDialogEntrance(root, act);
 			}

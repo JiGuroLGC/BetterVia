@@ -1,0 +1,632 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>用户协议 - en</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h2 id='user-agreement'><span>&quot;User Agreement&quot;</span></h2><p><span>Welcome to use BetterVia software and services! These software and services are provided by the software developer JiGuro (hereinafter referred to as &quot;we&quot;). To use BetterVia software and services (hereinafter referred to as &quot;this software&quot;), you should read and comply with the User Software License Agreement (hereinafter referred to as &quot;the Agreement&quot;). This Agreement describes the rights and obligations between us and you regarding the license and use of this software and related aspects. Please be sure to read carefully and fully understand the terms, and choose to accept or not accept them (minors should review under the guidance and accompaniment of their guardians).</span></p><p><span>Unless you have read and accepted all the terms of this Agreement, you are not authorized to download, install, build, or use this software and its related services. Your actions of downloading, installing, building, and using will be deemed as acceptance of this Agreement, and you agree to be bound by all the terms of this Agreement.</span></p><h3 id='i-scope-of-the-agreement'><span>I. Scope of the Agreement</span></h3><h4 id='11-scope-of-applicability-of-the-agreement'><span>1.1 Scope of Applicability of the Agreement</span></h4><p><span>This Agreement is a legal agreement between you and us regarding your downloading, installing, building, using, and copying of the software, as well as your use of BetterVia-related services.</span></p><h4 id='12-this-license-agreement-refers-to-the-content'><span>1.2 This License Agreement refers to the content</span></h4><p><span>The licensed content under this Agreement refers to the services and licenses we provide to users, including but not limited to the software license and services (hereinafter referred to as &quot;this Service&quot;).</span></p><p><span>The content of this Agreement also includes relevant agreements, business rules, and other content regarding the service that we may continuously release. Once the aforementioned content is officially released, it becomes an integral part of this Agreement, and you shall also abide by it.</span></p><h3 id='ii-definition-of-key-terms'><span>II. Definition of Key Terms</span></h3><h4 id='21-learning-and-research'><span>2.1 &quot;Learning and Research&quot;</span></h4><p><span>In this agreement, &quot;learning and research&quot; specifically refers to the following actions taken by users for personal non-commercial purposes on their personal devices within 24 hours, using the BetterVia client as a medium, towards the software (Via browser) and its underlying or associated third-party components:</span></p><p><span>(a) Analysis: Conduct static or dynamic analysis of the software&#39;s working principle, code structure, and interaction logic to understand its technical implementation.</span>
+<span>(b) Modification and experimentation: On personal devices, modify, compile, and replace certain components of the software to test its functional changes or verify specific technical hypotheses.</span>
+<span>(c) Educational purpose: Use the software as a reference case for learning computer science, software engineering, or related fields.</span></p><h4 id='22-non-learning-and-research-behaviors'><span>2.2 Non-&quot;learning and research&quot; behaviors</span></h4><p><span>The following behaviors are clearly not within the scope of &quot;learning and research&quot; permitted by this agreement and are prohibited by the agreement:</span></p><p><span>(a) Use this software or any version derived from this software for any commercial purpose, including but not limited to selling, bundling, offering for payment, or using in the development of commercial products.</span>
+<span>(b) Conduct large-scale, public distribution and dissemination of software, whether for a fee or free of charge.</span>
+<span>(c) Any behavior that disrupts or interferes with the business model of the original associated software (Via Browser) and harms the interests of its developer.</span>
+<span>(d) Any malicious behavior that results in permanent loss of functionality, data corruption, or aims to steal or misuse user data of the original associated software (Via browser).</span>
+<span>(e) Any behavior that harms the public opinion and online reviews of the original associated software (Via Browser).</span>
+<span>(f) Any act that violates the terms of the involved open source licenses (such as the licenses applicable to open source components that may be included in BetterVia, Xposed framework, and Via browser).</span></p><h4 id='23-achievement-of-purpose'><span>2.3 &quot;Achievement of Purpose&quot;</span></h4><p><span>When the user has achieved their specific learning and research goals, or decides to discontinue the aforementioned &quot;learning and research&quot; activities, it shall be deemed as &quot;purpose achieved&quot;. The user shall immediately and thoroughly delete this software and all its copies and modified versions from all devices upon achieving the purpose.</span></p><h3 id='iii-about-this-software'><span>III. About this software</span></h3><p><span>This software is a module developed by us, based on the Android platform and the Xposed framework. It enhances the web browsing tool developed by Shanghai Zhiwei Network Technology Co., Ltd., known as Via Browser (hereinafter referred to as &quot;Via&quot;). The working scheme of this software is collected and organized from third-party public channels on the Internet, and is shared solely for technical exchange and academic research.</span></p><h3 id='iv-about-this-service'><span>IV. About this service</span></h3><h4 id='41-content-of-this-service'><span>4.1 Content of this service</span></h4><p><span>This service refers to the software license and services we provide for installation on mobile terminal devices, which includes but is not limited to enhancing Via functionality and learning and researching Via operational logic (hereinafter referred to as &quot;this service&quot;).</span></p><h4 id='42-form-of-this-service'><span>4.2 Form of this service</span></h4><p><span>To use this service, you need to download the BetterVia client software. We grant you a personal, non-transferable, and non-exclusive license for this software.</span></p><h4 id='43-scope-of-this-service-license'><span>4.3 Scope of this Service License</span></h4><p><span>4.3.1 We grant you a personal, non-transferable, and non-exclusive license to use this software. You may install, use, display, and run this software on a single terminal device for non-commercial purposes.</span></p><p><span>4.3.2 You may make one copy of the Software in a computer-readable form solely for the purpose of using the Software and Services, and solely for backup purposes. The backup copy must contain all copyright information contained in the original Software.</span></p><p><span>4.3.3 All other rights not expressly authorized in this clause and other clauses of this agreement are reserved by us. You must obtain our written permission before exercising these rights. Our failure to exercise any of the aforementioned rights does not constitute a waiver of that right.</span></p><h3 id='v-declaration-terms'><span>V. Declaration Terms</span></h3><p><span>5.1 In accordance with the relevant provisions of the &quot;Regulations on the Protection of Computer Software of the People&#39;s Republic of China&quot;, this software is solely intended for learning and researching the design concepts and principles of software. You understand and agree that we share this software purely for the purpose of learning and exchange, without any intention of profit.</span></p><p><span>5.2 You understand and agree that due to the third-party nature of the working methods of this software and the limitations of our capabilities, we cannot provide any form of guarantee or warranty for the legality (such as copyright status) of this software. We have conducted reasonable research and review of the public technical materials used to build this software and believe that this software falls within the scope of fair use as stipulated in Article 24 of the Copyright Law, which allows the use of published works of others for personal learning, research, or appreciation. However, we do not guarantee the absolute legal correctness of this judgment.</span></p><p><span>5.3 You understand and agree that under no circumstances shall we be liable for any direct, indirect, incidental, special, punitive, or consequential damages (including but not limited to data loss, system damage, business interruption, loss of profits, privacy leakage, legal disputes, etc.) arising from the download, installation, use, inability to use, or reliance on this software, regardless of whether such liability arises from contract, infringement (including negligence), strict liability, or other legal theories, and regardless of whether we have been informed of the possibility of such damages in advance.</span></p><p><span>5.4 This software is exclusively for learning and research purposes. For daily use, we recommend obtaining the official Via software through official channels provided by the Via developer to ensure safety and legality. Using official software not only guarantees a good user experience and stable performance but also shows respect and support for the software developer&#39;s innovation and efforts. If you find Via helpful or enjoy using it, please actively support the official version. We promise that no computer viruses, backdoor programs, or any features that infringe on user privacy have been intentionally implanted in the sharing and compilation process of this software. If users discover any such issues with this software, please contact us immediately, and we will take immediate measures such as deletion to resolutely prevent further dissemination of this software.</span></p><p><span>5.5 This software will not collect or transmit any of your data. All settings, log information, and password information (encrypted) generated during the operation of this software are stored locally. You can view (which may require Root permission) or delete (by clearing all data in the &quot;Settings&quot; interface of this software) all local data at any time.</span></p><p><span>5.6 Intellectual property rights are strictly protected by law. Please refrain from infringing upon them. We firmly uphold the intellectual property rights held by Shanghai Zhiwei Network Technology Co., Ltd. over Via.</span></p><h3 id='vi-user-behavior-guidelines'><span>VI. User Behavior Guidelines</span></h3><h4 id='61-prohibited-behaviors'><span>6.1 Prohibited behaviors</span></h4><p><span>Unless permitted by law or with our written consent, you shall not engage in the following behaviors:</span></p><p><span>6.1.1 Remove the copyright information from this software and its copies.</span></p><p><span>6.1.2 Reverse engineer, modify, add or delete any code or logic of this software.</span></p><p><span>6.1.3 Use this software for any commercial or illegal purposes, or disseminate it on a large scale.</span></p><p><span>6.1.4 Other behaviors not expressly authorized by us.</span></p><p><span>6.1.5 Other behaviors that violate laws, regulations, and policies.</span></p><h4 id='62-obligatory-acts'><span>6.2 Obligatory Acts</span></h4><p><span>Upon accepting the terms of this Agreement, you are obligated to ensure the fulfillment of the following actions:</span></p><p><span>6.2.1 When the learning and research purpose is achieved, or when you decide not to use it for learning and research purposes anymore, immediately and completely delete this software from the storage device.</span></p><p><span>6.2.2 Ensure that your own usage behavior complies with the provisions of relevant laws and regulations such as the Copyright Law of the People&#39;s Republic of China, the Regulations of the People&#39;s Republic of China on the Protection of Computer Software, the Cybersecurity Law of the People&#39;s Republic of China, the Data Security Law of the People&#39;s Republic of China, and the Personal Information Protection Law of the People&#39;s Republic of China, and work with us to jointly maintain a good network environment and legal order.</span></p><p><span>6.2.3 Comply with the terms of the open source licenses for the open source components included or based on in this software and Via.</span></p><h3 id='vii-legal-liability'><span>VII. Legal Liability</span></h3><p><span>7.1 If the user violates this Agreement or the relevant service terms, we have the right to take measures including but not limited to terminating the license for use and pursuing legal action, depending on the nature of the user&#39;s behavior.</span></p><p><span>7.2 If the user causes any damage to a third party, the user shall bear the responsibility independently.</span></p><p><span>7.3 If the user fails to strictly use this software for technical exchanges, learning, and research, the user shall bear the responsibility independently.</span></p><p><span>7.4 The user shall bear all legal responsibilities arising from the use of this software.</span></p><p><span>7.5 You must fully understand the purpose and risks of using this software. When absolutely necessary, our responsibility is limited to upgrading and announcing software versions.</span></p><h3 id='viii-intellectual-property-rights'><span>VIII. Intellectual Property Rights</span></h3><h4 id='81-statement-of-rights'><span>8.1 Statement of Rights</span></h4><h5 id='811-this-software'><span>8.1.1 This software</span></h5><p><span>The developer (JiGuro) is the rights holder of the overall compiled product of this software and its original expression (including but not limited to specific code organization, build scripts, module integration methods, and documentation). Users obtain a license to use it under this agreement.</span></p><h5 id='812-third-party-components'><span>8.1.2 Third-party components</span></h5><p><span>This software is developed based on the Xposed framework and designed to enhance the Via browser. The operation of this software relies on these third-party software. This agreement does not grant the user any intellectual property license for the Xposed framework, Via browser, or any of its components. The user should ensure that their use of these third-party software has been legally authorized by the respective rights holders.</span></p><h5 id='813-open-source-code'><span>8.1.3 Open source code</span></h5><p><span>If this software contains code derived from open source projects, that portion of the code continues to be governed by the terms of its original open source license (such as MIT, Apache, etc.). This agreement shall not be construed as a modification or restriction of any open source license terms. Users must comply with the provisions of the relevant open source license when using this software.</span></p><h5 id='82-user-obligations'><span>8.2 User Obligations</span></h5><p><span>8.2.1 Without the explicit written permission of the developer JiGuro and relevant third-party rights holders (such as the developer of Via browser and the author of the open-source project), users shall not exercise the rights described in Article 8.1.1 of this Agreement for any commercial purposes.</span></p><p><span>8.2.2 Any derivative works created by users based on this software or its open-source code, if distributed, must:</span></p><p><span>(a) Clearly and prominently indicate that it contains original contributions from JiGuro;</span>
+<span>(b) Retain all copyright and ownership notices in the original software intact;</span>
+<span>(c) Comply with the terms of all open source licenses involved.</span></p><h3 id='ix-other-terms'><span>IX. Other Terms</span></h3><p><span>9.1 An authorization agreement in electronic text form possesses complete and equivalent legal effect as an agreement signed by both parties in writing. Your use of this software or service is deemed as your acknowledgment and agreement to be bound by this Agreement. Any actions beyond the scope of this Agreement will directly violate this authorization agreement and constitute infringement. We reserve the right to terminate the authorization at any time, order the cessation of damages, and retain the right to pursue relevant responsibilities.</span></p><p><span>9.2 We reserve the right to modify the terms of this Agreement when necessary. You can refer to the relevant agreement terms in the latest version of this software. If you continue to use this software after the terms of this Agreement have been changed, it will be deemed that you have accepted the modified agreement. If you do not accept the modified agreement, you should stop using this software.</span></p><p><span>9.3 This Agreement is signed in Linchuan District, Fuzhou City, Jiangxi Province, the People&#39;s Republic of China.</span></p><p><span>9.4 The formation, validation, execution, interpretation, and dispute resolution of this Agreement shall be governed by the laws of the mainland region of the People&#39;s Republic of China (excluding conflict of laws).</span></p><p><span>9.5 If any dispute or controversy arises between you and us, it shall first be resolved through friendly negotiation; if negotiation fails, you agree to submit the dispute or controversy to the people&#39;s court with jurisdiction over the place where this agreement is signed.</span></p><p><span>9.6 If any provision of this Agreement is partially invalid or unenforceable for any reason, the remaining provisions shall remain valid and binding on both parties.</span></p><p><span>9.7 The headings of all clauses in this Agreement are for convenience only and carry no actual meaning. They cannot serve as a basis for interpreting the meaning of this Agreement.</span></p><p><span>9.8 When running this software for the first time, you will be forced to read the entire content of this Agreement through the interactive interface provided by the software (such as pop-up windows), and you need to actively select options like &quot;Agree&quot; or &quot;I have understood&quot; to explicitly agree to the content of this statement. Once you run or continue to use this software, it will be deemed that you have carefully read, fully understood, and agreed to accept all the contents of this Agreement.</span></p><p><span>9.9 If you have any objections to this Agreement, you can click the &quot;Withdraw Agreement&quot; button in the menu bar options in the upper right corner of the main page of this software at any time, or go to Via → &quot;Settings&quot; → &quot;Modules&quot; → &quot;About&quot; interface and click the &quot;Withdraw Agreement&quot; button. If either of the above two behaviors is reached, it means that you have cancelled your consent to this Agreement and cannot continue to use this software and service. At this point, you must immediately and completely remove this software and all copies, modified versions from all devices.</span></p><p><span>9.10 We reserve the final interpretation right of this Agreement.</span></p><h3 id='x-contact-information'><span>X. Contact Information</span></h3><p><span>All inquiries, notifications, requests, or demands pertaining to this Agreement and the software should be sent to our email: </span><a href='mailto:JiGuroLiu@qq.com' target='_blank' class='url'>JiGuroLiu@qq.com</a>
+<span>Unless there are special circumstances, we will respond to you within 7 working days.</span></p></div></div>
+</body>
+</html>

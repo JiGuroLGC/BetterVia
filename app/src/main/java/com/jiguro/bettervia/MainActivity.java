@@ -46,14 +46,57 @@ public class MainActivity extends Activity {
 	private static final String GITEE_UPDATE_URL = "https:
 	private static final int REQUEST_STORAGE_PERMISSION_FOR_FIX = 1002;
 	private static final String EXPECTED_PACKAGE_NAME = "com.jiguro.bettervia";
-	private static final int EXPECTED_VERSION_CODE = 20260222;
-	private static final String EXPECTED_VERSION_NAME = "1.7.0";
+	private static final int EXPECTED_VERSION_CODE = 20260401;
+	private static final String EXPECTED_VERSION_NAME = "1.8.0";
 	private TextView appNameText;
 	private TextView byAuthorText;
 	private TextView blogLinkText;
 	private TextView emailLinkText;
 	private TextView versionText;
 	private TextView copyrightText;
+	private static final int ERROR_APK_PATH_NOT_FOUND = 100001; 
+	private static final int ERROR_PATH_VERIFICATION_NULL = 101001; 
+	private static final int ERROR_PATH_NOT_SYSTEM_DIR = 101002; 
+	private static final int ERROR_PATH_MISSING_PACKAGE = 101003; 
+	private static final int ERROR_PATH_MAPS_INVALID = 102001; 
+	private static final int ERROR_PATH_PM_INVALID = 102002; 
+	private static final int ERROR_PATH_SHELL_INVALID = 102003; 
+	private static final int ERROR_PATH_MAPS_SHELL_MISMATCH = 102004; 
+	private static final int ERROR_PATH_MAPS_PM_MISMATCH = 102005; 
+	private static final int ERROR_APK_LOCATION_NULL = 103001; 
+	private static final int ERROR_APK_NOT_IN_DATA_APP = 103002; 
+	private static final int ERROR_APK_ANALYSIS_EXCEPTION = 200001; 
+	private static final int ERROR_APK_CONTAINS_SO_FILES = 200002; 
+	private static final int ERROR_APK_CONTAINS_APK_FILES = 200003; 
+	private static final int ERROR_APK_DEX_COUNT_INVALID = 200004; 
+	private static final int ERROR_APK_SIZE_FILE_NOT_EXIST = 201001; 
+	private static final int ERROR_APK_SIZE_TOO_SMALL = 201002; 
+	private static final int ERROR_APK_SIZE_TOO_LARGE = 201003; 
+	private static final int ERROR_APK_SIZE_SHELL_MISMATCH = 201004; 
+	private static final int ERROR_PACKAGE_INFO_EXCEPTION = 300001; 
+	private static final int ERROR_PACKAGE_INFO_APK_NULL = 300002; 
+	private static final int ERROR_PACKAGE_NAME_CURRENT_APK_MISMATCH = 300003; 
+	private static final int ERROR_PACKAGE_NAME_CURRENT_EXPECTED_MISMATCH = 300004; 
+	private static final int ERROR_PACKAGE_NAME_APK_EXPECTED_MISMATCH = 300005; 
+	private static final int ERROR_VERSION_CODE_CURRENT_APK_MISMATCH = 300006; 
+	private static final int ERROR_VERSION_CODE_CURRENT_EXPECTED_MISMATCH = 300007; 
+	private static final int ERROR_VERSION_CODE_APK_EXPECTED_MISMATCH = 300008; 
+	private static final int ERROR_VERSION_NAME_CURRENT_APK_MISMATCH = 300009; 
+	private static final int ERROR_VERSION_NAME_CURRENT_EXPECTED_MISMATCH = 300010; 
+	private static final int ERROR_VERSION_NAME_APK_EXPECTED_MISMATCH = 300011; 
+	private static final int ERROR_UNAUTHORIZED_FILE_EXCEPTION = 400001; 
+	private static final int ERROR_UNAUTHORIZED_FILE_IN_EXTERNAL = 400002; 
+	private static final int ERROR_UNAUTHORIZED_FILE_IN_INTERNAL = 400003; 
+	private static final int ERROR_UNAUTHORIZED_FILE_IN_DATA = 400004; 
+	private static final int ERROR_SIGNATURE_VERIFICATION_FAILED = 500001; 
+	private static final int ERROR_CREATOR_NAME_EXCEPTION = 600001; 
+	private static final int ERROR_CREATOR_NAME_MISMATCH = 600002; 
+	private static final int ERROR_CREATOR_CLASSLOADER_EXCEPTION = 600003; 
+	private static final int ERROR_CREATOR_CLASSLOADER_NULL = 600004; 
+	private static final int ERROR_CREATOR_CLASSLOADER_TAMPERED = 600005; 
+	private static final int ERROR_SECURITY_CHECK_PERMISSION_GRANTED = 900001; 
+	private static final int ERROR_SECURITY_CHECK_PERMISSION_DENIED = 900002; 
+	private int lastErrorCode = 0;
 	@Override
 	protected void attachBaseContext(Context newBase) {
 		super.attachBaseContext(updateBaseContextForLanguage(newBase));
@@ -61,6 +104,59 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		String realApkPath = getRealApkPath();
+		if (realApkPath == null) {
+			lastErrorCode = ERROR_APK_PATH_NOT_FOUND;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
+		int pathVerifyError = verifyApkPathWithCode(realApkPath);
+		if (pathVerifyError != 0) {
+			lastErrorCode = pathVerifyError;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
+		int packagePathError = packagePathCheckWithCode();
+		if (packagePathError != 0) {
+			lastErrorCode = packagePathError;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
+		int locationError = checkApkInDataAppDirectoryWithCode();
+		if (locationError != 0) {
+			lastErrorCode = locationError;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
+		int apkContentError = detectApkWithCode(realApkPath);
+		if (apkContentError != 0) {
+			lastErrorCode = apkContentError;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
+		int apkSizeError = checkApkSizeWithCode(realApkPath);
+		if (apkSizeError != 0) {
+			lastErrorCode = apkSizeError;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
+		int packageInfoError = checkPackageInfoWithCode(realApkPath);
+		if (packageInfoError != 0) {
+			lastErrorCode = packageInfoError;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
+		int unauthorizedFileError = detectUnauthorizedFilesWithCode();
+		if (unauthorizedFileError != 0) {
+			lastErrorCode = unauthorizedFileError;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
+		if (!SignatureVerifier.verifySignature(this)) {
+			lastErrorCode = ERROR_SIGNATURE_VERIFICATION_FAILED;
+			showTamperedAppDialogWithPermissionCheck();
+			return;
+		}
 		if (!isLanguageSelected()) {
 			showLanguageSelectionDialog();
 			return;
@@ -77,6 +173,543 @@ public class MainActivity extends Activity {
 					checkUpdate();
 				}
 			}).start();
+		}
+	}
+	private int verifyApkPathWithCode(String apkPath) {
+		if (apkPath == null) {
+			return ERROR_PATH_VERIFICATION_NULL;
+		}
+		boolean isSystemPath = apkPath.startsWith("/data/app/") || apkPath.startsWith("/system/app/")
+				|| apkPath.startsWith("/system/priv-app/");
+		if (!isSystemPath) {
+			return ERROR_PATH_NOT_SYSTEM_DIR;
+		}
+		String packageName = getPackageName();
+		if (!apkPath.contains(packageName)) {
+			return ERROR_PATH_MISSING_PACKAGE;
+		}
+		return 0; 
+	}
+	private int packagePathCheckWithCode() {
+		try {
+			String mapsPath = normalizeApkPath(getApkPathFromMaps());
+			String pmPath = normalizeApkPath(getApkPathFromPackageManager());
+			String shellPath = normalizeApkPath(getApkPathFromShell());
+			List<String> validPaths = new ArrayList<>();
+			if (mapsPath != null && verifyApkPathWithCode(mapsPath) == 0) {
+				validPaths.add(mapsPath);
+			}
+			if (pmPath != null && verifyApkPathWithCode(pmPath) == 0) {
+				validPaths.add(pmPath);
+			}
+			if (shellPath != null && verifyApkPathWithCode(shellPath) == 0) {
+				validPaths.add(shellPath);
+			}
+			int validCount = validPaths.size();
+			if (validCount <= 1) {
+				return validCount == 0 ? ERROR_PATH_MAPS_INVALID : 0;
+			}
+			if (arePathsSameInstance(validPaths)) {
+				return 0; 
+			}
+			return getWeightedMismatchError(mapsPath, pmPath, shellPath, validPaths);
+		} catch (Exception e) {
+			return ERROR_PATH_MAPS_INVALID;
+		}
+	}
+	private String normalizeApkPath(String path) {
+		if (path == null)
+			return null;
+		try {
+			String normalized = path.trim().replaceAll("/+$", "");
+			File file = new File(normalized);
+			if (file.exists()) {
+				try {
+					normalized = file.getCanonicalPath(); 
+				} catch (IOException e) {
+				}
+			}
+			return normalized.replace("\\", "/").replaceAll("/+", "/");
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	private boolean arePathsSameInstance(List<String> paths) {
+		if (paths.size() < 2)
+			return true;
+		String firstCoreId = extractInstallInstanceId(paths.get(0));
+		if (firstCoreId == null)
+			return false;
+		for (int i = 1; i < paths.size(); i++) {
+			String currentCoreId = extractInstallInstanceId(paths.get(i));
+			if (!firstCoreId.equals(currentCoreId)) {
+				return false; 
+			}
+		}
+		return true;
+	}
+	private String extractInstallInstanceId(String path) {
+		if (path == null)
+			return null;
+		try {
+			String packageName = getPackageName();
+			int pkgIndex = path.indexOf(packageName);
+			if (pkgIndex == -1)
+				return null;
+			String subPath = path.substring(pkgIndex);
+			int slashIndex = subPath.indexOf('/');
+			if (slashIndex > 0) {
+				return subPath.substring(0, slashIndex); 
+			}
+			return subPath; 
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	private int getWeightedMismatchError(String mapsPath, String pmPath, String shellPath, List<String> validPaths) {
+		if (mapsPath != null && validPaths.contains(mapsPath)) {
+			if (pmPath != null && validPaths.contains(pmPath)
+					&& !arePathsSameInstance(Arrays.asList(mapsPath, pmPath))) {
+				return ERROR_PATH_MAPS_PM_MISMATCH;
+			}
+			if (shellPath != null && validPaths.contains(shellPath)
+					&& !arePathsSameInstance(Arrays.asList(mapsPath, shellPath))) {
+				return ERROR_PATH_MAPS_SHELL_MISMATCH;
+			}
+		}
+		if (pmPath != null && shellPath != null && validPaths.containsAll(Arrays.asList(pmPath, shellPath))) {
+			if (!arePathsSameInstance(Arrays.asList(pmPath, shellPath))) {
+				return ERROR_PATH_MAPS_INVALID;
+			}
+		}
+		return ERROR_PATH_MAPS_INVALID;
+	}
+	private int checkApkInDataAppDirectoryWithCode() {
+		String apkPath = getApkPathFromPackageManager();
+		if (apkPath == null) {
+			return ERROR_APK_LOCATION_NULL;
+		}
+		if (!apkPath.startsWith("/data/app/")) {
+			return ERROR_APK_NOT_IN_DATA_APP;
+		}
+		return 0;
+	}
+	private int detectApkWithCode(String apkPath) {
+		try {
+			int dexCount = 0;
+			boolean hasIllegalFile = false;
+			ZipFile zip = new ZipFile(apkPath);
+			Enumeration<? extends ZipEntry> e = zip.entries();
+			while (e.hasMoreElements()) {
+				String name = e.nextElement().getName();
+				if (name.endsWith(".so")) {
+					return ERROR_APK_CONTAINS_SO_FILES;
+				}
+				if (name.endsWith(".apk")) {
+					return ERROR_APK_CONTAINS_APK_FILES;
+				}
+				if (name.endsWith(".dex")) {
+					dexCount++;
+				}
+			}
+			zip.close();
+			if (dexCount != 1) {
+				return ERROR_APK_DEX_COUNT_INVALID;
+			}
+			return 0;
+		} catch (Throwable ignore) {
+			return ERROR_APK_ANALYSIS_EXCEPTION;
+		}
+	}
+	private int checkApkSizeWithCode(String apkPath) {
+		try {
+			File apkFile = new File(apkPath);
+			if (!apkFile.exists()) {
+				return ERROR_APK_SIZE_FILE_NOT_EXIST;
+			}
+			long minSize = (long) (0.664 * 1024 * 1024);
+			long maxSize = (long) (0.668 * 1024 * 1024);
+			long fileSize = apkFile.length();
+			if (fileSize < minSize) {
+				return ERROR_APK_SIZE_TOO_SMALL;
+			}
+			if (fileSize > maxSize) {
+				return ERROR_APK_SIZE_TOO_LARGE;
+			}
+			try {
+				Process process = Runtime.getRuntime().exec(new String[]{"stat", "-c", "%s", apkPath});
+				InputStream inputStream = process.getInputStream();
+				byte[] buffer = new byte[20];
+				int bytesRead = inputStream.read(buffer);
+				process.waitFor();
+				if (bytesRead > 0) {
+					String output = new String(buffer, 0, bytesRead).trim().replace(" ", "").replace("\n", "");
+					try {
+						long shellSize = Long.parseLong(output);
+						if (Math.abs(shellSize - fileSize) > 1024) {
+							return ERROR_APK_SIZE_SHELL_MISMATCH;
+						}
+					} catch (NumberFormatException e) {
+						return 0;
+					}
+				}
+			} catch (Exception e) {
+				return 0;
+			}
+			return 0;
+		} catch (Exception e) {
+			return 0;
+		}
+	}
+	private int checkPackageInfoWithCode(String apkPath) {
+		try {
+			PackageInfo currentInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			String currentPackageName = currentInfo.packageName;
+			int currentVersionCode = currentInfo.versionCode;
+			String currentVersionName = currentInfo.versionName;
+			PackageInfo apkInfo = getPackageManager().getPackageArchiveInfo(apkPath, PackageManager.GET_META_DATA);
+			if (apkInfo == null) {
+				return ERROR_PACKAGE_INFO_APK_NULL;
+			}
+			String apkPackageName = apkInfo.packageName;
+			int apkVersionCode = apkInfo.versionCode;
+			String apkVersionName = apkInfo.versionName;
+			String expectedPackageName = EXPECTED_PACKAGE_NAME;
+			int expectedVersionCode = EXPECTED_VERSION_CODE;
+			String expectedVersionName = EXPECTED_VERSION_NAME;
+			if (!currentPackageName.equals(apkPackageName)) {
+				return ERROR_PACKAGE_NAME_CURRENT_APK_MISMATCH;
+			}
+			if (!currentPackageName.equals(expectedPackageName)) {
+				return ERROR_PACKAGE_NAME_CURRENT_EXPECTED_MISMATCH;
+			}
+			if (!apkPackageName.equals(expectedPackageName)) {
+				return ERROR_PACKAGE_NAME_APK_EXPECTED_MISMATCH;
+			}
+			if (currentVersionCode != apkVersionCode) {
+				return ERROR_VERSION_CODE_CURRENT_APK_MISMATCH;
+			}
+			if (currentVersionCode != expectedVersionCode) {
+				return ERROR_VERSION_CODE_CURRENT_EXPECTED_MISMATCH;
+			}
+			if (apkVersionCode != expectedVersionCode) {
+				return ERROR_VERSION_CODE_APK_EXPECTED_MISMATCH;
+			}
+			if (!currentVersionName.equals(apkVersionName)) {
+				return ERROR_VERSION_NAME_CURRENT_APK_MISMATCH;
+			}
+			if (!currentVersionName.equals(expectedVersionName)) {
+				return ERROR_VERSION_NAME_CURRENT_EXPECTED_MISMATCH;
+			}
+			if (!apkVersionName.equals(expectedVersionName)) {
+				return ERROR_VERSION_NAME_APK_EXPECTED_MISMATCH;
+			}
+			return 0;
+		} catch (Exception e) {
+			return ERROR_PACKAGE_INFO_EXCEPTION;
+		}
+	}
+	private int detectUnauthorizedFilesWithCode() {
+		try {
+			File externalPrivateDir = getExternalFilesDir(null);
+			if (externalPrivateDir != null) {
+				File externalAppDir = externalPrivateDir.getParentFile();
+				if (externalAppDir != null && externalAppDir.exists()) {
+					if (scanTargetDirectoryWithCode(externalAppDir) != 0) {
+						return ERROR_UNAUTHORIZED_FILE_IN_EXTERNAL;
+					}
+				}
+			}
+			File internalFilesDir = getFilesDir();
+			if (internalFilesDir != null) {
+				File internalAppDir = internalFilesDir.getParentFile();
+				if (internalAppDir != null && internalAppDir.exists()) {
+					if (scanTargetDirectoryWithCode(internalAppDir) != 0) {
+						return ERROR_UNAUTHORIZED_FILE_IN_INTERNAL;
+					}
+				}
+			}
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+				File dataDir = getDataDir();
+				if (dataDir != null && dataDir.exists()) {
+					if (scanTargetDirectoryWithCode(dataDir) != 0) {
+						return ERROR_UNAUTHORIZED_FILE_IN_DATA;
+					}
+				}
+			}
+			return 0;
+		} catch (Exception e) {
+			Log.e(TAG, "文件检测异常: " + e.getMessage(), e);
+			return ERROR_UNAUTHORIZED_FILE_EXCEPTION;
+		}
+	}
+	private int scanTargetDirectoryWithCode(File dir) {
+		if (!dir.exists() || !dir.isDirectory() || !dir.canRead()) {
+			return 0;
+		}
+		File[] files = dir.listFiles();
+		if (files == null) {
+			return 0;
+		}
+		for (File file : files) {
+			if (file.isDirectory()) {
+				if (scanTargetDirectoryWithCode(file) != 0) {
+					return 1;
+				}
+			} else {
+				String fileName = file.getName().toLowerCase();
+				if (fileName.endsWith(".apk") || fileName.endsWith(".so")) {
+					return 1;
+				}
+			}
+		}
+		return 0;
+	}
+	private int checkCreatorByNameWithCode() {
+		try {
+			String expectedName = "android.content.pm.PackageInfo$1";
+			Field creatorField = PackageInfo.class.getDeclaredField("CREATOR");
+			creatorField.setAccessible(true);
+			Object creator = creatorField.get(null);
+			String actualName = creator.getClass().getName();
+			if (!expectedName.equals(actualName)) {
+				return ERROR_CREATOR_NAME_MISMATCH;
+			}
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR_CREATOR_NAME_EXCEPTION;
+		}
+	}
+	private int checkCreatorByClassLoaderWithCode() {
+		try {
+			Field creatorField = PackageInfo.class.getDeclaredField("CREATOR");
+			creatorField.setAccessible(true);
+			Object creator = creatorField.get(null);
+			if (creator == null) {
+				return ERROR_CREATOR_CLASSLOADER_NULL;
+			}
+			ClassLoader creatorClassLoader = creator.getClass().getClassLoader();
+			ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+			if (creatorClassLoader == null || systemClassLoader == null) {
+				return ERROR_CREATOR_CLASSLOADER_NULL;
+			}
+			if (!systemClassLoader.getClass().getName().equals(creatorClassLoader.getClass().getName())) {
+				return ERROR_CREATOR_CLASSLOADER_TAMPERED;
+			}
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR_CREATOR_CLASSLOADER_EXCEPTION;
+		}
+	}
+	private String getRealApkPath() {
+		String apkPath = null;
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader("/proc/self/maps"));
+			String line;
+			String packageName = getPackageName();
+			while ((line = reader.readLine()) != null) {
+				if (line.contains("/data/app/") && line.contains(".apk") && line.contains(packageName)) {
+					String[] parts = line.split(" ");
+					for (String part : parts) {
+						if (part.startsWith("/data/app/") && part.contains(".apk")) {
+							reader.close();
+							apkPath = part;
+							if (!apkPath.endsWith(".apk")) {
+								int apkEnd = apkPath.lastIndexOf(".apk");
+								if (apkEnd != -1) {
+									apkPath = apkPath.substring(0, apkEnd + 4); 
+								}
+							}
+							if (apkPath.startsWith("/data/app/") && apkPath.endsWith(".apk")) {
+								return apkPath;
+							}
+						}
+					}
+				}
+			}
+			reader.close();
+		} catch (IOException e) {
+		} catch (Exception e) {
+		}
+		try {
+			apkPath = getApplicationInfo().sourceDir;
+			if (apkPath != null && new File(apkPath).exists()) {
+				return apkPath;
+			}
+		} catch (Exception e) {
+		}
+		return null;
+	}
+	private String getApkPathFromMaps() {
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader("/proc/self/maps"));
+			String line;
+			String packageName = getPackageName();
+			while ((line = reader.readLine()) != null) {
+				if (line.contains("/data/app/") && line.contains(".apk") && line.contains(packageName)) {
+					String[] parts = line.split(" ");
+					for (String part : parts) {
+						if (part.startsWith("/data/app/") && part.contains(".apk")) {
+							reader.close();
+							return part;
+						}
+					}
+				}
+			}
+			reader.close();
+		} catch (IOException e) {
+		}
+		return null;
+	}
+	private String getApkPathFromPackageManager() {
+		try {
+			return getApplicationInfo().sourceDir;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	private String getApkPathFromShell() {
+		Process process = null;
+		InputStream inputStream = null;
+		BufferedReader reader = null;
+		try {
+			String packageName = getPackageName();
+			String[] command = {"pm", "path", packageName};
+			process = Runtime.getRuntime().exec(command);
+			inputStream = process.getInputStream();
+			reader = new BufferedReader(new InputStreamReader(inputStream));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				if (line.startsWith("package:")) {
+					return line.substring(8).trim(); 
+				}
+			}
+			return null;
+		} catch (Exception e) {
+			return null;
+		} finally {
+			try {
+				if (reader != null)
+					reader.close();
+				if (inputStream != null)
+					inputStream.close();
+				if (process != null)
+					process.destroy();
+			} catch (Exception e) {
+			}
+		}
+	}
+	private void showTamperedAppDialogWithPermissionCheck() {
+		TamperResponseHelper.handleTamper(this, new TamperResponseHelper.TamperResponseCallback() {
+			@Override
+			public void onComplete(boolean success) {
+				if (success) {
+					showTamperedAppDialog(lastErrorCode);
+				} else {
+					finish();
+				}
+			}
+		});
+	}
+	private void showTamperedAppDialog(final int errorCode) {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				SharedPreferences sp = getSharedPreferences(SP_NAME, MODE_PRIVATE);
+				int language = sp.getInt(KEY_LANGUAGE, LANGUAGE_AUTO);
+				String title, message;
+				switch (language) {
+					case LANGUAGE_SIMPLIFIED_CHINESE :
+						title = "安全检测异常";
+						message = "检测到应用修改痕迹或存在安全风险！\n为了您的系统安全，程序将会自动退出。\n请下载正版软件或清空存储重试。";
+						break;
+					case LANGUAGE_TRADITIONAL_CHINESE :
+						title = "安全檢測異常";
+						message = "檢測到應用修改痕跡或存在安全風險！\n為了您的系統安全，程式將會自動退出。\n請下載正版軟體或清空存儲重試。";
+						break;
+					case LANGUAGE_ENGLISH :
+					case LANGUAGE_AUTO :
+					default :
+						if (language == LANGUAGE_AUTO) {
+							Locale systemLocale;
+							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+								systemLocale = getResources().getConfiguration().getLocales().get(0);
+							} else {
+								systemLocale = getResources().getConfiguration().locale;
+							}
+							String languageCode = systemLocale.getLanguage();
+							if (languageCode.startsWith("zh")) {
+								String country = systemLocale.getCountry();
+								if ("TW".equals(country) || "HK".equals(country) || "MO".equals(country)) {
+									title = "安全檢測異常";
+									message = "檢測到應用修改痕跡或存在安全風險！\n為了您的系統安全，程式將會自動退出。\n請下載正版軟體或清空存儲重試。";
+								} else {
+									title = "安全检测异常";
+									message = "检测到应用修改痕迹或存在安全风险！\n为了您的系统安全，程序将会自动退出。\n请下载正版软件或清空存储重试。";
+								}
+							} else {
+								title = "Security Detection Exception";
+								message = "Application modification detected or security risk exists!\nFor your system security, the program will exit automatically.\nPlease download the official version or clear storage and try again.";
+							}
+						} else {
+							title = "Security Detection Exception";
+							message = "Application modification detected or security risk exists!\nFor your system security, the program will exit automatically.\nPlease download the official version or clear storage and try again.";
+						}
+						break;
+				}
+				String fullMessage = message + "\n\n" + getErrorCodeText(language) + errorCode;
+				final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).setTitle(title)
+						.setMessage(fullMessage).setCancelable(false)
+						.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								finish();
+							}
+						}).create();
+				dialog.show();
+				new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						if (!isFinishing() && !isDestroyed()) {
+							if (dialog.isShowing()) {
+								dialog.dismiss();
+							}
+							finish();
+						}
+					}
+				}, 3000);
+			}
+		});
+	}
+	private String getErrorCodeText(int language) {
+		switch (language) {
+			case LANGUAGE_SIMPLIFIED_CHINESE :
+				return "错误代码：";
+			case LANGUAGE_TRADITIONAL_CHINESE :
+				return "錯誤代碼：";
+			case LANGUAGE_ENGLISH :
+			case LANGUAGE_AUTO :
+			default :
+				if (language == LANGUAGE_AUTO) {
+					Locale systemLocale;
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+						systemLocale = getResources().getConfiguration().getLocales().get(0);
+					} else {
+						systemLocale = getResources().getConfiguration().locale;
+					}
+					String languageCode = systemLocale.getLanguage();
+					if (languageCode.startsWith("zh")) {
+						String country = systemLocale.getCountry();
+						if ("TW".equals(country) || "HK".equals(country) || "MO".equals(country)) {
+							return "錯誤代碼：";
+						} else {
+							return "错误代码：";
+						}
+					}
+				}
+				return "Error Code: ";
 		}
 	}
 	private boolean isLanguageSelected() {
@@ -166,26 +799,82 @@ public class MainActivity extends Activity {
 		final Dialog agreementDialog = new Dialog(this, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
 		agreementDialog.setContentView(R.layout.dialog_agreement);
 		agreementDialog.setCancelable(false);
-		final TextView titleText = agreementDialog.findViewById(R.id.title_text);
-		final TextView contentText = agreementDialog.findViewById(R.id.agreement_content);
 		final ScrollView scrollView = agreementDialog.findViewById(R.id.agreement_scrollview);
 		Button agreeButton = agreementDialog.findViewById(R.id.agree_button);
 		Button disagreeButton = agreementDialog.findViewById(R.id.disagree_button);
-		String agreementTitle = getString(R.string.agreement_title);
-		String agreementContent = getString(R.string.agreement_content);
+		if (scrollView != null) {
+			ViewGroup scrollViewChild = (ViewGroup) scrollView.getChildAt(0);
+			final WebView webView = new WebView(this);
+			FrameLayout.LayoutParams webViewParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+					FrameLayout.LayoutParams.WRAP_CONTENT);
+			webView.setLayoutParams(webViewParams);
+			webView.setBackgroundColor(Color.TRANSPARENT);
+			webView.setVerticalScrollBarEnabled(true);
+			webView.setHorizontalScrollBarEnabled(false);
+			WebSettings webSettings = webView.getSettings();
+			webSettings.setLoadWithOverviewMode(true);
+			webSettings.setUseWideViewPort(true);
+			webSettings.setJavaScriptEnabled(true);
+			webSettings.setDomStorageEnabled(true);
+			webSettings.setTextZoom(100);
+			webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+			webView.setWebViewClient(new WebViewClient() {
+				@Override
+				public void onPageFinished(WebView view, String url) {
+					super.onPageFinished(view, url);
+					webView.setAlpha(0f);
+					ObjectAnimator fadeIn = ObjectAnimator.ofFloat(webView, "alpha", 0f, 1f);
+					fadeIn.setDuration(500);
+					fadeIn.setInterpolator(new DecelerateInterpolator());
+					fadeIn.start();
+				}
+			});
+			SharedPreferences sp = getSharedPreferences(SP_NAME, MODE_PRIVATE);
+			int language = sp.getInt(KEY_LANGUAGE, LANGUAGE_AUTO);
+			String htmlFileName;
+			switch (language) {
+				case LANGUAGE_SIMPLIFIED_CHINESE :
+					htmlFileName = "useragreement_zh.html";
+					break;
+				case LANGUAGE_TRADITIONAL_CHINESE :
+					htmlFileName = "useragreement_tw.html";
+					break;
+				case LANGUAGE_ENGLISH :
+					htmlFileName = "useragreement_en.html";
+					break;
+				case LANGUAGE_AUTO :
+				default :
+					Locale systemLocale;
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+						systemLocale = getResources().getConfiguration().getLocales().get(0);
+					} else {
+						systemLocale = getResources().getConfiguration().locale;
+					}
+					String languageCode = systemLocale.getLanguage();
+					String country = systemLocale.getCountry();
+					if (languageCode.startsWith("zh")) {
+						if ("TW".equals(country) || "HK".equals(country) || "MO".equals(country)) {
+							htmlFileName = "useragreement_tw.html";
+						} else {
+							htmlFileName = "useragreement_zh.html";
+						}
+					} else {
+						htmlFileName = "useragreement_en.html";
+					}
+					break;
+			}
+			webView.loadUrl("file:
+			if (scrollViewChild != null) {
+				scrollViewChild.addView(webView);
+			} else {
+				scrollView.addView(webView);
+			}
+		}
 		String agreeButtonText = getString(R.string.agree_button);
 		String disagreeButtonText = getString(R.string.disagree_button);
-		titleText.setText(agreementTitle);
-		contentText.setText(agreementContent);
 		agreeButton.setText(agreeButtonText);
 		disagreeButton.setText(disagreeButtonText);
 		agreementDialog.show();
-		titleText.post(new Runnable() {
-			@Override
-			public void run() {
-				ensureTitleVisibility(titleText, scrollView, agreementDialog);
-			}
-		});
 		agreeButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -218,46 +907,6 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 		finish();
 		overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-	}
-	private void ensureTitleVisibility(TextView titleText, final ScrollView scrollView, Dialog dialog) {
-		int[] titleLocation = new int[2];
-		int[] scrollLocation = new int[2];
-		titleText.getLocationOnScreen(titleLocation);
-		scrollView.getLocationOnScreen(scrollLocation);
-		int titleBottom = titleLocation[1] + titleText.getHeight();
-		int scrollTop = scrollLocation[1];
-		if (scrollTop < titleBottom) {
-			adjustLayoutToProtectTitle(titleText, scrollView, dialog);
-		}
-		scrollView.post(new Runnable() {
-			@Override
-			public void run() {
-				scrollView.scrollTo(0, 0);
-			}
-		});
-		animateTitleProtection(titleText);
-	}
-	private void adjustLayoutToProtectTitle(TextView titleText, ScrollView scrollView, Dialog dialog) {
-		View titleContainer = dialog.findViewById(R.id.title_container);
-		ViewGroup.LayoutParams titleParams = titleContainer.getLayoutParams();
-		titleParams.height = (int) (titleParams.height * 1.2f);
-		titleContainer.setLayoutParams(titleParams);
-		ViewGroup.MarginLayoutParams scrollParams = (ViewGroup.MarginLayoutParams) scrollView.getLayoutParams();
-		scrollParams.topMargin = (int) (scrollParams.topMargin * 1.5f);
-		scrollView.setLayoutParams(scrollParams);
-		titleContainer.requestLayout();
-		scrollView.requestLayout();
-	}
-	private void animateTitleProtection(TextView titleText) {
-		titleText.setAlpha(0f);
-		AnimatorSet animatorSet = new AnimatorSet();
-		ObjectAnimator fadeIn = ObjectAnimator.ofFloat(titleText, "alpha", 0f, 1f);
-		ObjectAnimator scaleUp = ObjectAnimator.ofFloat(titleText, "scaleX", 0.95f, 1f);
-		ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(titleText, "scaleY", 0.95f, 1f);
-		animatorSet.playTogether(fadeIn, scaleUp, scaleUpY);
-		animatorSet.setDuration(400);
-		animatorSet.setInterpolator(new OvershootInterpolator());
-		animatorSet.start();
 	}
 	private void animateDialogEntrance(Dialog dialog) {
 		View dialogView = dialog.getWindow().getDecorView();
@@ -1256,6 +1905,112 @@ public class MainActivity extends Activity {
 				});
 			}
 		}).start();
+	}
+	private boolean fixConfigInPublicDirectoryWithRoot() {
+		boolean fixed = false;
+		SharedPreferences sp = getSharedPreferences(SP_NAME, MODE_PRIVATE);
+		String suCommand = sp.getString("su_command", "").trim();
+		String command = suCommand.isEmpty() ? "su" : suCommand;
+		String publicDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/.bettervia";
+		String publicFilePath = publicDirPath + "/config.json";
+		try {
+			Process process = Runtime.getRuntime()
+					.exec(new String[]{command, "-c", "test -f " + publicFilePath + " && echo exists"});
+			InputStream is = process.getInputStream();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+			String result = reader.readLine();
+			process.waitFor();
+			if ("exists".equals(result)) {
+				process = Runtime.getRuntime().exec(new String[]{command, "-c", "cat " + publicFilePath});
+				is = process.getInputStream();
+				reader = new BufferedReader(new InputStreamReader(is));
+				StringBuilder content = new StringBuilder();
+				String line;
+				while ((line = reader.readLine()) != null) {
+					content.append(line);
+				}
+				process.waitFor();
+				JSONObject config = new JSONObject(content.toString());
+				if (config.has("whiteConfiguration")) {
+					config.remove("whiteConfiguration");
+					String configStr = config.toString();
+					Process writeProcess = Runtime.getRuntime()
+							.exec(new String[]{command, "-c", "echo '" + configStr + "' > " + publicFilePath});
+					writeProcess.waitFor();
+					fixed = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return fixed;
+	}
+	private boolean fixConfigInPrivateDirectories() {
+		boolean fixed = false;
+		SharedPreferences sp = getSharedPreferences(SP_NAME, MODE_PRIVATE);
+		String suCommand = sp.getString("su_command", "").trim();
+		String command = suCommand.isEmpty() ? "su" : suCommand;
+		String[] packages = {PKG_VIA, PKG_VIAGP};
+		for (String pkg : packages) {
+			String dirPath = "/storage/emulated/0/Android/data/" + pkg + "/files/.bettervia";
+			String filePath = dirPath + "/config.json";
+			try {
+				Process process = Runtime.getRuntime()
+						.exec(new String[]{command, "-c", "test -f " + filePath + " && echo exists"});
+				InputStream is = process.getInputStream();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+				String result = reader.readLine();
+				process.waitFor();
+				if ("exists".equals(result)) {
+					process = Runtime.getRuntime().exec(new String[]{command, "-c", "cat " + filePath});
+					is = process.getInputStream();
+					reader = new BufferedReader(new InputStreamReader(is));
+					StringBuilder content = new StringBuilder();
+					String line;
+					while ((line = reader.readLine()) != null) {
+						content.append(line);
+					}
+					process.waitFor();
+					JSONObject config = new JSONObject(content.toString());
+					if (config.has("whiteConfiguration")) {
+						config.remove("whiteConfiguration");
+						String configStr = config.toString();
+						Process writeProcess = Runtime.getRuntime()
+								.exec(new String[]{command, "-c", "echo '" + configStr + "' > " + filePath});
+						writeProcess.waitFor();
+						fixed = true;
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return fixed;
+	}
+	private boolean fixConfigInPublicDirectory() {
+		boolean fixed = false;
+		File publicDir = new File(Environment.getExternalStorageDirectory(), ".bettervia");
+		File publicFile = new File(publicDir, "config.json");
+		try {
+			if (publicFile.exists()) {
+				FileInputStream fis = new FileInputStream(publicFile);
+				byte[] buffer = new byte[(int) publicFile.length()];
+				fis.read(buffer);
+				fis.close();
+				String content = new String(buffer, "UTF-8");
+				JSONObject config = new JSONObject(content);
+				if (config.has("whiteConfiguration")) {
+					config.remove("whiteConfiguration");
+					FileOutputStream fos = new FileOutputStream(publicFile);
+					fos.write(config.toString().getBytes("UTF-8"));
+					fos.close();
+					fixed = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return fixed;
 	}
 	@Override
 	protected void onDestroy() {

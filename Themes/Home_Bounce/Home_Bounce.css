@@ -1,0 +1,603 @@
+/* === 核心变量定义 === */
+:root{
+    --contenttop: 62vw; /* 显示内容与手机顶部的距离 */
+    --searchbarup: -70vw; /* 输入框向上移动的距离 */
+    --searchbaradius: 15px; /* 搜索框圆角大小 */
+    --searchbarwidth: 90vw; /* 搜索框宽度 */
+    --searchbarclear: 0.1; /* 搜索框透明度 */
+    --searchbarblur: 2px; /* 搜索框模糊度 */
+    --engine_num: 1; /* 每行搜索引擎数量 */
+    --max_height: 45vh; /* 窗口最大高度 */
+}
+
+/* === 搜索框容器 === */
+.search_part {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+/* === 液态玻璃搜索框 === */
+.search_bar {
+    width: 80vw;
+    margin: 0 auto !important;
+    display: flex !important;
+    position: relative !important;
+    align-items: center !important;
+    
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, calc(0.25 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.05 * var(--searchbarclear))) 50%,
+            rgba(255, 255, 255, calc(0.15 * var(--searchbarclear))) 100%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 119, 198, calc(0.2 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.05 * var(--searchbarclear))) 40%
+        ) !important;
+    
+    backdrop-filter: blur(var(--searchbarblur)) saturate(180%) contrast(120%) !important;
+    -webkit-backdrop-filter: blur(var(--searchbarblur)) saturate(180%) contrast(120%) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: var(--searchbaradius) !important;
+    /* 修改：移除所有阴影，仅保留顶部高光（无描边） */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* === 搜索框聚焦效果（已移除顶部内阴影高光，并添加淡淡紫色光晕） === */
+.search_bar:focus-within {
+    width: var(--searchbarwidth);
+    transform: translateY(var(--searchbarup));
+    
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, calc(0.4 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.15 * var(--searchbarclear))) 50%,
+            rgba(255, 255, 255, calc(0.25 * var(--searchbarclear))) 100%
+        ),
+        radial-gradient(
+            circle at center,
+            rgba(120, 119, 198, calc(0.3 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.1 * var(--searchbarclear))) 70%
+        ) !important;
+    
+    backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(220%) contrast(140%) !important;
+    -webkit-backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(220%) contrast(140%) !important;
+    
+    /* 修改：添加淡淡的紫色外发光光晕，无内阴影 */
+    box-shadow: 0 0 20px 5px rgba(155, 48, 255, 0.3) !important;
+}
+
+/* === 左侧切换搜索引擎按钮 === */
+#switch_btn {
+    outline: 0;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    user-select: none !important;
+    white-space: nowrap !important;
+    font-size: 12px !important;
+    
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 8px 16px !important;
+    border: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    
+    border-radius: var(--searchbaradius) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+    
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2 !important;
+    min-width: 60px !important;
+}
+
+/* === 切换按钮在聚焦时显示（材质与搜索框聚焦一致，增强边框和内阴影以区分） === */
+.search_bar:focus-within > #switch_btn {
+    opacity: 1;
+    visibility: visible;
+    /* 背景与搜索框聚焦时完全一致 */
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, calc(0.4 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.15 * var(--searchbarclear))) 50%,
+            rgba(255, 255, 255, calc(0.25 * var(--searchbarclear))) 100%
+        ),
+        radial-gradient(
+            circle at center,
+            rgba(120, 119, 198, calc(0.3 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.1 * var(--searchbarclear))) 70%
+        ) !important;
+    backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(220%) contrast(140%) !important;
+    -webkit-backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(220%) contrast(140%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 20px rgba(31, 38, 135, 0.15) !important;
+    transform: scale(1.05) !important;
+}
+
+/* === 切换按钮箭头样式 === */
+#switch_btn::after {
+    content: "▼";
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    font-size: 6px !important;
+    margin-left: 4px !important;
+    display: inline-block !important;
+}
+
+/* === 切换按钮激活状态 === */
+#switch_btn.active {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: scale(0.98) !important;
+}
+
+#switch_btn.active::after {
+    transform: rotate(180deg) scale(1.2) !important;
+}
+
+/* === 搜索引擎切换窗口 === */
+#switch_window {
+    outline: 0 !important;
+    user-select: none !important;
+    
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, calc(0.35 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.15 * var(--searchbarclear))) 50%,
+            rgba(255, 255, 255, calc(0.25 * var(--searchbarclear))) 100%
+        ),
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(120, 119, 198, calc(0.25 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.05 * var(--searchbarclear))) 60%
+        ) !important;
+    
+    backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(200%) contrast(130%) !important;
+    -webkit-backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(200%) contrast(130%) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: var(--searchbaradius) !important;
+    box-shadow: 
+        0 16px 50px rgba(31, 38, 135, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    
+    position: absolute !important;
+    padding: 12px !important;
+    z-index: 9999 !important;
+    overflow-y: auto !important;
+    min-width: 90px !important;
+    max-width: 120px !important;
+    
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    max-height: 0 !important;
+    
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transform: translateY(-10px) scale(0.95) !important;
+}
+
+/* === 搜索引擎切换窗口激活状态 === */
+#switch_window.active {
+    max-height: var(--max_height) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+}
+
+/* === 搜索引擎选项 === */
+.switch_engine {
+    width: 100% !important;
+    white-space: nowrap !important;
+    font-size: 12px !important;
+    height: auto !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    padding: 8px 12px !important;
+    
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: var(--searchbaradius) !important;
+    
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+    text-align: center !important;
+    
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    box-shadow: 0 6px 20px rgba(31, 38, 135, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    margin-bottom: 4px !important;
+}
+
+.switch_engine:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(31, 38, 135, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+.switch_engine.active {
+    background: rgba(22, 93, 255, 0.3) !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+    border-color: rgba(22, 93, 255, 0.4) !important;
+    box-shadow: 0 8px 25px rgba(22, 93, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* === 联想框样式 === */
+.opSug_wpr {
+    width: var(--searchbarwidth) !important;
+    border-radius: 15px !important;
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, calc(0.35 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.15 * var(--searchbarclear))) 50%,
+            rgba(255, 255, 255, calc(0.25 * var(--searchbarclear))) 100%
+        ),
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(120, 119, 198, calc(0.25 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.05 * var(--searchbarclear))) 60%
+        ) !important;
+    
+    backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(200%) contrast(130%) !important;
+    -webkit-backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(200%) contrast(130%) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(10px) !important;
+    
+    animation: sug-enter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    z-index: 100 !important;
+}
+
+/* === 联想框跟随上移 === */
+.search_bar:focus-within + .opSug_wpr {
+    transform: translateX(-50%) translateY(calc(var(--searchbarup) + 10px)) !important;
+}
+
+/* === 联想框隐藏 === */
+.search_bar:not(:focus-within) + .opSug_wpr {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* === 联想框Q弹动画 === */
+@keyframes sug-enter {
+    from {
+        transform: translateX(-50%) translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(10px);
+        opacity: 1;
+    }
+}
+
+/* === 联想框条目 === */
+.opSug_wpr li {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.opSug_wpr li:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-1px) scale(1.02) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* === 搜索按钮 === */
+#search_submit {
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    opacity: 0;
+    visibility: hidden;
+    display: block !important;
+    
+    width: auto !important;
+    min-width: 44px !important;
+    padding: 0 12px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: var(--searchbaradius) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+    
+    color: rgba(255, 255, 255, 0.95) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    box-shadow: 0 6px 20px rgba(31, 38, 135, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transform-origin: center center !important;
+}
+
+/* === 搜索按钮显示（材质与搜索框聚焦一致，增强边框和内阴影以区分） === */
+.search_bar:focus-within > #search_submit {
+    opacity: 1;
+    visibility: visible;
+    /* 背景与搜索框聚焦时完全一致 */
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, calc(0.4 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.15 * var(--searchbarclear))) 50%,
+            rgba(255, 255, 255, calc(0.25 * var(--searchbarclear))) 100%
+        ),
+        radial-gradient(
+            circle at center,
+            rgba(120, 119, 198, calc(0.3 * var(--searchbarclear))) 0%,
+            rgba(255, 255, 255, calc(0.1 * var(--searchbarclear))) 70%
+        ) !important;
+    backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(220%) contrast(140%) !important;
+    -webkit-backdrop-filter: blur(calc(var(--searchbarblur) * 1.5)) saturate(220%) contrast(140%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 8px 25px rgba(31, 38, 135, 0.25) !important;
+    transform: scale(1.05) !important;
+}
+
+/* === 输入框样式 === */
+.search_bar input {
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: inherit !important;
+    font-size: 16px !important;
+    text-align: left !important;
+    border-radius: var(--searchbaradius) !important;
+    
+    padding: 12px 16px !important;
+    transition: padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* === 聚焦状态输入框 === */
+.search_bar:focus-within input {
+    padding-left: 60px !important;
+    padding-right: 50px !important;
+}
+
+/* === 占位符样式 === */
+.search_bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* === 暗色模式适配 === */
+@media (prefers-color-scheme: dark) {
+    .search_bar {
+        background: 
+            linear-gradient(
+                135deg,
+                rgba(0, 0, 0, calc(0.25 * var(--searchbarclear))) 0%,
+                rgba(0, 0, 0, calc(0.05 * var(--searchbarclear))) 50%,
+                rgba(0, 0, 0, calc(0.15 * var(--searchbarclear))) 100%
+            ) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .opSug_wpr {
+        background: rgba(0, 0, 0, 0.2) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    #switch_btn, #switch_window, .switch_engine {
+        background: rgba(0, 0, 0, 0.15) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    #switch_window {
+        background: 
+            linear-gradient(
+                135deg,
+                rgba(0, 0, 0, calc(0.35 * var(--searchbarclear))) 0%,
+                rgba(0, 0, 0, calc(0.15 * var(--searchbarclear))) 50%,
+                rgba(0, 0, 0, calc(0.25 * var(--searchbarclear))) 100%
+            ) !important;
+    }
+
+    /* 暗色模式下按钮聚焦状态 */
+    .search_bar:focus-within > #switch_btn,
+    .search_bar:focus-within > #search_submit {
+        background: 
+            linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.15) 50%,
+                rgba(0, 0, 0, 0.25) 100%
+            ),
+            radial-gradient(
+                circle at center,
+                rgba(80, 70, 150, 0.3) 0%,
+                rgba(0, 0, 0, 0.1) 70%
+            ) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+    }
+}
+
+/* === 内容区域定位 === */
+#content {
+    position: fixed;
+    top: var(--contenttop);
+    transform: translateY(0);
+    transition: transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* === 内容区域下移动画 === */
+#content:focus-within {
+    transform: translateY(128px) !important;
+}
+
+/* === 书签和链接动画 === */
+.search_part:focus-within ~ #bookmark_part {
+    transform: translateY(calc(160vw - var(--contenttop)));
+    opacity: 0;
+    visibility: hidden;
+}
+
+.search_part:focus-within > a {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* === 搜索按钮图标样式 === */
+.search.icon {
+    color: inherit !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* 强制联想词框接受点击事件 */
+.opSug_wpr {
+    pointer-events: auto !important;
+}
+
+.opSug_wpr * {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* 联想框隐藏 - 立即消失，无延迟 */
+.search_bar:not(:focus-within) + .opSug_wpr {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(0) !important;
+    /* 移除延迟，立即开始过渡 */
+    transition: 
+        opacity 0.15s ease,
+        visibility 0.15s ease,
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* 联想框显示 */
+.search_bar:focus-within + .opSug_wpr {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(calc(var(--searchbarup) + 10px)) !important;
+    transition: 
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* 确保点击时联想框还在 */
+.opSug_wpr:hover,
+.opSug_wpr:active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* 当鼠标在联想框上时，即使搜索框失去焦点也保持显示 */
+.opSug_wpr:hover {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* 确保联想框在不该显示时完全隐藏 */
+.search_bar:not(:focus-within) + .opSug_wpr:not(:hover) {
+    display: none !important;
+}
+
+/* 搜索框不聚焦时，确保联想框完全隐藏 */
+.search_part:not(:focus-within) .opSug_wpr {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(0) !important;
+    transition: all 0.15s ease !important;
+}
+
+/* 修复：搜索框聚焦时，联想框不显示的问题 */
+.search_bar:focus-within ~ .opSug_wpr {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* === 亮色模式文字颜色调整为黑色，并强制联想词框所有文字跟随 === */
+@media (prefers-color-scheme: light) {
+    .search_bar,
+    .search_bar input,
+    .search_bar input::placeholder,
+    #switch_btn,
+    .switch_engine,
+    .opSug_wpr,
+    .opSug_wpr *,
+    #search_submit,
+    .search.icon {
+        color: #000000 !important;
+    }
+    /* 占位符使用半透明黑色，保证视觉效果 */
+    .search_bar input::placeholder {
+        color: rgba(0, 0, 0, 0.7) !important;
+    }
+    /* 选中状态的搜索引擎选项也使用黑色文字 */
+    .switch_engine.active {
+        color: #000000 !important;
+    }
+
+    /* 亮色模式：搜索框聚焦时光晕调整为适中的中间值 */
+    .search_bar:focus-within {
+        box-shadow: 0 0 25px 8px rgba(255, 175, 210, 0.6) !important;
+    }
+}

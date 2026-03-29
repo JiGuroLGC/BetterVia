@@ -1,0 +1,41 @@
+/* 优化搜索框和相关元素的回弹动画 */
+.search_part {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* 年月日星期区域添加回弹效果 */
+#date_part,
+#time_part, 
+#week_part {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* 书签区域保持原有动画不变 */
+#bookmark_part {
+  position: fixed;
+  top: calc(var(--contenttop) + 25vh);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.4s;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-radius: 24px !important;
+  width: 90vw !important;
+  height: auto !important;
+  min-height: 120px !important;
+}
+
+/* 搜索框聚焦时的书签下移 - 保持原有动画 */
+.search_part:focus-within ~ #bookmark_part {
+  top: calc(
+    var(--contenttop) + 
+    var(--searchbarmove) + 
+    60px + 
+    25vh + 
+    20px
+  );
+}

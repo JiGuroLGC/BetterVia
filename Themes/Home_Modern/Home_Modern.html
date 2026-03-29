@@ -1,0 +1,67 @@
+<!-- 设置搜索框文字样式 -->
+<style type="text/css">
+div p {
+text-align: center;
+background: -webkit-linear-gradient(#879db3 45%, #000000);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+</style>
+
+<!-- 这是logo文本 -->
+<div>
+<p>𝔅𝔯𝔬𝔴𝔰𝔢𝔯</p>
+</div>
+
+<!-- 可按照格式自行增减引擎 -->
+<script> document.addEventListener("DOMContentLoaded", function () {
+var h,
+b = document.getElementById("search_submit"),
+c = document.createElement("select"),
+e = [],
+f = search,
+g = {
+bd: { name: "百度", url: " https://m.baidu.com/s?word=" },
+gg: { name: "谷歌", url: " https://www.google.com/search?query=" },
+by: { name: "必应", url: " https://cn.bing.com/search?q=" },
+zh: { name: "知乎", url: " https://www.zhihu.com/search?q=" },
+yd: { name: "洋笛", url: " https://yandex.com/search/?text=" },
+yh: { name: "雅虎", url: " https://search.yahoo.com/search?p=" },
+};
+(c.style.color = "#879db3"),
+(c.style.float = "left"),
+(c.style.height = "46px"),
+(c.style.border = "none"),
+(c.style.paddingLeft = "6px"),
+(c.style.background = "transparent"),
+(c.style.outline = "none"),
+(c.style.borderRadius = "inherit");
+for (h in g)
+e.push(
+"<option value=" +
+h +
+" " +
+(g[h].disabled || "") +
+">" +
+g[h].name +
+"</option>"
+);
+(c.innerHTML = e.join("")),
+(c.onchange = function () {
+var b, c;
+localStorage.se = this.value;
+}),
+(c.value = localStorage.se || Object.keys(g)[0]),
+b.parentElement.insertBefore(c, b),
+(search = function () {
+var a = document.getElementById("search_input");
+return (
+(a.value = a.value.trim()),
+a.value ? ((a.value = g[c.value].url + a.value), f()) : !1
+);
+});
+});
+</script>
+
+<!-- 标题栏诗句 -->
+<script>document.title = '云无心以出岫'</script>

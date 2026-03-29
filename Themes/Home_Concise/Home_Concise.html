@@ -1,0 +1,138 @@
+<!-- 搜索引擎按钮(外显) 开始 -->
+<style>.search_button{padding:4px 1%;margin:0 0 3px 1.7%;width:12.82%;display:inline-block;translate:0 var(--SearT) 0;}
+.search_button:first-child{margin-left:0;}
+#button_group{z-index:-1;translate:-50% 44px 0;width:calc(var(--SearWo));transition:var(--Trantime) ease 1ms;height:max-content;overflow:scroll hidden;font-size:15px;white-space:nowrap;padding:8px 0 0;}
+:has(:is(.search_button,.opSug_wpr,#search_submit,#container_copy>.box):hover,#search_input:focus) #button_group{width:calc(var(--SearWt));z-index:2;}
+:has(:is(.search_button,.opSug_wpr,#search_submit,#container_copy>.box):hover,#search_input:focus) .search_button{translate:0 0 0;}
+</style><script> /*搜索引擎配置*/
+const searchEngines=[
+{name:'百度',
+surl:'https://www.baidu.com/s?word=%@',
+home:'https://www.baidu.com'},
+{name:'谷歌',
+surl:'https://www.google.com/search?q=%@',
+home:'https://www.google.com'},
+{name:'必应',
+surl:'https://cn.bing.com/search?q=%@',
+home:'https://cn.bing.com'},
+{name:'秘塔',
+surl:'https://metaso.cn/?q=%@',
+home:'https://metaso.cn'},
+{name:'搜狗',
+surl:'https://wap.sogou.com/web/sl?keyword=%@',
+home:'https://wap.sogou.com'},
+{name:'头条',
+surl:'https://so.toutiao.com/search?keyword=%@',
+home:'https://www.toutiao.com'},
+{name:'神马',
+surl:'https://yz.m.sm.cn/s?q=%@',
+home:'https://yz.m.sm.cn'},
+{name:'勾勾',
+surl:'https://gogo.webbillion.cn/search?q=%@',
+home:'https://gogo.webbillion.cn'},
+{name:'云盘',
+surl:'https://alipansou.com/search?k=%@',
+home:'https://alipansou.com'},
+{name:'B站',
+surl:'https://www.bilibili.com/search?keyword=%@',
+home:'https://www.bilibili.com'},
+{name:'知乎',
+surl:'https://www.zhihu.com/search?q=%@',
+home:'https://www.zhihu.com'},
+];
+function createSearchButtons(){if(typeof searchEngines=="undefined")return;let e=document.createElement("div");e.id="button_group",e.className="url";for(let t of searchEngines){let n=document.createElement("div");n.className="search_button",n.textContent=t.name,n.addEventListener("click",(()=>{let e=document.querySelector("#search_input");if(!e)return;let n=e.value.trim(),o=n?t.surl.replace("%@",encodeURIComponent(n)):t.home;window.open(o,"_blank"),e.value="",e.blur()})),e.appendChild(n)}let t=document.querySelector(".search_part"),n=document.querySelector(".search_bar");t&&n&&n.nextSibling?t.insertBefore(e,n.nextSibling):t&&n&&t.appendChild(e)}document.addEventListener("DOMContentLoaded",createSearchButtons);
+</script>
+<!-- 搜索引擎按钮(外显) 结束 -->
+
+<style>
+#fltBtn,#scanqr{
+right:0;border:0;height:100%;width:33px;
+background-color:transparent;}
+#fltBtn{
+height:46px;display:var(--ClearDis);
+padding-left:4px;}
+#fltBtn .url{
+transition:calc(var(--Trantime)*1.3);
+width:15px;height:15px;border-radius:100%;
+border:1px solid currentColor;}
+#fltBtn .url div{
+font-size:12px;translate:0 -3px 0;}
+:has(:is(.search_button,.opSug_wpr,#search_submit,#container_copy>.box):hover,#search_input:focus) #fltBtn .url{
+rotate:4turn;
+transition:calc(var(--Trantime)*1.3);}
+#scanqr{
+display:var(--ScanDis);padding-right:10px;}
+#scanqr .url{
+opacity:var(--ScanOpa);border-radius:calc(var(--SearRadius) - 2px);
+margin:0 auto;width:22px;height:22px;
+box-shadow:inset 0 0 3px 3px rgba(200, 200,205,0.25);}
+#scanqr .url div{
+opacity:var(--ScanOpa);translate:0 -24px 0;scale:1.2;height:100%;width:100%;
+background:linear-gradient(180deg, transparent 50%,#fff 300%);
+animation:scan calc(var(--Animation)) infinite linear;}
+@keyframes scan{to{translate:0 18px 0;}}
+</style><script>
+window.addEventListener("load",()=>{const e=document.querySelector("#search_input"),t=document.querySelector(".search_bar>span");
+/*删字按钮部分*/
+t.insertAdjacentHTML("beforebegin",'<button type="button" id="fltBtn"><div class="url"><div>×</div></div></button>')
+,document.querySelector("#fltBtn").addEventListener("click",()=>{e.value?(e.value=e.value.replace(/[^!-}]/g,"").replace(/[^^-]]/g,"").replace(/^.*http/,"http"),e.focus()):e.blur()}),
+document.querySelector("#fltBtn").addEventListener("dblclick",()=>{e.value="",e.dispatchEvent(new InputEvent("input"))}),
+/*扫码按钮部分*/
+t.insertAdjacentHTML("beforebegin",'<button type="button" id="scanqr"><div class="url"><div></div></div></button>'),
+document.querySelector("#scanqr").addEventListener("click",()=>{location.assign("via://scanner")}),e.addEventListener("blur",e=>{document.querySelector("#scanqr").style.display=e.target.value.replace(new RegExp(u,"g"),"").trim()===""?"revert-layer":"none"})
+});</script>
+
+
+<!-- 聚焦搜索框方式 开始 -->
+<script>
+/*去除下滑打开地址栏↓*/
+Object.defineProperty(window,'initGesture',{value:()=>null});
+/*下滑聚焦搜索框↓*/
+document.addEventListener('DOMContentLoaded',()=>{let y=0,i=document.querySelector('input');document.addEventListener('touchstart',e=>y=e.touches[0].clientY);document.addEventListener('touchmove',e=>{const t=e.touches[0];t.clientY-y>150&&(e.preventDefault(),i?.focus())});});
+/*双击聚焦搜索框↓*/
+document.addEventListener('DOMContentLoaded',()=>{let l=0,i=document.querySelector('#search_input'),b=document.querySelector('#bookmark_part'),s=document.querySelector('.search_part');document.addEventListener('click',e=>{if(s.contains(e.target)||(b&&b.contains(e.target)))return;const n=Date.now();n-l<300?(i?.focus(),l=0):l=n;});});
+/*长按聚焦搜索框↓*/
+window.addEventListener('load',()=>{const s=document.querySelector('#search_input');s?.addEventListener('contextmenu',e=>{document.activeElement!==s&&(e.preventDefault(),s.focus())})})
+</script>
+<!-- 聚焦搜索框方式 结束 -->
+
+
+<!-- 搜索主页收藏 开始 -->
+<script>function initSearchListeners(e,t){const n=(n,o)=>{e.addEventListener(n,o?t:()=>setTimeout(t,0))};n("input",true),n("focus",true),n("blur",false)}function Search4Bookmarks(){const e=document.querySelector("#box_container");if(!e)return;const t=e.cloneNode(!0);t.id="container_copy";const n=document.querySelector("#content");if(!n)return;n.appendChild(t);t.querySelectorAll(".box>[title]").forEach(e=>{e.title=e.title.toLowerCase()});const o=document.querySelector("#search_input");if(!o)return;const c=document.createElement("style");c.id="S4B",document.head.append(c);const i=()=>{const i=o.value.toLowerCase(),r=getComputedStyle(document.documentElement);i&&(e.scrollLeft=0),c.innerHTML=i?`#container_copy>.box:not(:has([title*="${i}"])){width:0;margin:0;border:0;}#container_copy>.box:has([title*="${i}"]){margin:0 1.5% 0 0;width:calc((101.5%/var(--BMnum)) - 1.5%) !important;}#container_copy>.box:has([title*="${i}"]):last-child{margin-right:0;}`:""};initSearchListeners(o,i);const d=new ResizeObserver(o=>{o.forEach(o=>{o.borderBoxSize?.length>0&&(t.style.bottom=getComputedStyle(document.documentElement).getPropertyValue("--SugY")==="auto"?"-4px":(o.borderBoxSize[0].blockSize+4)+"px")})});d.observe(document.querySelector("#sug_tbody"))}document.addEventListener("DOMContentLoaded",Search4Bookmarks);</script>
+<!-- 搜索主页收藏 结束 -->
+
+
+<!-- 收起输入法时取消聚焦 开始-->
+<script>function debounce(call,delay){let id=-1;return ()=>{if(id!==-1){clearTimeout(id);}
+id=setTimeout(()=>{call();id=-1;},delay);};}
+const portraitQuery=window.matchMedia("(orientation: portrait)");
+let portrait=portraitQuery.matches;let currentHeight=window.innerHeight;
+window.addEventListener("resize",debounce(()=>{if(portraitQuery.matches === portrait){const delta=Math.abs(window.innerHeight - currentHeight);if(delta>150){if(window.innerHeight>=currentHeight){document.querySelector("#search_input").blur();}currentHeight=window.innerHeight;}}else{portrait=portraitQuery.matches;currentHeight=window.innerHeight;}}),);
+</script>
+<!-- 收起输入法时取消聚焦 结束-->
+
+
+<!-- 长按聚焦唤出输入法 开始 -->
+<script>document.addEventListener('DOMContentLoaded',(()=>{const t=':is(.search_button,#search_submit,#container_copy>.box)',e=document,n=e.querySelector('#search_input');if(n){let i,o;const c=()=>{const t=window.getComputedStyle(n,'::placeholder');n.style.cssText=`color:${t.color};font-style:${t.fontStyle};font-weight:${t.weight}`},d=()=>{n.style.cssText=''},s=t=>{requestAnimationFrame(()=>{requestAnimationFrame(t)})};s(()=>{const r=n.placeholder||'\u200B';n.value=r;n.value===r&&c();const a=t=>{i=t.target.closest(t)},l=()=>{i=null},u=t=>{o=e.elementFromPoint(t.touches[0].clientX,t.touches[0].clientY)},p=()=>{s(()=>{!i&&!o?.closest(t)&&n.value.includes(r)&&(n.value=n.value.replace(new RegExp(r,'g'),''),d(),n.dispatchEvent(new Event('input',{bubbles:1})))})},h=()=>{s(()=>{!n.value.trim()&&!i&&!o?.closest(t)&&(n.value=n.placeholder||'\u200B',c())})};e.addEventListener('mouseover',a),e.addEventListener('mouseout',l),e.addEventListener('touchstart',u,{passive:1}),n.addEventListener('focus',p),n.addEventListener('blur',h);new MutationObserver(()=>{n.value.includes(r)&&n.dispatchEvent(new Event('input'))}).observe(n,{characterData:1,subtree:1})})}}));</script>
+<!-- 长按聚焦唤出输入法 结束 -->
+
+
+<!-- 一些小补丁 开始 -->
+<script>document.addEventListener("DOMContentLoaded",()=>{
+/*主页收藏背景透明度修复↓*/
+document.querySelectorAll(".title").forEach(book=>{
+book.style.backgroundColor=`rgba(${getComputedStyle(book).backgroundColor.split("(")[1].slice(0,-1)},var(--Opacity))`
+});
+/*统一文字颜色↓*/
+const e=document.querySelector('.url');
+e&&(t=>document.head.insertAdjacentHTML("beforeend",`<style>#bookmark_part:before,.opSug_wpr td,.search_bar_active{color:${t}!important}</style>`))(getComputedStyle(e).color)
+});</script>
+<!-- 一些小补丁 结束 -->
+
+
+<!-- 修改主页地址栏标题-->
+<script>document.title="⠀";</script>
+
+
+<!--点击打开小书签的logo-->
+<a id="logo" href="via://bookmarks">Explorer</a>

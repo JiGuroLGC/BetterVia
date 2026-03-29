@@ -1,0 +1,282 @@
+/* ===== 基础 ===== */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+
+/* ✅ 跟随系统主题（浅/深） */
+:root{
+  color-scheme: light dark;
+
+  --search-gap:75px;
+  --card-inner-left:18px;
+  --engine_num:5;
+  --engine_max_h:38vh;
+}
+
+html,body{
+  background-color: Canvas;
+  color: CanvasText;
+
+  font-family:'Outfit',sans-serif;
+  height:100vh;width:100vw;
+  overflow:hidden;position:fixed;
+}
+
+/* ===== 主容器 ===== */
+.main-wrapper{max-width:420px;margin:0 auto;padding:0 25px;position:relative;user-select:none;}
+
+/* ===== 标题 ===== */
+.title-box{
+  font-family:'Antonio',sans-serif;
+  font-size:72px;line-height:1;letter-spacing:-2px;
+  color: CanvasText;
+  text-align:left;
+  margin-top:-150px;margin-left:2px;
+}
+
+/* ===== Via 搜索框（保持你原来的视觉/高度） ===== */
+.search_bar{
+  position:absolute !important;
+  top:30px !important;
+  left:45px !important;
+  width:calc(100% - 90px) !important;
+
+  height:55px !important;
+
+  background: color-mix(in srgb, CanvasText 4%, Canvas) !important;
+  border-radius:28px !important;
+  box-shadow:0 5px 15px color-mix(in srgb, CanvasText 12%, transparent) !important;
+
+  z-index:9999 !important;
+  overflow:hidden !important;
+}
+
+/* 输入框：默认左 14px；聚焦时由 JS 强制改为 88px */
+.search_bar input,
+.search_bar textarea,
+.search_bar [contenteditable="true"]{
+  width:100% !important;
+  height:55px !important;
+  line-height:55px !important;
+
+  padding-left:14px !important;
+  padding-right:14px !important;
+
+  margin:0 !important;
+  background:transparent !important;
+  color: CanvasText !important;
+
+  position:relative !important;
+  z-index:1 !important;
+
+  /* ✅ 禁止省略号，长文字随光标滚动 */
+  text-overflow:clip !important;
+  -webkit-text-overflow:clip !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+
+  /* ✅ 让文字左右切换更丝滑 */
+  transition: padding-left .18s ease;
+  will-change: padding-left;
+}
+
+/* ✅ 去掉右侧放大镜/提交按钮（隐藏即可，逻辑仍可被 JS 调用） */
+.search_bar #search_submit,
+.search_bar button[type="submit"],
+.search_bar button,
+.search_bar [role="button"]{
+  display:none !important;
+}
+
+/* ===== 收藏夹 ===== */
+.cards-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:calc(var(--search-gap) * 2);
+}
+.card-cell{
+  height:220px;border-radius:28px;
+  padding:26px 22px 26px var(--card-inner-left);
+  display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;
+  transition:transform .1s;
+}
+.card-cell:active{transform:scale(.97);}
+
+/* 强调色 */
+.bg-blue{background:#00ADEF;color:#fff;box-shadow:0 10px 20px rgba(0,173,239,.25);}
+
+/* 灰卡片跟随系统更自然 */
+.bg-gray{
+  background: color-mix(in srgb, CanvasText 10%, Canvas);
+  color: CanvasText;
+}
+.icon-large{font-size:48px !important;}
+.dark-icon{color: CanvasText; opacity:.8;}
+.card-name{font-family:'Antonio',sans-serif;font-size:26px;letter-spacing:.5px;}
+.dark-text{color: CanvasText;}
+
+/* =========================================================
+   ✅ 外置引擎按钮（更丝滑 + 减少残影）
+   ========================================================= */
+#seBtn{
+  position:absolute;
+  height:32px;line-height:32px;
+  padding:0 10px;
+  border-radius:16px;
+  font-size:14px;
+
+  border:0;
+  background: color-mix(in srgb, CanvasText 8%, Canvas);
+  color: CanvasText;
+
+  z-index:1000000;
+  cursor:pointer;
+  user-select:none;-webkit-user-select:none;
+
+  /* ✅ 隐藏态：透明 + 微下沉 + 微缩小 */
+  opacity:0;
+  transform: translate3d(0, 6px, 0) scale(.98);
+  pointer-events:none;
+
+  transition:
+    opacity .16s ease,
+    transform .18s cubic-bezier(.2,.8,.2,1);
+
+  will-change: opacity, transform;
+  backface-visibility:hidden;
+  -webkit-font-smoothing: antialiased;
+}
+#seBtn.show{
+  opacity:1;
+  transform: translate3d(0, 0, 0) scale(1);
+  pointer-events:auto;
+}
+#seBtn::after{
+  content:"▼";
+  font-size:10px;
+  margin-left:4px;
+  opacity:.7;
+  transition:transform .2s ease;
+}
+#seBtn.active::after{transform:rotate(180deg);}
+
+/* =========================================================
+   引擎面板：背景跟随系统
+   ========================================================= */
+#seMenu{
+  position:absolute;
+  z-index:999999;
+
+  display:grid;
+  grid-template-columns:repeat(var(--engine_num),minmax(0,1fr));
+  gap:10px;
+
+  padding:12px;
+  border-radius:18px;
+
+  background: Canvas;
+  color: CanvasText;
+
+  border:1px solid color-mix(in srgb, CanvasText 12%, transparent);
+  box-shadow:0 12px 30px color-mix(in srgb, CanvasText 18%, transparent);
+
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+
+  transform:translateY(-6px);
+  transition:.18s ease;
+
+  user-select:none;-webkit-user-select:none;
+}
+#seMenu.active{
+  max-height:var(--engine_max_h);
+  overflow:auto;
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+#seMenu .se-item{
+  appearance:none;
+  -webkit-appearance:none;
+
+  border:0;
+  outline:none;
+
+  border-radius:14px;
+  padding:10px 10px;
+  font-size:13px;
+  white-space:nowrap;
+
+  cursor:pointer;
+
+  color: CanvasText;
+  background: color-mix(in srgb, CanvasText 6%, Canvas);
+
+  transition:
+    transform .08s ease,
+    background .15s ease,
+    box-shadow .15s ease,
+    color .15s ease;
+}
+#seMenu .se-item:active{transform:scale(.98);}
+#seMenu .se-item.active{
+  background:#00ADEF;
+  color:#fff;
+  font-weight:600;
+  box-shadow:0 6px 14px rgba(0,173,239,.35);
+}
+
+/* =========================================================
+   ✅ sugDock：保留（你现在联想消失的关键逻辑里会用到）
+   ========================================================= */
+#sugDock{
+  position:absolute;
+  z-index:999998;
+  border-radius:18px;
+  overflow:hidden;
+
+  max-height:0;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(-6px);
+  transition:.18s ease;
+
+  background: Canvas;
+  border:1px solid color-mix(in srgb, CanvasText 12%, transparent);
+  box-shadow:0 12px 30px color-mix(in srgb, CanvasText 18%, transparent);
+}
+#sugDock.active{
+  max-height:38vh;
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+
+/* 兼容你给的 opSug_wpr 结构 */
+#sugDock .opSug_wpr{
+  border:1px dashed rgba(100,200,170,.3);
+  border-radius:18px;
+  overflow:hidden;
+  background: Canvas;
+}
+
+/* 兼容 table 结构（如果联想是表格） */
+#sugDock table{
+  width:100%;
+  border-collapse:collapse;
+  background-color:rgba(120,180,200,.10);
+}
+#sugDock tr{
+  background-color:rgba(140,190,210,.10);
+}
+#sugDock td{
+  border-bottom:1px solid rgba(160,200,180,.25);
+  padding:12px 14px;
+  color: CanvasText;
+  font-size:14px;
+}

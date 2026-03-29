@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Instant Stop Turbo Bear</title>
+  <style>
+    :root {
+      /* --- 🟢 平时状态参数 --- */
+      --bear_speed: 0.4s;
+      --footspeed: 0.3s;
+      --trail_speed: 0.8s;
+      --range: 8px;
+
+      /* --- 🌈 魔法尾气颜色池 --- */
+      --m-1: #ff0055; --m-2: #ffe600; --m-3: #00ff99; 
+      --m-4: #00ccff; --m-5: #9900ff;
+    }
+
+    body {
+      height: 100vh;
+      margin: 0;
+      background-color: transparent;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none; 
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.1s ease-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      will-change: transform, background-color;
+    }
+
+    .loader-state {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      will-change: transform;
+    }
+
+    /* =========================================
+       🔥 状态 1: 激活加速 (Turbo Mode) 
+       ========================================= */
+    body.is-cool {
+      background-color: rgba(10, 10, 10, 0.9);
+      animation: heavy-shake 0.1s linear infinite; /* 全屏震动 */
+      --bear_speed: 0.2s;
+      --footspeed: 0.12s; 
+    }
+
+    /* 激活时的 SVG 特效：故障风 */
+    body.is-cool svg {
+      animation: svg-bounce var(--bear_speed) ease-in-out infinite alternate, optimized-glitch 0.2s steps(2) infinite;
+    }
+
+    /* =========================================
+       基础动画
+       ========================================= */
+    
+    @keyframes heavy-shake {
+      0% { transform: translate3d(2px, 2px, 0); }
+      25% { transform: translate3d(-2px, -2px, 0); }
+      50% { transform: translate3d(-2px, 2px, 0); }
+      75% { transform: translate3d(2px, -2px, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+ 
+    svg {
+      width: 100%;
+      max-width: 600px; 
+      overflow: visible;
+      z-index: 2;
+      animation: svg-bounce var(--bear_speed) ease-in-out infinite alternate;
+      filter: drop-shadow(0px 4px 5px rgba(0,0,0,0.15));
+      transform: translate3d(0,0,0);
+      will-change: transform, filter; 
+    }
+
+    @keyframes svg-bounce { to { transform: translateY(var(--range)); } }
+
+    /* 优化后的故障风 */
+    @keyframes optimized-glitch {
+      0% { filter: drop-shadow(-3px 0 var(--m-1)); transform: translate3d(0,0,0); }
+      25% { filter: drop-shadow(3px 0 var(--m-4)); transform: translate3d(-2px, 1px, 0) skew(2deg); }
+      50% { filter: invert(0.1); transform: translate3d(2px, -1px, 0); }
+      75% { filter: drop-shadow(-3px 0 var(--m-3)); transform: translate3d(-1px, 1px, 0) skew(-2deg); }
+      100% { filter: none; transform: translate3d(0,0,0); }
+    }
+
+    /* 熊的部件 */
+    .ice-bear { --fur: #ffffff; --shadow: #e6ebf0; --features: #111111; }
+    .fur { fill: var(--fur); } .shadow { fill: var(--shadow); } .features { fill: var(--features); }
+    .foot { animation: hypnotic-feet var(--footspeed) ease-in-out infinite alternate; }
+    @keyframes hypnotic-feet { to { transform: translate(0.5px, -0.5px); } }
+
+    /* 墨镜 */
+    .sunglasses-group {
+      transform: translateY(-60px); opacity: 0;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform, opacity;
+    }
+    .sunglasses-frame { fill: #111111; } .sunglasses-glint { fill: #ffffff; opacity: 0.4; } 
+    body.is-cool .sunglasses-group { transform: translateY(0); opacity: 1; }
+
+    /* =========================================
+       粒子系统
+       ========================================= */
+
+    /* 平时：圆形 */
+    .classic-trail { display: block; opacity: 1; transition: opacity 0.3s; }
+    body.is-cool .classic-trail { display: none; opacity: 0; }
+
+    .ice-dot { 
+      animation: ice-flow var(--trail_speed) ease-in-out infinite; 
+      will-change: transform; 
+    }
+    @keyframes ice-flow {
+      0% { transform: translate3d(0,0,0) scale(1); opacity: 0.9; }
+      100% { transform: translate3d(-50px,0,0) scale(0.2); opacity: 0; }
+    }
+    .i1 { fill: #ccffff; } .i2 { fill: #80deea; } .i3 { fill: #ffffff; } .i4 { fill: #26c6da; }
+
+    /* 爆发：方形 (10个) */
+    .turbo-trail { 
+      display: none; 
+      opacity: 0; 
+      transition: opacity 0.2s; /* 快速淡出，不再有0.5s的拖延 */
+    }
+    
+    body.is-cool .turbo-trail { display: block; opacity: 1; transition: none; }
+
+    .magic-rect { 
+      animation: magic-flow 0.4s linear infinite; 
+      will-change: transform; 
+    }
+    @keyframes magic-flow {
+      0% { transform: translate3d(0,0,0) rotate(0deg) scale(1); opacity: 1; }
+      100% { transform: translate3d(-100px,0,0) rotate(180deg) scale(0); opacity: 0; }
+    }
+    .m1 { fill: var(--m-1); } .m2 { fill: var(--m-2); } .m3 { fill: var(--m-3); }
+    .m4 { fill: var(--m-4); } .m5 { fill: var(--m-5); } .m6 { fill: #ffffff; }
+
+    /* 速度线 */
+    .speed-lines {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; opacity: 0; z-index: 1; overflow: hidden;
+      transition: opacity 0.2s;
+    }
+    .line {
+      position: absolute; 
+      background: rgba(255, 255, 255, 0.8);
+      height: 2px; border-radius: 2px;
+      animation: warp-speed 0.5s linear infinite;
+      will-change: transform;
+    }
+    .line:nth-child(1) { top: 15%; left: 100%; animation-delay: 0s; width: 300px; }
+    .line:nth-child(2) { top: 35%; left: 100%; animation-delay: -0.1s; width: 150px; }
+    .line:nth-child(3) { top: 55%; left: 100%; animation-delay: -0.3s; width: 400px; }
+    .line:nth-child(4) { top: 75%; left: 100%; animation-delay: -0.2s; width: 250px; }
+    .line:nth-child(5) { top: 95%; left: 100%; animation-delay: -0.4s; width: 350px; }
+
+    body.is-cool .speed-lines { opacity: 1; transition: none; }
+    
+    body.is-cool .line {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 10px white, 2px 0 15px magenta; 
+    }
+    @keyframes warp-speed {
+      0% { transform: translate3d(0,0,0); }
+      100% { transform: translate3d(-200vw,0,0); } 
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+  
+  <div class="speed-lines">
+    <div class="line"></div><div class="line"></div><div class="line"></div>
+    <div class="line"></div><div class="line"></div>
+  </div>
+
+  <main class="loader-state">
+    <svg class="ice-bear" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+      
+      <g class="classic-trail">
+        <circle class="ice-dot i1" cx="34" cy="22" r="1.5" style="animation-delay: 0s" />
+        <circle class="ice-dot i2" cx="33" cy="26" r="1" style="animation-delay: -0.2s"/>
+        <circle class="ice-dot i3" cx="35" cy="20" r="2" style="animation-delay: -0.4s"/>
+        <circle class="ice-dot i4" cx="32" cy="28" r="1.2" style="animation-delay: -0.6s"/>
+        <circle class="ice-dot i1" cx="36" cy="24" r="1.8" style="animation-delay: -0.1s"/>
+        <circle class="ice-dot i2" cx="32" cy="21" r="1" style="animation-delay: -0.3s"/>
+        <circle class="ice-dot i3" cx="34" cy="27" r="1.5" style="animation-delay: -0.5s"/>
+        <circle class="ice-dot i4" cx="36" cy="23" r="2" style="animation-delay: -0.7s"/>
+      </g>
+
+      <g class="turbo-trail">
+        <rect class="magic-rect m1" x="34" y="22" width="2" height="2" style="animation-delay: 0s" />
+        <rect class="magic-rect m2" x="33" y="26" width="1.5" height="1.5" style="animation-delay: -0.1s"/>
+        <rect class="magic-rect m3" x="35" y="20" width="3" height="3" style="animation-delay: -0.2s"/>
+        <rect class="magic-rect m4" x="32" y="28" width="2" height="2" style="animation-delay: -0.3s"/>
+        <rect class="magic-rect m5" x="36" y="24" width="2.5" height="2.5" style="animation-delay: -0.15s"/>
+        
+        <rect class="magic-rect m6" x="32" y="21" width="1.5" height="1.5" style="animation-delay: -0.25s"/>
+        <rect class="magic-rect m1" x="38" y="27" width="2" height="2" style="animation-delay: -0.35s"/>
+        <rect class="magic-rect m2" x="40" y="23" width="3" height="3" style="animation-delay: -0.05s"/>
+        <rect class="magic-rect m3" x="30" y="25" width="2" height="2" style="animation-delay: -0.18s"/>
+        <rect class="magic-rect m4" x="42" y="29" width="1.5" height="1.5" style="animation-delay: -0.28s"/>
+      </g>
+
+      <g transform="translate(27.5, 9.5) scale(1.4)">
+        <g class="foot">
+          <rect class="fur" width="3" height="3" transform="translate(20 17)" />
+          <rect class="shadow" width="3" height="1" transform="translate(20 19)" />
+          <rect class="fur" width="3" height="3" transform="translate(8 17)" />
+          <rect class="shadow" width="3" height="1" transform="translate(8 19)" />
+        </g>
+        <g>
+          <rect class="fur" width="18" height="13" transform="translate(6 5)" />
+          <rect class="fur" width="16" height="1" transform="translate(7 4)" />
+          <rect class="fur" width="16" height="1" transform="translate(7 18)" />
+          <rect class="shadow" width="14" height="2" transform="translate(8 17)" />
+          <rect class="fur" width="2" height="3" transform="translate(4 8)" />
+        </g>
+        <g>
+           <rect class="fur" width="10" height="1" transform="translate(16 4)" />
+           <rect class="fur" width="6" height="13" transform="translate(22 5)" />
+           <rect class="fur" width="4" height="1" transform="translate(22 18)" />
+        </g>
+        <g class="ears">
+          <rect class="fur" width="2" height="2" transform="translate(17 2)" />
+          <rect class="fur" width="2" height="2" transform="translate(23 2)" />
+        </g>
+        <g class="face" transform="translate(0, -1)">
+          <rect class="features" width="1" height="1" transform="translate(19 9)" />
+          <rect class="features" width="1" height="1" transform="translate(25 9)" />
+          <rect class="features" width="3" height="1" transform="translate(21 9)" />
+          <g class="sunglasses-group">
+            <rect class="sunglasses-frame" width="5" height="3" transform="translate(17 8)" />
+            <rect class="sunglasses-frame" width="5" height="3" transform="translate(24 8)" />
+            <rect class="sunglasses-frame" width="2" height="1" transform="translate(22 9)" />
+            <rect class="sunglasses-glint" width="1" height="1" transform="translate(18 8)" />
+            <rect class="sunglasses-glint" width="1" height="1" transform="translate(19 9)" />
+            <rect class="sunglasses-glint" width="1" height="1" transform="translate(25 8)" />
+            <rect class="sunglasses-glint" width="1" height="1" transform="translate(26 9)" />
+          </g>
+        </g>
+      </g>
+    </main>
+
+  <script>
+    const body = document.body;
+    let pressTimer;
+
+    function startPress(e) {
+      if(e.type === 'touchstart' && e.touches.length > 1) return;
+      
+      pressTimer = setTimeout(() => {
+        body.classList.add('is-cool');
+        if (navigator.vibrate) navigator.vibrate([40, 40, 40]); 
+      }, 150);
+    }
+
+    function endPress() {
+      clearTimeout(pressTimer);
+      body.classList.remove('is-cool');
+    }
+
+    window.addEventListener('mousedown', startPress);
+    window.addEventListener('mouseup', endPress);
+    window.addEventListener('mouseleave', endPress);
+    window.addEventListener('touchstart', startPress, { passive: false });
+    window.addEventListener('touchend', endPress);
+    window.addEventListener('touchcancel', endPress);
+  </script>
+</body>
+</html>

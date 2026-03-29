@@ -1,0 +1,703 @@
+/* 搜索框 */
+.search_bar {
+    /* 阴影效果 */
+    box-shadow: 0 0 5px rgba(70, 70, 40, 0.255);
+    /* 模糊效果 */
+    backdrop-filter: blur(4px);
+    /* 背景色 */
+    background-color: rgba(255, 255, 255, .100);
+    /* 圆角 */
+    border-radius: 26px;
+    display: table;
+    /* 宽度 */
+    width: %;
+    /* 高度 */
+    height: px;
+    max-width: px;
+    margin: px auto;
+    text-align: center;
+    font-size: px;
+    border: 1;
+    outline: none;
+    font-weight: 560;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    animation: search-bar 1s;
+}
+
+/* 搜索框的动画 */
+@keyframes search-bar {
+    0% {
+        max-width: 100px;
+    }
+
+    100% {
+        max-width: 400px;
+    }
+}
+
+.search_bar:focus-within {
+    transform: translateY(var(--searchbarmove)) !important;
+    width: 90%;
+    transition: all .4s;
+}
+
+.search_bar {
+    width: 80%;
+    transform: translateY(0) !important;
+    transition: all .4s;
+}
+
+.search_part:focus-within~#bookmark_part {
+    transform: translateY(var(--searchbarmove)) !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+}
+
+.search_part:focus-within>a {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+}
+
+a,
+#bookmark_part {
+    transform: translateY(0);
+    outline: none;
+    opacity: 1;
+    visibility: visible;
+    transition: all .4s;
+}
+
+var(--boxweight) - var(--boxmargin)*2);
+margin: 5px var(--boxmargin);
+height: 3.2em;
+box-shadow: rgba(255, 255, 255, .7) 0 22px 70px 4px;
+background: rgba(0, 0, 0, .3)
+}
+
+#box_container {
+    margin-top: var(--boxtop);
+    width: 85%;
+    animation: 1s hi1, 1s start
+}
+
+.url {
+    width: 90%;
+    line-height: 2em;
+    margin: .65em auto
+}
+
+.overlay,
+.title {
+    display: none
+}
+
+@keyframes searchopen {
+    0% {
+        width: 10%
+    }
+}
+
+@keyframes hi1 {
+    0% {
+        transform: translateY(50px)
+    }
+}
+
+@keyframes timebig {
+    0% {
+        transform: scale(0)
+    }
+
+    50% {
+        transform: scale(1.1)
+    }
+
+    85% {
+        transform: scale(.98)
+    }
+}
+
+@keyframes start {
+    0% {
+        opacity: 0
+    }
+}
+
+.foucestyle .search_bar {
+    max-width: 90%;
+}
+
+.foucestyle .frosted-glass {
+    backdrop-filter: blur(10px)brightness(0.5);
+}
+
+.foucestyle .logo,
+.foucestyle #hitokoto,
+.foucestyle #box_container,
+#search_button_group {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.foucestyle #hitokoto {
+    transition-delay: -0.5s;
+    filter: blur(5px);
+}
+
+.foucestyle #search_button_group {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/*搜索框点击前*/
+.search_bar {
+    width: var(--searchbarwidth);
+    height: 1px;
+    border: 1px solid #fff;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 1 !important;
+    /*圆角大小*/
+    opacity: var(--submitclear);
+    /*透明度*/
+    transform: translate(0, 0vw);
+    /*输入框位置*/
+    transition: var(--transition)
+}
+
+/*搜索框点击后*/
+.search_bar:focus-within {
+    width: 90%;
+    height: 16px;
+    border-radius: 1 !important;
+    /*圆角大小*/
+    opacity: var(--submitclear);
+    /*透明度*/
+    transform: translate(0px, var(--searchbarmove));
+    /*输入框移动位置*/
+    transition: var(--transition)
+}
+
+:root {
+    --contenttop: 50vw;
+    /*显示内容与手机顶部的距离*/
+    --searchbarmove: 20vw;
+    /*输入框向下移动的距离*/
+    --submitclear: 0.9;
+    /*搜索按钮透明度*/
+    --searchbaradius: 1px;
+    /*搜索框圆角大小*/
+    --searchbarwidth: 80%;
+    /*搜索框宽度*/
+    --sugposition: 40vw;
+    /*联想框Y轴位置*/
+    --transition: all .5s;
+    /*过渡动画时间*/
+    --screenheight: 120vh;
+    /* 别动 */
+    --opSugwprbaradius: 1px;
+    --height: 39px;
+}
+
+#content {
+    position: fixed;
+    top: var(--contenttop)
+}
+
+.search_part {
+    width: 100vw;
+}
+
+.logo {
+    display: block;
+    animation: .6s timebig
+}
+
+/*LOGO，收藏点击前*/
+#bookmark_part {
+    transform: translateY(5px);
+    /*定位*/
+    opacity: var(--submitclear);
+    /*透明度*/
+    margin: 20px auto;
+    visibility: visible;
+    /*可见*/
+    transition: var(--transition)
+}
+
+/*LOGO点击后*/
+.search_part:focus-within a {
+    transform: translateY(-100px);
+    visibility: visible;
+    /*可见*/
+    transition: var(--transition)
+}
+
+/*收藏点击后*/
+.search_part:focus-within~#bookmark_part {
+    transform: translateY(calc(160vw - var(--contenttop)));
+    /*往下移动位置*/
+    opacity: 0;
+    /*不显示*/
+    visibility: hidden;
+    /*隐藏*/
+    transition: var(--transition)
+}
+
+/*搜索按钮点击前*/
+#search_submit {
+    position: absolute !important;
+    z-index: 1;
+    display: block !important;
+    left: 0vw;
+    /*距左边框距离*/
+    opacity: var(--submitclear);
+    /*透明度*/
+    visibility: hidden;
+}
+
+/*搜索按钮点击后*/
+.search_bar:focus-within>#search_submit {
+    transform: translateX(75vw);
+    /*搜索按钮左移位置*/
+    opacity: var(--submitclear);
+    /*搜索按钮透明度*/
+    visibility: visible;
+    /*搜索按钮显示*/
+    transition: all .4s ease-out;
+}
+
+/*过渡动画效果*/
+@keyframes enter-to {
+    from {
+        transform: translate(0px, -40px);
+        /*过渡移动位置X,Y轴*/
+        opacity: 0
+    }
+
+    to {
+        transform: translate(0px, 0px);
+        /*过渡移动位置X,Y轴*/
+        opacity: 1
+    }
+}
+
+@keyframes timebig {
+    0% {
+        transform: scale(0)
+    }
+
+    50% {
+        transform: scale(1.1)
+    }
+
+    90% {
+        transform: scale(.95)
+    }
+}
+
+/*搜索框点击前*/
+.search_bar {
+    width: var(--searchbarwidth);
+    height: 1px;
+    border: 1px solid #fff;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 1 !important;
+    /*圆角大小*/
+    opacity: var(--submitclear);
+    /*透明度*/
+    transform: translate(0, 0vw);
+    /*输入框位置*/
+    transition: var(--transition)
+}
+
+/*搜索框点击后*/
+.search_bar:focus-within {
+    width: 90%;
+    height: 16px;
+    border-radius: 1 !important;
+    /*圆角大小*/
+    opacity: var(--submitclear);
+    /*透明度*/
+    transform: translate(0px, var(--searchbarmove));
+    /*输入框移动位置*/
+    transition: var(--transition)
+}
+
+/*联想框*/
+.opSug_wpr {
+    border-radius: 10px 10px 10px 10px !important;
+    border: 1 none #FFFFFF !important;
+    opacity: var(--submitclear);
+    /*透明度*/
+    backdrop-filter: blur(6px);
+    width: 90%;
+    left: 5.5vw;
+    min-height: var(--height) !important;
+    height: 192px !important;
+    bottom: var(--sugposition);
+    animation: enter-to 0.4s
+}
+
+/*过渡动画效果*/
+@keyframes enter-to {
+    from {
+        transform: translate(0px, 0px);
+        /*过渡移动位置X,Y轴*/
+        opacity: 1
+    }
+}
+
+@keyframes timebig {
+    0% {
+        transform: scale(0)
+    }
+
+    50% {
+        transform: scale(1.1)
+    }
+
+    90% {
+        transform: scale(.95)
+    }
+}
+
+/*普通logo部分*/
+.logo {
+    -webkit-tap-highlight-color: transparent;
+    background: -webkit-linear-gradient(left, #348DA6, #E6D205 25%, #348DA6 50%, #E6D205 75%, #348DA6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-size: 200% 100%;
+    -webkit-animation: runs calc(var(--Animation) * 2) infinite linear;
+}
+
+#logo {
+    font-size: 39px;
+    white-space: nowrap;
+    position: absolute;
+    display: inline-block;
+    transform: translate(-50%, -40px);
+}
+
+@-webkit-keyframes runs {
+    to {
+        background-position: -100% 0;
+    }
+}
+
+:root {
+    --contenttop: 50vw;
+    /*显示内容与手机顶部的距离*/
+    --searchbarmove: 20vw;
+    /*输入框向下移动的距离*/
+    --submitclear: 0.9;
+    /*搜索按钮透明度*/
+    --searchbaradius: 1px;
+    /*搜索框圆角大小*/
+    --searchbarwidth: 80%;
+    /*搜索框宽度*/
+    --sugposition: 40vw;
+    /*联想框Y轴位置*/
+    --transition: all .5s;
+    /*过渡动画时间*/
+    --screenheight: 120vh;
+    /* 别动 */
+    --opSugwprbaradius: 1px;
+    --height: 39px;
+}
+
+#content {
+    position: fixed;
+    top: var(--contenttop)
+}
+
+.search_part {
+    width: 100vw;
+}
+
+.logo {
+    display: block;
+    animation: .6s timebig
+}
+
+/*LOGO，收藏点击前*/
+#bookmark_part {
+    transform: translateY(5px);
+    /*定位*/
+    opacity: var(--submitclear);
+    /*透明度*/
+    margin: 20px auto;
+    visibility: visible;
+    /*可见*/
+    transition: var(--transition)
+}
+
+/*LOGO点击后*/
+.search_part:focus-within a {
+    transform: translateY(-100px);
+    visibility: visible;
+    /*可见*/
+    transition: var(--transition)
+}
+
+#via浏览器#
+
+/* 搜索框的动画 */
+@keyframes search-bar {
+    0% {
+        max-width: 100px;
+    }
+
+    100% {
+        max-width: 300px;
+    }
+}
+
+.search_bar:focus-within {
+    transform: translateY(var(--searchbarmove)) !important;
+    width: 100%;
+    transition: all .4s;
+}
+
+.search_bar {
+    width: 80%;
+    transform: translateY(0) !important;
+    transition: all .4s;
+}
+
+.search_part:focus-within~#bookmark_part {
+    transform: translateY(var(--searchbarmove)) !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+}
+
+.search_part:focus-within>a {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+}
+
+/*棍部分*/
+.search.icon:before {
+    content: '☯︎';
+    /*内容*/
+    top: -2px;
+    /* 距离底部 */
+    left: 5px;
+    /* 距离左侧 */
+    font-size: 30px;
+    /* 字体大小 */
+    height: 0;
+    background-color: currentColor;
+    position: absolute;
+}
+
+/*圆圈部分:无*/
+.search.icon {
+    border: 0 !important;
+}
+
+/*搜索按钮:隐藏*/
+#search_submit {
+    display: block important;
+}
+
+start
+}
+
+#search_button_group {
+    position: fixed;
+    display: flex;
+    bottom: 5px;
+    margin: auto;
+    width: 90%;
+    max-width: 540px;
+    height: auto;
+    font-size: inherit
+}
+
+.search_button {
+    background: rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    width: max-content;
+    margin: 5px auto;
+    padding: 4px .4em;
+    display: inline-block
+}
+
+#hitokoto {
+    display: var(--yiyan);
+    position: absolute;
+    top: calc(var(--screenheight)*.6);
+    padding: 0 4px;
+    max-width: 80%;
+    color: #000;
+    transition: .5s .5s
+}
+
+.bdSug_wpr {
+    top: auto !important;
+    bottom: 120px !important;
+    min-height: calc(100vh - 130px);
+    background: 0 0 !important;
+    animation: .4s start
+}
+
+#box_container,
+.bdSug_wpr td,
+.url,
+.search_button {
+    text-align: center !important;
+    color: #fff
+}
+
+.bdSug_wpr,
+.bdSug_wpr table {
+    transform: rotate(.5turn)
+}
+
+.box {
+    width: calc(100% / var(--boxweight) - var(--boxmargin)*2);
+    margin: 5px var(--boxmargin);
+    height: 3.2em;
+    box-shadow: rgba(255, 255, 255, .7) 0 22px 70px 4px;
+    background: rgba(0, 0, 0, .3)
+}
+
+#box_container {
+    margin-top: var(--boxtop);
+    width: 85%;
+    animation: 1s hi1, 1s start
+}
+
+.url {
+    width: 90%;
+    line-height: 2em;
+    margin: .65em auto
+}
+
+.overlay,
+.title {
+    display: none
+}
+
+@keyframes searchopen {
+    0% {
+        width: 10%
+    }
+}
+
+@keyframes hi1 {
+    0% {
+        transform: translateY(50px)
+    }
+}
+
+@keyframes timebig {
+    0% {
+        transform: scale(0)
+    }
+
+    50% {
+        transform: scale(1.1)
+    }
+
+    85% {
+        transform: scale(.98)
+    }
+}
+
+@keyframes start {
+    0% {
+        opacity: 0
+    }
+}
+
+.foucestyle .search_bar {
+    max-width: 90%;
+}
+
+.foucestyle .frosted-glass {
+    backdrop-filter: blur(10px)brightness(0.5);
+}
+
+.foucestyle .logo,
+.foucestyle #hitokoto,
+.foucestyle #box_container,
+#search_button_group {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.foucestyle #hitokoto {
+    transition-delay: -0.5s;
+    filter: blur(5px);
+}
+
+.foucestyle #search_button_group {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+--screenheight: 100vh;
+}
+
+#hitokoto,
+#timeprobg,
+.search_bar {
+    background: rgba(255, 255, 255, .5)
+}
+
+.bdSug_wpr,
+.search_bar {
+    backdrop-filter: blur(0px) !important
+}
+
+.box,
+.url {
+    font-size: 12px
+}
+
+#box_container,
+#search_button_group,
+.logo,
+.search_bar {
+    transition: var(--transition)
+}
+
+body {
+    overflow: hidden;
+    background: var(--bgurl) top no-repeat fixed;
+    background-size: auto
+        /* 收藏与搜索框之间的距离 */
+        --boxtop: 25px;
+    /* 搜索框与时间之间的距离 */
+    --bartop: 20px;
+    /* 收藏书签一横排的数量 */
+    --boxweight: 4;
+    /* 收藏书签左右的间隔 */
+    --boxmargin: 3px;
+    height: 100%;
+    transition: 1s linear;
+    border-radius: 5px
+}
+
+#hitokoto,
+.box {
+    border-radius: 10px
+}
+
+.-ClearDis:block;
+/*删字按钮(禁用改为none)*/
+--ScanDis:block;
+/*扫码按钮(禁用改为none)*/
+--ScanOpa:1;
+/*扫码按钮透明度，0~1内均可*/

@@ -1,0 +1,95 @@
+/* 设置整体内容的垂直位置 */
+#content {
+position: fixed;
+top: 200px;
+}
+
+/* 设置搜索框的阴影/尺寸/动画速度等样式 */
+.search_bar {
+box-shadow:
+0.4rem 0.4rem 1.1rem #c1d3ea,
+-0.2rem -0.2rem 0.6rem #FFFFFF,
+-0.4rem -0.4rem 1.0rem #FFFFFF;
+display: table;
+vertical-align: middle;
+width: 80%;
+height: 40px;
+max-width: 400px;
+margin: 15px auto;
+-webkit-transition-duration: 0.4s;
+transition-duration: 0.4s;
+animation: search-bar 0.8s;
+}
+
+/* 定义搜索框动画的宽度 */
+@keyframes search-bar {
+0% {
+max-width: 50px;
+}
+100% {
+max-width: 350px;
+}
+}
+
+/* 设置搜索框字体和光标颜色 */
+#search_input {
+background: -webkit-linear-gradient(left, #5A6B7C 1%, #B9DCFF);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-weight: bolder;
+caret-color: #879db3;
+}
+
+/* 设置放大镜颜色 */
+.search.icon:before {
+color: #879db3;
+}
+
+/* 设置放大镜颜色 */
+.search.icon {
+color: #879db3;
+}
+
+/* 设置联想词颜色 */
+.bdSug_wpr td {
+background: -webkit-linear-gradient(left, #5A6B7C 1%, #B9DCFF);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+/* 设置联想词框框的样式 */
+.bdSug_wpr {
+border-radius:7px 7px 7px 7px;
+border:0 none #FFFFFF !important;
+border-top:1px solid transparent !important;
+background: rgba(255,255,255,0.01) !important;
+backdrop-filter: blur(9px);
+transform: translate(-20.5%,1%);
+width:80% !important;
+
+}
+
+/* 设置书签的水平位置和整体宽度 */
+#box_container {
+text-align:center;
+width:80%;
+}
+
+/* 设置书签间距 */
+.box{
+margin:8px 10px;
+
+}
+
+/* 设置书签的模糊程度和阴影 */
+.title{
+backdrop-filter:blur(9px);
+box-shadow:
+0.3rem 0.3rem 0.8rem #c1d3ea,
+-0.2rem -0.2rem 0.6rem #FFFFFF;
+}
+
+/* 设置书签文字和图标的距离 */
+.url{
+margin-top:0.1em;
+}

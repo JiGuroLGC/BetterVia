@@ -1,0 +1,78 @@
+body {
+background-position:top center;
+background-size: 100% auto;
+}
+/* 展示内容整体 */
+#content {
+position: fixed;
+/* top可以调节显示内容距离手机顶部的距离 */
+top: 185px;
+}
+
+/* 搜索框 */
+.search_bar {
+/* 阴影效果 */
+box-shadow: 0 0 30px rgba(71,108,248,0.2);
+/* 模糊效果 */
+backdrop-filter: blur(100px);
+/* 背景色 */
+
+/* 圆角 */
+border-radius: 100px;
+display: table;
+/* 宽度 */
+width: 88%;
+/* 高度 */
+height: 30px;
+max-width: 400px;
+margin: 0px auto;
+text-align:center;
+font-size:30px;
+border:0;
+outline:none;
+font-weight:560;
+-webkit-transition-duration: 0.4s;
+transition-duration: 0.4s;
+animation:search-bar 1s;
+}
+#search_input
+{
+font-size:17px;
+color:#FFFFFF;
+caret-color:#FFFFFF;}
+
+.search icon: before{
+color:#FFFFFF;}
+
+
+/* 搜索框的动画 */
+@keyframes search-bar {
+0% {max-width: 100px;}
+100% {max-width: 400px;}
+}
+
+
+
+
+/* 收纳所有收藏卡片的容器 */
+
+/* 用于设置搜索时的词条联想框 */
+.bdSug_wpr {
+top:330px !important;
+width:88% !important;
+height:148px !important;
+position: absolute !important;
+left: 50% !important;
+transform: translateX(-50%) ! important;
+border:0px none #ffffff !important;
+border-radius:8.25px !important;
+background: linear-gradient(0deg, rgba(236, 242, 255, 0.3), rgba(237, 243, 255, 0.5)) !important;
+backdrop-filter: blur(8px);
+}
+.bdSug_wpr td {
+padding-top:13px !important;
+line-height:13px !important;
+height:auto !important;
+background: transparent !important;
+color:#303133;
+}

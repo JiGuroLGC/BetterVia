@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        window.onload = function() {
+            showTime();
+        };
+
+        function showTime() {
+            var myDate = new Date();
+            var year = myDate.getFullYear();
+            var month = myDate.getMonth() + 1;
+            var date = myDate.getDate();
+            var dateArr = ();
+            var hours = myDate.getHours();
+            var minutes = formatTime(myDate.getMinutes());
+            var seconds = formatTime(myDate.getSeconds());
+            document.getElementById("time").innerHTML = year + "-" + month + "-" + date + " " + dateArr[day] + "𝕕𝕒𝕪";
+            setTimeout("showTime()", 500);
+            document.getElementById("times").innerHTML = "" + hours + " : " + minutes + " : " + seconds + "";
+            setTimeout("showTime()", 500);
+        } //格式化时间：分秒。function formatTime (i){if(i < 10){i = "0" + i;}return i;}
+    </script>
+</head>
+<style>
+    #time,
+    #times {
+        text-align: center;
+        background: -webkit-linear-gradient(left, #2E5890, #50AAB1 25%, #2E5890 50%, #50AAB1 75%, #2E5890);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-size: 200% 100%;
+        -webkit-animation: runs 4s infinite linear;
+    }
+
+    @-webkit-keyframes runs {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: -100% 0;
+        }
+    }
+</style>
+
+<body>
+    <div id='time'></div>
+    <div id='times'></div>
+</body>
+
+</html><!-- 搜索框半随机显示文字 -->
+<script>
+    setTimeout("randomSentence()", 100);
+
+    function randomSentence() {
+        var sentences = new Array("偷得浮生半日闲～", "行到水穷处，坐看云起时", "人生天地间，忽如远行客", "晚来天欲雪，能饮一杯无", "南风知我意，吹梦到西洲");
+        var randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
+        document.getElementById("search_input").setAttribute("placeholder", randomSentence);
+
+        function changeSize(sizeString, heightStr) {
+            var style = document.createElement('style');
+            document.head.appendChild(style);
+            sheet = style.sheet;
+            sheet.addRule('input::placeholder', 'font-size:' + sizeString + ';transform: translateY(' + heightStr + ')');
+        } /* 句子长度为 25，26 字体缩小 */
+        if (24 < randomSentence.length && randomSentence.length <= 26) {
+            changeSize("12px", "-2px");
+        } else if (26 < randomSentence.length) {
+            changeSize("11px", "-3px");
+        }
+    }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var h, b = document.getElementById("search_submit"),
+            c = document.createElement("select"),
+            e = [],
+            f = search,
+            g = {
+                i: {
+                    name: "默认",
+                    url: ""
+                },
+                bd: {
+                    name: "百度",
+                    url: " https://m.baidu.com/s?word="
+                },
+                gg: {
+                    name: "谷歌",
+                    url: " https://www.google.com/search?query="
+                },
+                bing: {
+                    name: "必应",
+                    url: " https://cn.bing.com/search?q="
+                },
+                wz: {
+                    name: "无追",
+                    url: " https://wuzhuiso.com/s?q="
+                },
+                dk: {
+                    name: "Duck",
+                    url: " https://duckduckgo.com/?q="
+                },
+                gk: {
+                    name: "夸克",
+                    url: " https://quark.sm.cn/s?q="
+                },
+                sg: {
+                    name: "搜狗",
+                    url: " https://m.sogou.com/web/searchList.jsp?keyword="
+                },
+                tt: {
+                    name: "头条",
+                    url: " https://m.toutiao.com/search?keyword="
+                },
+                zh: {
+                    name: "知乎",
+                    url: " https://www.zhihu.com/search?q="
+                },
+                c: {
+                    name: "其他",
+                    url: localStorage.c || ""
+                },
+                m: {
+                    name: "重设",
+                    disabled: (!localStorage.c || "c" !== localStorage.se) && "disabled"
+                }
+            };
+        (c.style.color = "#FFFFFF"), (c.style.float = "left"), (c.style.height = "46px"), (c.style.border = "none"), (c.style.paddingLeft = "10px"), (c.style.background = "transparent"), (c.style.outline = "none"), (c.style.borderRadius = "inherit");
+        for (h in g) e.push("<option value=" + h + " " + (g[h].disabled || "") + ">" + g[h].name + "</option>");
+        (c.innerHTML = e.join("")), (c.onchange = function() {
+            var b, c;
+            "c" !== this.value && "m" !== this.value ? ((b = !0), (localStorage.se = this.value)) : ((c = prompt("请修改自定义地址\n注：via上取消也可能会清空(′⊙ω⊙`)", localStorage.c)), (c = (c || "").trim()), (b = !c), (this.value = b ? "i" : "c"), (localStorage.c = c)), (this.children[this.children.length - 1].disabled = b);
+        }), (c.value = localStorage.se || "i"), b.parentElement.insertBefore(c, b), (search = function() {
+            var a = document.getElementById("search_input");
+            return ((a.value = a.value.trim()), a.value ? ((a.value = g[c.value].url + a.value), f()) : !1);
+        });
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'https://v1.jinrishici.com/all.txt');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            var gushici = document.getElementsByTagName("title")[0];
+            gushici.innerText = xhr.responseText;
+        }
+    };
+    xhr.send();
+</script><!-- 标题栏诗句 -->
+<script>
+    document.title = '晚来天欲雪，能饮一杯无'
+</script>
+<style type="text/css">
+    div p {
+        text-align: center;
+        background: -webkit-linear-gradient(left, #F596AA, #66CCFF 25%, #F596AA 50%, #66CCFF 75%, #F596AA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-size: 200% 100%;
+        -webkit-animation: runs 3s infinite linear;
+    }
+
+    @-webkit-keyframes runs {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 100% 0;
+        }
+    }
+</style>
+<div>
+    <p>ℳ𝒶𝓈𝓈𝒾ℴ𝓈</p>
+</div><!-- 聚焦搜索框方式 开始 -->
+<script>
+    /*去除下滑打开地址栏↓*/
+    Object.defineProperty(window, 'initGesture', {
+        value: () => null,
+        writable: false
+    }); /*下滑聚焦搜索框↓*/
+    document.addEventListener('DOMContentLoaded', function() {
+        var lastClientX = 0;
+        var lastClientY = 0;
+        document.addEventListener('touchstart', function(e) {
+            lastClientX = e.touches[0].clientX;
+            lastClientY = e.touches[0].clientY;
+        }, false);
+        document.addEventListener('touchmove', function(e) {
+            var touch = e.touches[0];
+            var target = e.target;
+            if (target.classList.contains('opSug_wpr')) {
+                e.preventDefault();
+            } /* 判断下滑聚焦的最短垂直距离 */
+            if ((touch.clientY - lastClientY) > 180) {
+                if (Math.abs(touch.clientY - lastClientY) > Math.abs(touch.clientX - lastClientX)) {
+                    var inputElements = document.getElementsByTagName('input');
+                    if (touch.clientY > 0) {
+                        if (inputElements.length > 0) {
+                            inputElements[0].focus();
+                        }
+                    } else if (inputElements.length > 0) {
+                        inputElements[0].blur();
+                    }
+                }
+            }
+        }, true);
+    }); /*双击聚焦搜索框↓*/
+    document.addEventListener("DOMContentLoaded", function() {
+        var date = 0;
+        var gap = 300; /* 最大时间间隔(ms) */
+        var input = document.querySelector("#search_input");
+        var book = document.querySelector("#bookmark_part");
+        document.addEventListener("click", function(e) {
+            if (!document.querySelector(".search_part").contains(e.target) && !(book && book.contains(e.target))) {
+                if (date === 0) {
+                    date = new Date();
+                } else {
+                    if (new Date() - date < gap) {
+                        input.focus();
+                        date = 0;
+                    } else {
+                        date = new Date();
+                    }
+                }
+            }
+        }, false, );
+    }); /*长按搜索框聚焦↓*/
+    window.addEventListener("load", () => {
+        document.querySelector("#search_input").addEventListener("contextmenu", (e) => {
+            e.target.blur();
+            e.target.focus();
+        });
+    });
+</script><!-- 聚焦搜索框方式 结束 -->

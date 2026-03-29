@@ -1,0 +1,129 @@
+* { padding:0; margin:0; box-sizing:border-box; /*user-drag:none; -webkit-user-drag:none;*/ }html { height:100%; -webkit-focus-ring-color: transparent; -webkit-tap-highlight-color: rgba(0,0,0,0.1); font-family: ui-sans-serif,-apple-system,system-ui,Segoe UI,Helvetica,Apple Color Emoji,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol; }body { min-height:100%; max-width:100%; width:600px; margin: auto; text-align: center; }#gesture-indicator { height:100%; width:100%; max-width:600px; position:absolute; top:0; bottom:0; z-index:0; overflow:hidden; word-break:break-all; }#content { position: absolute; max-width: 600px; width: 100%; }.logo { color: #1b1b1b; font-size: 28px; font-weight: bold;  white-space: normal; word-wrap: break-word; overflow: auto; text-decoration: none; }img.smaller { height: 72px; border-radius: 18px; object-fit: cover; }span { display:block; overflow:hidden; padding-left:5px; vertical-align:middle; }.search_part { display:table; vertical-align:middle; width:90%; max-width:600px; margin:0 auto 20px; padding:0; }.search.icon { width: 12px; height: 12px; border: solid 2px currentColor; border-radius: 100%; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); text-align: center; margin: auto; }.search.icon:before { content: ''; position: absolute; top: 10px; left: 3px; height: 5px; width: 2px; background-color: currentColor; }.search_bar { display: table; width: 100%; margin: 15px auto 0; }#search_input { height: 46px; padding: 0 12px; width: 100%; outline: none; border: none; font-size: 15px; background-color: transparent; }#search_submit { display: none; outline: none; height: 46px; width: 56px; float: right; font-size: 15px; font-weight: bold; border: none; background-color: transparent; padding: 0 10px; }.search_bar {border: 1px solid rgba(0, 0, 0, 0.24); border-radius: 24px; background: rgba(255, 255, 255, 0.0);  }.search_bar { color: #1b1b1b; }.search.icon, #search_input, #search_submit { color: inherit; }.opSug_wpr { background: rgba(255, 255, 255, 0.85);  border: 1px solid rgba(0, 0, 0, 0.24); border-radius: 0 0 24px 24px; overflow-y: scroll; line-height: normal; position: absolute; width: 90%; max-width: 600px; margin: -1px 0 0; z-index: 9999; }.opSug_wpr::-webkit-scrollbar {width: 0;}.opSug_wpr table {background: none; padding: 0px; width: 100%; border-spacing: 0;}.opSug_wpr tr {padding: 0px; margin: 0px; display: table-row; vertical-align: inherit; border-color: inherit;}.opSug_wpr tr:hover {color: #FFF; background: #7B90E3;}.opSug_wpr td { color: #1b1b1b; font-size: 14px; padding: 10px 17px; background: none; text-align: left; vertical-align: middle; font: 14px verdana; text-decoration: none; text-indent: 0px;}.search_bar_active {border-radius: 24px 24px 0 0; }.search_bar_active { color: #1b1b1b; background: rgba(255, 255, 255, 0.85); }#bookmark_part { text-align: center; max-width:600px; background-color: transparent; margin: 0 auto; padding: 0; border-radius: 0px; }#box_container { text-align: left; margin: 0 auto; font-size: 0; }.box { vertical-align: top; margin: 4px 9px 4px; width: 46px; border: 0; position: relative; display: inline-block; text-align: center; }.box a { width: 100%; height: 100%; position: absolute; left: 0; top: 0; }.overlay { position: absolute; left: 0; top: 0; border-radius: 23px; width: 46px; height: 46px; }.title { border-radius: 23px; color: #ffffff; width: 46px; line-height: 46px; height: 46px; font-size: 15px; }.url { color: #1b1b1b; margin: 2px 0 0; width: 46px; height: 20px; line-height: 20px; white-space: normal; word-wrap: break-word; overflow: hidden; text-overflow: clip; ms-text-overflow: clip; font-size: 10px; }@media only screen and (min-width: 128px) { #box_container { width: 64px } }@media only screen and (min-width: 192px) { #box_container { width: 128px } }@media only screen and (min-width: 256px) { #box_container { width: 192px } }@media only screen and (min-width: 320px) { #box_container { width: 256px } }@media only screen and (min-width: 384px) { #box_container { width: 320px } }@media only screen and (min-width: 448px) { #box_container { width: 384px } }@media only screen and (min-width: 512px) { #box_container { width: 448px } }@media only screen and (min-width: 576px) { #box_container { width: 512px } }#content { top: 25%; transition: 0.14s; }@media only screen and (min-height:250px) { #content { top: 62px } }@media only screen and (min-height:350px) { #content { top: 87px } }@media only screen and (min-height:450px) { #content { top: 135px } }@media only screen and (min-height:650px) { #content { top: 195px } }@media only screen and (min-height:850px) { #content { top: 255px } }.sort-ghost { opacity: 0.3; }@media (prefers-color-scheme:dark){html { -webkit-tap-highlight-color: rgba(255,255,255,0.1); }.logo { color: #afafaf; }.opSug_wpr td { color: #afafaf; }.title { color: #ffffff; }.url { color: #afafaf; }.search_bar { border: 1px solid rgba(233, 233, 233, 0.24); background: rgba(0, 0, 0, 0.0); }.search_bar { color: #afafaf; }img.smaller, .overlay, .title { -webkit-filter: brightness(75%); filter: brightness(75%); }.opSug_wpr { background: rgba(0, 0, 0, 0.85); border: 1px solid rgba(233, 233, 233, 0.24); }.search_bar_active { color: #afafaf; background: rgba(0, 0, 0, 0.85); }.opSug_wpr td { color: #afafaf; }}:root{
+--contenttop:70vw;/*显示内容与手机顶部的距离*/
+
+--searchbarmove:15vw;/*输入框向下移动的距离*/
+
+--submitmove:65vw;/*搜索按钮出现位置*/
+
+--searchbaradius:20px;/*搜索框圆角大小*/
+}
+
+body {
+background-position:top center;
+background-size: 50% auto;
+}
+/* 展示内容整体 */
+#content {
+position: fixed;
+/* top可以调节显示内容距离手机顶部的距离 */
+top: 自适应px;
+}
+/* 搜索框 */
+.search_bar{
+/* 阴影效果 */
+box-shadow: 0 0 15px rgba(70,70,40,0.255);
+/* 模糊效果 */
+backdrop-filter: blur(1px);
+/* 背景色 */
+background-color: rgba(255,255,255,.100);
+/* 圆角 */
+border-radius: 10px;
+display: table;
+/* 宽度 */
+width: 100%;
+/* 高度 */
+height: 30px;
+max-width: 400px;
+margin: 20px auto;
+text-align:center;
+font-size:30px;
+border:1;
+outline:none;
+font-weight:560;
+-webkit-transition-duration: 0.2s;
+transition-duration: 0.2s;
+animation:search-bar 1s;
+}
+/* 搜索框的动画 */
+@keyframes search-bar {
+0% {max-width: 100px;}
+100% {max-width: 400px;}
+}
+
+#content {
+position: fixed;
+top: var(--contenttop);
+}
+
+.opSug_wpr {
+border-radius:15px 15px 15px 15px !important;
+border:0 none #FFFFFF !important;
+border-top:5px solid transparent !important;
+background: rgba(255,255,255,0.2) !important;
+backdrop-filter: blur(25px);
+transform: translateY(-120px);
+width:90% !important;
+min-height:190px !important;
+height:210px !important;
+}/* 兼容5.0以上版本 */
+
+.search_bar:focus-within {
+transform: translateY(var(--searchbarmove)) !important;
+width:90%;
+transition: all .4s;
+}
+
+.search_bar {
+width:80%;
+border-radius:var(--searchbaradius) !important;
+transform: translateY(0) !important;
+transition: all .4s;
+}
+
+.search_part:focus-within~#bookmark_part{
+transform: translateY(var(--searchbarmove)) !important;
+opacity:0;
+visibility:hidden;
+transition: all .4s;
+}
+
+.search_part:focus-within > a{
+opacity:0;
+visibility:hidden;
+transition: all .4s;
+}
+
+a,#bookmark_part {
+transform: translateY(0);
+opacity:1;
+visibility:visible;
+transition: all .4s;
+}
+
+#search_submit{
+position:absolute !important;
+display:block !important;
+left:85vw;
+opacity:0;
+visibility:hidden;
+}
+
+.search_bar:focus-within > #search_submit{
+left:var(--submitmove);
+opacity:1;
+visibility:visible;
+transition: all .4s ease-out;
+}
+
+/* 联想词 */
+.opSug_wpr {
+border:none !important;
+border-radius:10px;
+left:50% !important;
+transform: translate(-50%,-110%);
+background-color: rgba(127,128,129,.15) !important;
+width:80% !important;
+//transform: translateY(-150%);
+min-height:200px !important;
+height:200px !important;
+backdrop-filter: blur(2px);}

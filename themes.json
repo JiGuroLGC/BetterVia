@@ -12,14 +12,14 @@
         "zh-TW": "Via官方",
         "en": "Via Official"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Default/Home_Default.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Default/Home_Default.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Default/Home_Default.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_GP_Default/Home_GP_Default.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Default/Home_Default.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_GP_Default/Home_GP_Default.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Default/Home_Default.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_GP_Default/Home_GP_Default.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Default/Home_Default.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_GP_Default/Home_GP_Default.css"
       }
     },
     {
@@ -34,14 +34,14 @@
         "zh-TW": "@半烟半雨溪桥畔",
         "en": "@半烟半雨溪桥畔"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Concise/Home_Concise.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Concise/Home_Concise.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Concise/Home_Concise.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_GP_Concise/Home_GP_Concise.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Concise/Home_Concise.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_GP_Concise/Home_GP_Concise.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Concise/Home_Concise.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_GP_Concise/Home_GP_Concise.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Concise/Home_Concise.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_GP_Concise/Home_GP_Concise.css"
       }
     },
     {
@@ -56,14 +56,14 @@
         "zh-TW": "@ruolin",
         "en": "@ruolin"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Sakura/Home_Sakura.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Sakura/Home_Sakura.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Sakura/Home_Sakura.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Sakura/Home_Sakura.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Sakura/Home_Sakura.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Sakura/Home_Sakura.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Sakura/Home_Sakura.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Sakura/Home_Sakura.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Sakura/Home_Sakura.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Sakura/Home_Sakura.css"
       }
     },
     {
@@ -78,14 +78,14 @@
         "zh-TW": "@HiEarth",
         "en": "@HiEarth"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Quark/Home_Quark.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Quark/Home_Quark.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Quark/Home_Quark.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Quark/Home_Quark.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Quark/Home_Quark.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Quark/Home_Quark.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Quark/Home_Quark.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Quark/Home_Quark.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Quark/Home_Quark.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Quark/Home_Quark.css"
       }
     },
     {
@@ -100,14 +100,14 @@
         "zh-TW": "@wummu（該主題需要事先將主頁背景更換為深色）",
         "en": "@wummu (This theme requires changing the homepage background to a dark color in advance)"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Plus/Home_Plus.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Plus/Home_Plus.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Plus/Home_Plus.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Plus/Home_Plus.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Plus/Home_Plus.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Plus/Home_Plus.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Plus/Home_Plus.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Plus/Home_Plus.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Plus/Home_Plus.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Plus/Home_Plus.css"
       }
     },
         {
@@ -122,14 +122,14 @@
         "zh-TW": "@不知道取什么名aaa",
         "en": "@不知道取什么名aaa"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Flow/Home_Flow.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Flow/Home_Flow.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Flow/Home_Flow.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Flow/Home_Flow.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Flow/Home_Flow.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Flow/Home_Flow.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Flow/Home_Flow.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Flow/Home_Flow.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Flow/Home_Flow.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Flow/Home_Flow.css"
       }
     },
         {
@@ -144,14 +144,14 @@
         "zh-TW": "@轩辕落雪",
         "en": "@轩辕落雪"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Pig/Home_Pig.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Pig/Home_Pig.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Pig/Home_Pig.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Pig/Home_Pig.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Pig/Home_Pig.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Pig/Home_Pig.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Pig/Home_Pig.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Pig/Home_Pig.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Pig/Home_Pig.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Pig/Home_Pig.css"
       }
     },
         {
@@ -166,14 +166,14 @@
         "zh-TW": "@東京下小雨",
         "en": "@東京下小雨"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Oneplus/Home_Oneplus.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Oneplus/Home_Oneplus.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Oneplus/Home_Oneplus.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Oneplus/Home_Oneplus.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Oneplus/Home_Oneplus.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Oneplus/Home_Oneplus.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Oneplus/Home_Oneplus.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Oneplus/Home_Oneplus.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Oneplus/Home_Oneplus.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Oneplus/Home_Oneplus.css"
       }
     },
     {
@@ -188,14 +188,14 @@
         "zh-TW": "@四层的鸡腿堡",
         "en": "@四层的鸡腿堡"
       },
-      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Modern/Home_Modern.jpg",
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Modern/Home_Modern.jpg",
       "htmlUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Modern/Home_Modern.html",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Modern/Home_Modern.html"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Modern/Home_Modern.html",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Modern/Home_Modern.html"
       },
       "cssUrls": {
-        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme/Home_Modern/Home_Modern.css",
-        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP/Home_Modern/Home_Modern.css"
+        "mark.via": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_old/Home_Modern/Home_Modern.css",
+        "mark.via.gp": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Theme_GP_old/Home_Modern/Home_Modern.css"
       }
     }
   ]

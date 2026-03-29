@@ -33,6 +33,58 @@ public class LocalizedStringProvider {
 		addLocalizedString("dialog_close", "zh-CN", "关闭");
 		addLocalizedString("dialog_close", "zh-TW", "關閉");
 		addLocalizedString("dialog_close", "en", "Close");
+		addLocalizedString("language_selection_dialog_title", "zh-CN", "语言选择");
+		addLocalizedString("language_selection_dialog_title", "zh-TW", "語言選擇");
+		addLocalizedString("language_selection_dialog_title", "en", "Language Selection");
+		addLocalizedString("language_selection_subtitle", "zh-CN", "请选择您偏好的语言");
+		addLocalizedString("language_selection_subtitle", "zh-TW", "請選擇您偏好的語言");
+		addLocalizedString("language_selection_subtitle", "en", "Please select your preferred language");
+		addLocalizedString("language_selection_select", "zh-CN", "选择语言");
+		addLocalizedString("language_selection_select", "zh-TW", "選擇語言");
+		addLocalizedString("language_selection_select", "en", "Select Language");
+		addLocalizedString("basic_settings_dialog_title", "zh-CN", "基础设置");
+		addLocalizedString("basic_settings_dialog_title", "zh-TW", "基礎設置");
+		addLocalizedString("basic_settings_dialog_title", "en", "Basic Settings");
+		addLocalizedString("basic_settings_subtitle", "zh-CN", "进行一些模块必要的基础设置");
+		addLocalizedString("basic_settings_subtitle", "zh-TW", "進行一些模組必要的基礎設置");
+		addLocalizedString("basic_settings_subtitle", "en", "Make some necessary basic settings for the module");
+		addLocalizedString("basic_settings_language_section", "zh-CN", "语言设置");
+		addLocalizedString("basic_settings_language_section", "zh-TW", "語言設置");
+		addLocalizedString("basic_settings_language_section", "en", "Language Settings");
+		addLocalizedString("basic_settings_network_section", "zh-CN", "网络源设置");
+		addLocalizedString("basic_settings_network_section", "zh-TW", "網路源設置");
+		addLocalizedString("basic_settings_network_section", "en", "Network Source Settings");
+		addLocalizedString("basic_settings_network_hint", "zh-CN", "选择用于下载配置文件的网络源");
+		addLocalizedString("basic_settings_network_hint", "zh-TW", "選擇用於下載配置文件的網路源");
+		addLocalizedString("basic_settings_network_hint", "en", "Select the network source for downloading configuration files");
+		addLocalizedString("user_agreement_dialog_title", "zh-CN", "用户协议");
+		addLocalizedString("user_agreement_dialog_title", "zh-TW", "用戶協議");
+		addLocalizedString("user_agreement_dialog_title", "en", "User Agreement");
+		addLocalizedString("user_agreement_content", "zh-CN",
+				"这是一份用户软件许可使用协议，在你使用本软件及其服务之前，请你务必认真阅读《用户协议》了解其详细信息。在确保您理解其内容含义后，再做出选择，一旦您选择了同意即代表您已经仔细阅读了用户协议并接受其内容条款。");
+		addLocalizedString("user_agreement_content", "zh-TW",
+				"這是一份用戶軟件許可使用協議，在你使用本軟件及其服務之前，請你務必認真閱讀《用戶協議》了解其詳細信息。在確保您理解其內容含義後，再做出選擇，一旦您選擇了同意即代表您已經仔細閱讀了用戶協議並接受其內容條款。");
+		addLocalizedString("user_agreement_content", "en",
+				"This is a user software license agreement. Before using this software and its services, please carefully read the 《User Agreement》 to understand its details. After ensuring you understand its meaning, make your choice. Once you choose to agree, it represents that you have carefully read and accepted the terms of the user agreement.");
+		addLocalizedString("user_agreement_link_text", "zh-CN", "《用户协议》");
+		addLocalizedString("user_agreement_link_text", "zh-TW", "《用戶協議》");
+		addLocalizedString("user_agreement_link_text", "en", "《User Agreement》");
+		addLocalizedString("user_agreement_reject", "zh-CN", "拒绝");
+		addLocalizedString("user_agreement_reject", "zh-TW", "拒絕");
+		addLocalizedString("user_agreement_reject", "en", "Reject");
+		addLocalizedString("user_agreement_agree", "zh-CN", "同意");
+		addLocalizedString("user_agreement_agree", "zh-TW", "同意");
+		addLocalizedString("user_agreement_agree", "en", "Agree");
+		addLocalizedString("user_agreement_reject_toast", "zh-CN", "模块已退出");
+		addLocalizedString("user_agreement_reject_toast", "zh-TW", "模組已退出");
+		addLocalizedString("user_agreement_reject_toast", "en", "The module has exited");
+		addLocalizedString("user_agreement_loading", "zh-CN", "正在加载用户协议...");
+		addLocalizedString("user_agreement_loading", "zh-TW", "正在加載用戶協議...");
+		addLocalizedString("user_agreement_loading", "en", "Loading user agreement...");
+		addLocalizedString("user_agreement_load_failed", "zh-CN", "加载用户协议失败，请检查网络连接");
+		addLocalizedString("user_agreement_load_failed", "zh-TW", "加載用戶協議失敗，請檢查網路連接");
+		addLocalizedString("user_agreement_load_failed", "en",
+				"Failed to load user agreement, please check network connection");
 		addLocalizedString("language_title", "zh-CN", "语言设置");
 		addLocalizedString("language_title", "zh-TW", "语言设置");
 		addLocalizedString("language_title", "en", "Language");
@@ -750,9 +802,9 @@ public class LocalizedStringProvider {
 		addLocalizedString("cookie_domain_delete_confirm_msg", "zh-TW", "確定要刪除網域 %s 下的所有 %d 個Cookie嗎？此操作不可撤銷。");
 		addLocalizedString("cookie_domain_delete_confirm_msg", "en",
 				"Are you sure you want to delete all %d cookies from domain %s? This operation cannot be undone.");
-		addLocalizedString("cookie_domain_delete_success", "zh-CN", "已删除域名 %s 下的 %d 个Cookie");
-		addLocalizedString("cookie_domain_delete_success", "zh-TW", "已刪除網域 %s 下的 %d 個Cookie");
-		addLocalizedString("cookie_domain_delete_success", "en", "Deleted %d cookies from domain %s");
+		addLocalizedString("cookie_domain_delete_success", "zh-CN", "已删除域名 %s 下的所有Cookie");
+		addLocalizedString("cookie_domain_delete_success", "zh-TW", "已刪除網域 %s 下的所有Cookie");
+		addLocalizedString("cookie_domain_delete_success", "en", "Deleted all cookies from domain %s");
 		addLocalizedString("cookie_domain_delete_selected_confirm_msg", "zh-CN", "确定要删除选中域名下的所有Cookie吗？此操作不可撤销。");
 		addLocalizedString("cookie_domain_delete_selected_confirm_msg", "zh-TW", "確定要刪除選中網域下的所有Cookie嗎？此操作不可撤銷。");
 		addLocalizedString("cookie_domain_delete_selected_confirm_msg", "en",
@@ -773,6 +825,33 @@ public class LocalizedStringProvider {
 		addLocalizedString("network_source_changed", "zh-CN", "网络源已切换至");
 		addLocalizedString("network_source_changed", "zh-TW", "網路源已切換至");
 		addLocalizedString("network_source_changed", "en", "Network source changed to");
+		addLocalizedString("mapping_sync_config_title", "zh-CN", "同步配置");
+		addLocalizedString("mapping_sync_config_title", "zh-TW", "同步配置");
+		addLocalizedString("mapping_sync_config_title", "en", "Sync Config");
+		addLocalizedString("mapping_sync_config_hint", "zh-CN", "从网络同步最新版本的Via配置");
+		addLocalizedString("mapping_sync_config_hint", "zh-TW", "從網路同步最新版本的Via配置");
+		addLocalizedString("mapping_sync_config_hint", "en", "Sync the latest version of Via configuration from network");
+		addLocalizedString("mapping_sync_button", "zh-CN", "同步");
+		addLocalizedString("mapping_sync_button", "zh-TW", "同步");
+		addLocalizedString("mapping_sync_button", "en", "Sync");
+		addLocalizedString("mapping_sync_title", "zh-CN", "同步网络配置");
+		addLocalizedString("mapping_sync_title", "zh-TW", "同步網路配置");
+		addLocalizedString("mapping_sync_title", "en", "Sync Network Config");
+		addLocalizedString("mapping_sync_hint", "zh-CN", "从网络同步最新版本的Mapping配置");
+		addLocalizedString("mapping_sync_hint", "zh-TW", "從網路同步最新版本的Mapping配置");
+		addLocalizedString("mapping_sync_hint", "en", "Sync the latest version of Mapping configuration from network");
+		addLocalizedString("mapping_sync_success", "zh-CN", "同步成功，已添加%d个新版本支持");
+		addLocalizedString("mapping_sync_success", "zh-TW", "同步成功，已添加%d個新版本支持");
+		addLocalizedString("mapping_sync_success", "en", "Sync successful, added %d new version supports");
+		addLocalizedString("mapping_sync_failed", "zh-CN", "同步失败，请检查网络连接");
+		addLocalizedString("mapping_sync_failed", "zh-TW", "同步失敗，請檢查網路連接");
+		addLocalizedString("mapping_sync_failed", "en", "Sync failed, please check network connection");
+		addLocalizedString("mapping_sync_no_update", "zh-CN", "暂无新版本配置");
+		addLocalizedString("mapping_sync_no_update", "zh-TW", "暫無新版本配置");
+		addLocalizedString("mapping_sync_no_update", "en", "No new version configuration available");
+		addLocalizedString("mapping_sync_loading", "zh-CN", "正在同步...");
+		addLocalizedString("mapping_sync_loading", "zh-TW", "正在同步...");
+		addLocalizedString("mapping_sync_loading", "en", "Syncing...");
 		addLocalizedString("module_theme_title", "zh-CN", "模块主题");
 		addLocalizedString("module_theme_title", "zh-TW", "模組主題");
 		addLocalizedString("module_theme_title", "en", "Module Theme");
@@ -797,6 +876,12 @@ public class LocalizedStringProvider {
 		addLocalizedString("auto_update_hint", "zh-CN", "启动时自动检查模块更新");
 		addLocalizedString("auto_update_hint", "zh-TW", "啟動時自動檢查模組更新");
 		addLocalizedString("auto_update_hint", "en", "Automatically check for module updates on startup");
+		addLocalizedString("custom_toast_switch", "zh-CN", "美化提示");
+		addLocalizedString("custom_toast_switch", "zh-TW", "美化提示");
+		addLocalizedString("custom_toast_switch", "en", "Custom Toast");
+		addLocalizedString("custom_toast_hint", "zh-CN", "使用Via风格的提示消息");
+		addLocalizedString("custom_toast_hint", "zh-TW", "使用Via風格的提示消息");
+		addLocalizedString("custom_toast_hint", "en", "Use Via style prompt messages");
 		addLocalizedString("developer_mode_switch", "zh-CN", "开发者模式");
 		addLocalizedString("developer_mode_switch", "zh-TW", "開發者模式");
 		addLocalizedString("developer_mode_switch", "en", "Developer Mode");
@@ -861,24 +946,6 @@ public class LocalizedStringProvider {
 		addLocalizedString("just_trust_me_hint", "zh-TW", "繞過SSL證書驗證，用於調試和抓包");
 		addLocalizedString("just_trust_me_hint", "en",
 				"Bypass SSL certificate verification for debugging and packet capture");
-		addLocalizedString("version_error_title", "zh-CN", "版本错误");
-		addLocalizedString("version_error_title", "zh-TW", "版本錯誤");
-		addLocalizedString("version_error_title", "en", "Version Error");
-		addLocalizedString("version_error_message", "zh-CN",
-				"检测到您的 Via 版本为 %s ，本模块版本适用于 Via 7.0.0，建议您切换 Via 至模块支持版本。\n继续可能会导致模块失效和 Via 闪退，您确定要继续吗？");
-		addLocalizedString("version_error_message", "zh-TW",
-				"檢測到您的 Via 版本為 %s ，本模組版本適用於 Via 7.0.0，建議您切換 Via 至模組支援版本。\n繼續可能會導致模組失效和 Via 閃退，您確定要繼續嗎？");
-		addLocalizedString("version_error_message", "en",
-				"Detected your Via version is %s, this module version is suitable for Via 7.0.0, it is recommended to switch Via to the version supported by the module.\nContinuing may cause the module to fail and Via to crash, are you sure you want to continue?");
-		addLocalizedString("version_error_dont_show_again", "zh-CN", "不再提示");
-		addLocalizedString("version_error_dont_show_again", "zh-TW", "不再提示");
-		addLocalizedString("version_error_dont_show_again", "en", "Don't show again");
-		addLocalizedString("version_error_exit", "zh-CN", "退出");
-		addLocalizedString("version_error_exit", "zh-TW", "退出");
-		addLocalizedString("version_error_exit", "en", "Exit");
-		addLocalizedString("version_error_continue", "zh-CN", "进入");
-		addLocalizedString("version_error_continue", "zh-TW", "進入");
-		addLocalizedString("version_error_continue", "en", "Continue");
 		addLocalizedString("about_title", "zh-CN", "关于");
 		addLocalizedString("about_title", "zh-TW", "關於");
 		addLocalizedString("about_title", "en", "About");
@@ -918,25 +985,24 @@ public class LocalizedStringProvider {
 		addLocalizedString("about_update_title", "zh-CN", "更新");
 		addLocalizedString("about_update_title", "zh-TW", "更新");
 		addLocalizedString("about_update_title", "en", "Update");
-		addLocalizedString("about_update_log0", "zh-CN", "增强了对新机型的适配");
-		addLocalizedString("about_update_log0", "zh-TW", "增強了對新機型的適配");
-		addLocalizedString("about_update_log0", "en", "Enhanced compatibility with new devices");
-		addLocalizedString("about_update_log1", "zh-CN", "新增隐私锁，保护用户隐私");
-		addLocalizedString("about_update_log1", "zh-TW", "修新增隱私鎖，保護用戶隱私");
-		addLocalizedString("about_update_log1", "en", "Add a privacy lock to protect user privacy");
-		addLocalizedString("about_update_log2", "zh-CN", "新增黑夜模式 (九阴) 、白天模式 (重阳) 及其切换功能");
-		addLocalizedString("about_update_log2", "zh-TW", "新增黑夜模式 (九陰) 、白天模式 (重陽) 及其切換功能");
-		addLocalizedString("about_update_log2", "en", "Added light mode, dark mode, and their switching function");
-		addLocalizedString("about_update_log3", "zh-CN", "美化 UI 细节，体验更流畅");
-		addLocalizedString("about_update_log3", "zh-TW", "美化UI細節，體驗更流暢");
-		addLocalizedString("about_update_log3", "en", "Beautify UI details for a smoother experience");
-		addLocalizedString("about_update_log4", "zh-CN", "修复了一些 Bug ，去除了一些不必要的逻辑");
-		addLocalizedString("about_update_log4", "zh-TW", "修復了一些 Bug ，去除了一些不必要的邏輯");
-		addLocalizedString("about_update_log4", "en", "Fixed some bugs and removed some unnecessary logic");
-		addLocalizedString("about_update_log5", "zh-CN", "从该版本起，正式版转移至 Windows 端开发和编译");
-		addLocalizedString("about_update_log5", "zh-TW", "從該版本起，正式版轉移至 Windows 端開發和編譯");
-		addLocalizedString("about_update_log5", "en",
-				"From this version onwards, the official version will be developed and compiled on the Windows platform");
+		addLocalizedString("about_update_log0", "zh-CN", "添加了多版本支持和网络同步功能");
+		addLocalizedString("about_update_log0", "zh-TW", "添加了多版本支持和網絡同步功能");
+		addLocalizedString("about_update_log0", "en", "Added multi-version support and network synchronization features");
+		addLocalizedString("about_update_log1", "zh-CN", "新增启动执行功能");
+		addLocalizedString("about_update_log1", "zh-TW", "新增啟動執行功能");
+		addLocalizedString("about_update_log1", "en", "Add startup execution function");
+		addLocalizedString("about_update_log2", "zh-CN", "重构主题更换逻辑，修复有关主题的 Bug");
+		addLocalizedString("about_update_log2", "zh-TW", "重構主題更換邏輯，修復有關主題的 Bug");
+		addLocalizedString("about_update_log2", "en", "Refactor the theme replacement logic and fix bugs related to the theme");
+		addLocalizedString("about_update_log3", "zh-CN", "新增抓取 URL 方案功能");
+		addLocalizedString("about_update_log3", "zh-TW", "新增抓取 URL 方案功能");
+		addLocalizedString("about_update_log3", "en", "Add the function of fetching URL scheme");
+		addLocalizedString("about_update_log4", "zh-CN", "新增美化提示功能，更贴近 Via 风格");
+		addLocalizedString("about_update_log4", "zh-TW", "新增美化提示功能，更貼近 Via 風格");
+		addLocalizedString("about_update_log4", "en", "The newly added beautification prompt function is more aligned with the Via style");
+		addLocalizedString("about_update_log5", "zh-CN", "美化UI细节，体验更流畅");
+		addLocalizedString("about_update_log5", "zh-TW", "美化UI細節，體驗更流暢");
+		addLocalizedString("about_update_log5", "en", "Beautify UI details for a smoother experience");
 		addLocalizedString("about_thanks_title", "zh-CN", "鸣谢");
 		addLocalizedString("about_thanks_title", "zh-TW", "鳴謝");
 		addLocalizedString("about_thanks_title", "en", "Thanks");
@@ -960,6 +1026,21 @@ public class LocalizedStringProvider {
 		addLocalizedString("about_thanks_others", "zh-TW", "因人數過多，不一一列舉，詳見模塊各版面詳細作者");
 		addLocalizedString("about_thanks_others", "en",
 				"Because there are too many people, we will not list them one by one. For details, please see the detailed authors in each section of the module");
+		addLocalizedString("about_agreement_title", "zh-CN", "协议");
+		addLocalizedString("about_agreement_title", "zh-TW", "協議");
+		addLocalizedString("about_agreement_title", "en", "Agreement");
+		addLocalizedString("about_withdraw_agreement", "zh-CN",
+				"若您对《用户协议》存在任何异议，您可以随时撤回用户协议同意");
+		addLocalizedString("about_withdraw_agreement", "zh-TW",
+				"若您對《用戶協議》存在任何異議，您可以隨時撤回用戶協議同意");
+		addLocalizedString("about_withdraw_agreement", "en",
+				"If you have any objection to the User Agreement, you can Withdraw Agreement at any time");
+		addLocalizedString("withdraw_agreement_dialog_title", "zh-CN", "撤回用户协议同意");
+		addLocalizedString("withdraw_agreement_dialog_title", "zh-TW", "撤回用戶協議同意");
+		addLocalizedString("withdraw_agreement_dialog_title", "en", "Withdraw Agreement");
+		addLocalizedString("withdraw_agreement_dialog_message", "zh-CN", "您确定要撤回用户协议同意状态吗？这将重置模块，并退出Via。如果需要继续使用，您将需要重新同意《用户协议》。");
+		addLocalizedString("withdraw_agreement_dialog_message", "zh-TW", "您確定要撤回用戶協議同意狀態嗎？這將重置模塊，並退出Via。如果需要繼續使用，您將需要重新同意《用戶協議》。");
+		addLocalizedString("withdraw_agreement_dialog_message", "en", "Are you sure you want to withdraw your user agreement consent? This will reset the module and exit Via. If you need to continue using it, you will need to agree to the User Agreement again.");
 		addLocalizedString("shisui_title", "zh-CN", "拾穗");
 		addLocalizedString("shisui_title", "zh-TW", "拾穗");
 		addLocalizedString("shisui_title", "en", "Shisui");
@@ -1021,6 +1102,25 @@ public class LocalizedStringProvider {
 		addLocalizedString("download_dialog_share_disabled", "zh-CN", "下载分享功能已禁用");
 		addLocalizedString("download_dialog_share_disabled", "zh-TW", "下載分享功能已禁用");
 		addLocalizedString("download_dialog_share_disabled", "en", "Download share feature disabled");
+		addLocalizedString("show_url_scheme_switch", "zh-CN", "抓取URL方案");
+		addLocalizedString("show_url_scheme_switch", "zh-TW", "抓取URL方案");
+		addLocalizedString("show_url_scheme_switch", "en", "Grab URL Scheme");
+		addLocalizedString("show_url_scheme_hint", "zh-CN", "在网页拉起应用时，显示可复制的 URL Scheme");
+		addLocalizedString("show_url_scheme_hint", "zh-TW", "在網頁拉起應用時，顯示可複製的 URL Scheme");
+		addLocalizedString("show_url_scheme_hint", "en",
+				"When pulling up the application on the web page, display the copyable URL Scheme");
+		addLocalizedString("show_url_scheme_enabled", "zh-CN", "URL Scheme显示功能已启用");
+		addLocalizedString("show_url_scheme_enabled", "zh-TW", "URL Scheme顯示功能已啟用");
+		addLocalizedString("show_url_scheme_enabled", "en", "URL Scheme display feature enabled");
+		addLocalizedString("show_url_scheme_disabled", "zh-CN", "URL Scheme显示功能已禁用");
+		addLocalizedString("show_url_scheme_disabled", "zh-TW", "URL Scheme顯示功能已禁用");
+		addLocalizedString("show_url_scheme_disabled", "en", "URL Scheme display feature disabled");
+		addLocalizedString("url_scheme_copied", "zh-CN", "已复制URL Scheme");
+		addLocalizedString("url_scheme_copied", "zh-TW", "已複製URL Scheme");
+		addLocalizedString("url_scheme_copied", "en", "URL Scheme copied");
+		addLocalizedString("url_scheme_detected", "zh-CN", "检测到 URL Scheme：");
+		addLocalizedString("url_scheme_detected", "zh-TW", "檢測到 URL Scheme：");
+		addLocalizedString("url_scheme_detected", "en", "URL Scheme Detected:");
 		addLocalizedString("monet_title", "zh-CN", "莫奈时刻");
 		addLocalizedString("monet_title", "zh-TW", "莫奈時刻");
 		addLocalizedString("monet_title", "en", "Monet Moment");
@@ -1346,14 +1446,11 @@ public class LocalizedStringProvider {
 		addLocalizedString("privacy_lock_notes_title", "zh-CN", "注意事项");
 		addLocalizedString("privacy_lock_notes_title", "zh-TW", "注意事項");
 		addLocalizedString("privacy_lock_notes_title", "en", "Important Notes");
-		addLocalizedString("privacy_lock_notes_content",
-				"zh-CN",
+		addLocalizedString("privacy_lock_notes_content", "zh-CN",
 				"• 请牢记您的密码，忘记密码将无法找回\n• 隐私锁功能不会加密您的 Via 数据，仅在打开页面时进行遮罩防护\n• 密码和配置以加密形式存储，不能轻易被删除或修改\n• 由于工作形式本身的限制，我们无法百分之百保证您的信息安全\n• 打开隐私锁后，所有相关配置修改都需要输入密码验证\n• 我们会自动监测密码和相关信息，若有修改痕迹将会及时提醒您\n• 建议您每隔一段时间修改密码");
-		addLocalizedString("privacy_lock_notes_content",
-				"zh-TW",
+		addLocalizedString("privacy_lock_notes_content", "zh-TW",
 				"• 請牢記您的密碼，忘記密碼將無法找回\n• 隱私鎖功能不會加密您的 Via 資料，僅在打開頁面時進行遮罩防護\n• 密碼和配置以加密形式儲存，不能輕易被刪除或修改\n• 由於工作形式本身的限制，我們無法百分之百保證您的資訊安全\n• 打開隱私鎖後，所有相關配置修改都需要輸入密碼驗證\n• 我們會自動監測密碼和相關資訊，若有修改痕跡將會及時提醒您\n• 建議您每隔一段時間修改密碼");
-		addLocalizedString("privacy_lock_notes_content",
-				"en",
+		addLocalizedString("privacy_lock_notes_content", "en",
 				"• Remember your password carefully; forgotten passwords cannot be recovered\n• The Privacy Lock feature does not encrypt your Via data, only providing masking protection when the page is open\n• Passwords and configurations are stored in encrypted form and cannot be easily deleted or modified\n• Due to inherent limitations in our operational model, we cannot guarantee 100% security for your information\n• After enabling Privacy Lock, all related configuration changes require password verification\n• We automatically monitor passwords and related information, alerting you promptly if modification attempts are detected\n• We recommend changing your password periodically");
 		addLocalizedString("privacy_lock_apply_startup", "zh-CN", "应用到启动");
 		addLocalizedString("privacy_lock_apply_startup", "zh-TW", "應用到啟動");
@@ -1386,14 +1483,9 @@ public class LocalizedStringProvider {
 		addLocalizedString("privacy_lock_apply_comprehensive", "zh-CN", "应用到综合界面");
 		addLocalizedString("privacy_lock_apply_comprehensive", "zh-TW", "應用到綜合介面");
 		addLocalizedString("privacy_lock_apply_comprehensive", "en", "Apply to Comprehensive Interface");
-		addLocalizedString("privacy_lock_apply_comprehensive_hint",
-				"zh-CN",
-				"当查看书签、历史、离线页面综合界面时，需打开密码锁才能继续查看");
-		addLocalizedString("privacy_lock_apply_comprehensive_hint",
-				"zh-TW",
-				"當查看書籤、歷史、離線頁面綜合介面時，需開啟密碼鎖才能繼續查看");
-		addLocalizedString("privacy_lock_apply_comprehensive_hint",
-				"en",
+		addLocalizedString("privacy_lock_apply_comprehensive_hint", "zh-CN", "当查看书签、历史、离线页面综合界面时，需打开密码锁才能继续查看");
+		addLocalizedString("privacy_lock_apply_comprehensive_hint", "zh-TW", "當查看書籤、歷史、離線頁面綜合介面時，需開啟密碼鎖才能繼續查看");
+		addLocalizedString("privacy_lock_apply_comprehensive_hint", "en",
 				"When viewing the comprehensive interface of bookmarks, history, and offline pages, password lock must be opened to continue viewing");
 		addLocalizedString("privacy_lock_password_type", "zh-CN", "密码类型");
 		addLocalizedString("privacy_lock_password_type", "zh-TW", "密碼類型");
@@ -1469,10 +1561,12 @@ public class LocalizedStringProvider {
 		addLocalizedString("pattern_lock_attempts_left", "en", "Incorrect password. You have %d more attempts.");
 		addLocalizedString("pattern_lock_wait_seconds", "zh-CN", "验证失败次数过多，请等待%d秒后再试");
 		addLocalizedString("pattern_lock_wait_seconds", "zh-TW", "驗證失敗次數過多，請等待%d秒後再試");
-		addLocalizedString("pattern_lock_wait_seconds", "en", "Too many failed verification attempts. Please wait %d seconds before trying again.");
+		addLocalizedString("pattern_lock_wait_seconds", "en",
+				"Too many failed verification attempts. Please wait %d seconds before trying again.");
 		addLocalizedString("security_warning_text", "zh-CN", "检测到密码存储有修改痕迹，您处于风险环境下！");
 		addLocalizedString("security_warning_text", "zh-TW", "檢測到密碼儲存有修改痕跡，您處於風險環境下！");
-		addLocalizedString("security_warning_text", "en", "Evidence of password storage tampering has been detected. You are at risk!");
+		addLocalizedString("security_warning_text", "en",
+				"Evidence of password storage tampering has been detected. You are at risk!");
 		addLocalizedString("privacy_lock_clear_password", "zh-CN", "清除密码");
 		addLocalizedString("privacy_lock_clear_password", "zh-TW", "清除密碼");
 		addLocalizedString("privacy_lock_clear_password", "en", "Clear Password");
@@ -1544,7 +1638,8 @@ public class LocalizedStringProvider {
 		addLocalizedString("pin_lock_attempts_left", "en", "Incorrect password. You have %d more attempts.");
 		addLocalizedString("pin_lock_wait_seconds", "zh-CN", "验证失败次数过多，请等待%d秒后再试");
 		addLocalizedString("pin_lock_wait_seconds", "zh-TW", "驗證失敗次數過多，請等待%d秒後再試");
-		addLocalizedString("pin_lock_wait_seconds", "en", "Too many failed verification attempts. Please wait %d seconds before trying again.");
+		addLocalizedString("pin_lock_wait_seconds", "en",
+				"Too many failed verification attempts. Please wait %d seconds before trying again.");
 		addLocalizedString("pin_lock_verify_for_clear", "zh-CN", "验证通过后即可清除密码");
 		addLocalizedString("pin_lock_verify_for_clear", "zh-TW", "驗證通過後即可清除密碼");
 		addLocalizedString("pin_lock_verify_for_clear", "en", "Clear password after verification");
@@ -1556,10 +1651,12 @@ public class LocalizedStringProvider {
 		addLocalizedString("privacy_lock_enable_warning_title", "en", "Privacy Lock Enable Warning");
 		addLocalizedString("privacy_lock_enable_warning_message", "zh-CN", "启用隐私锁后，关闭功能或调整配置都需要输入密码。确定要启用吗？");
 		addLocalizedString("privacy_lock_enable_warning_message", "zh-TW", "啟用隱私鎖後，關閉功能或調整配置都需要輸入密碼。確定要啟用嗎？");
-		addLocalizedString("privacy_lock_enable_warning_message", "en", "After enabling Privacy Lock, disabling the feature or changing settings will require password verification. Are you sure you want to enable it?");
+		addLocalizedString("privacy_lock_enable_warning_message", "en",
+				"After enabling Privacy Lock, disabling the feature or changing settings will require password verification. Are you sure you want to enable it?");
 		addLocalizedString("privacy_lock_enable_warning_hint", "zh-CN", "请记住您的密码，遗忘后无法恢复");
 		addLocalizedString("privacy_lock_enable_warning_hint", "zh-TW", "請記住您的密碼，遺忘後無法恢復");
-		addLocalizedString("privacy_lock_enable_warning_hint", "en", "Please remember your password, it cannot be recovered if forgotten");
+		addLocalizedString("privacy_lock_enable_warning_hint", "en",
+				"Please remember your password, it cannot be recovered if forgotten");
 		addLocalizedString("privacy_lock_startup_verify_title", "zh-CN", "验证密码以启动Via");
 		addLocalizedString("privacy_lock_startup_verify_title", "zh-TW", "驗證密碼以啟動Via");
 		addLocalizedString("privacy_lock_startup_verify_title", "en", "Verify Password to Start Via");
@@ -1569,6 +1666,226 @@ public class LocalizedStringProvider {
 		addLocalizedString("privacy_lock_startup_verify_cancel", "zh-CN", "取消将关闭Via");
 		addLocalizedString("privacy_lock_startup_verify_cancel", "zh-TW", "取消將關閉Via");
 		addLocalizedString("privacy_lock_startup_verify_cancel", "en", "Cancel will close Via");
+		addLocalizedString("startup_execution_title", "zh-CN", "启动执行");
+		addLocalizedString("startup_execution_title", "zh-TW", "啟動執行");
+		addLocalizedString("startup_execution_title", "en", "Startup Execution");
+		addLocalizedString("startup_execution_hint", "zh-CN", "自定义启动时的图片、音乐和提示");
+		addLocalizedString("startup_execution_hint", "zh-TW", "自定義啟動時的圖片、音樂和提示");
+		addLocalizedString("startup_execution_hint", "en", "Customize startup image, music and hints");
+		addLocalizedString("startup_execution_config", "zh-CN", "配置");
+		addLocalizedString("startup_execution_config", "zh-TW", "配置");
+		addLocalizedString("startup_execution_config", "en", "Configure");
+		addLocalizedString("startup_execution_dialog_title", "zh-CN", "启动执行");
+		addLocalizedString("startup_execution_dialog_title", "zh-TW", "啟動執行");
+		addLocalizedString("startup_execution_dialog_title", "en", "Startup Execution");
+		addLocalizedString("startup_execution_dialog_subtitle", "zh-CN", "自定义启动体验");
+		addLocalizedString("startup_execution_dialog_subtitle", "zh-TW", "自定義啟動體驗");
+		addLocalizedString("startup_execution_dialog_subtitle", "en", "Customize Startup Experience");
+		addLocalizedString("startup_execution_enable", "zh-CN", "启用启动执行");
+		addLocalizedString("startup_execution_enable", "zh-TW", "啟用啟動執行");
+		addLocalizedString("startup_execution_enable", "en", "Enable Startup Execution");
+		addLocalizedString("startup_execution_enable_hint", "zh-CN", "启动执行总开关");
+		addLocalizedString("startup_execution_enable_hint", "zh-TW", "啟動執行總開關");
+		addLocalizedString("startup_execution_enable_hint", "en",
+				"Start Execution master switch");
+		addLocalizedString("startup_image_title", "zh-CN", "启动图");
+		addLocalizedString("startup_image_title", "zh-TW", "啟動圖");
+		addLocalizedString("startup_image_title", "en", "Startup Image");
+		addLocalizedString("startup_image_hint", "zh-CN", "在启动时显示自定义图片");
+		addLocalizedString("startup_image_hint", "zh-TW", "在啟動時顯示自定義圖片");
+		addLocalizedString("startup_image_hint", "en", "Show custom image on startup");
+		addLocalizedString("startup_image_preview", "zh-CN", "预览");
+		addLocalizedString("startup_image_preview", "zh-TW", "預覽");
+		addLocalizedString("startup_image_preview", "en", "Preview");
+		addLocalizedString("startup_image_duration", "zh-CN", "显示时长");
+		addLocalizedString("startup_image_duration", "zh-TW", "顯示時長");
+		addLocalizedString("startup_image_duration", "en", "Display Duration");
+		addLocalizedString("startup_image_duration_hint", "zh-CN", "%d 秒");
+		addLocalizedString("startup_image_duration_hint", "zh-TW", "%d 秒");
+		addLocalizedString("startup_image_duration_hint", "en", "%d seconds");
+		addLocalizedString("startup_image_pick_btn", "zh-CN", "选择图片");
+		addLocalizedString("startup_image_pick_btn", "zh-TW", "選擇圖片");
+		addLocalizedString("startup_image_pick_btn", "en", "Select Image");
+		addLocalizedString("startup_image_pick_title", "zh-CN", "选择启动图");
+		addLocalizedString("startup_image_pick_title", "zh-TW", "選擇啟動圖");
+		addLocalizedString("startup_image_pick_title", "en", "Select Startup Image");
+		addLocalizedString("startup_image_set_ok", "zh-CN", "启动图设置成功");
+		addLocalizedString("startup_image_set_ok", "zh-TW", "啟動圖設置成功");
+		addLocalizedString("startup_image_set_ok", "en", "Startup image set successfully");
+		addLocalizedString("startup_image_border_color", "zh-CN", "外框颜色");
+		addLocalizedString("startup_image_border_color", "zh-TW", "外框顏色");
+		addLocalizedString("startup_image_border_color", "en", "Border Color");
+		addLocalizedString("startup_image_border_color_hint", "zh-CN", "输入RGB颜色代码（如#000000表示黑色）");
+		addLocalizedString("startup_image_border_color_hint", "zh-TW", "輸入RGB顏色代碼（如#000000表示黑色）");
+		addLocalizedString("startup_image_border_color_hint", "en", "Enter RGB color code (e.g. #000000 for black)");
+		addLocalizedString("startup_image_force_stretch", "zh-CN", "强制拉伸");
+		addLocalizedString("startup_image_force_stretch", "zh-TW", "強制拉伸");
+		addLocalizedString("startup_image_force_stretch", "en", "Force Stretch");
+		addLocalizedString("startup_image_force_stretch_hint", "zh-CN", "将图片拉伸为全屏显示");
+		addLocalizedString("startup_image_force_stretch_hint", "zh-TW", "將圖片拉伸為全屏顯示");
+		addLocalizedString("startup_image_force_stretch_hint", "en", "Stretch image to full screen");
+		addLocalizedString("startup_music_title", "zh-CN", "启动音乐");
+		addLocalizedString("startup_music_title", "zh-TW", "啟動音樂");
+		addLocalizedString("startup_music_title", "en", "Startup Music");
+		addLocalizedString("startup_music_hint", "zh-CN", "在启动时播放自定义音乐");
+		addLocalizedString("startup_music_hint", "zh-TW", "在啟動時播放自定義音樂");
+		addLocalizedString("startup_music_hint", "en", "Play custom music on startup");
+		addLocalizedString("startup_music_preview", "zh-CN", "点击预览播放");
+		addLocalizedString("startup_music_preview", "zh-TW", "點擊預覽播放");
+		addLocalizedString("startup_music_preview", "en", "Click to preview");
+		addLocalizedString("startup_music_pick_btn", "zh-CN", "选择音乐");
+		addLocalizedString("startup_music_pick_btn", "zh-TW", "選擇音樂");
+		addLocalizedString("startup_music_pick_btn", "en", "Select Music");
+		addLocalizedString("startup_music_pick_title", "zh-CN", "选择启动音乐");
+		addLocalizedString("startup_music_pick_title", "zh-TW", "選擇啟動音樂");
+		addLocalizedString("startup_music_pick_title", "en", "Select Startup Music");
+		addLocalizedString("startup_music_set_ok", "zh-CN", "启动音乐设置成功");
+		addLocalizedString("startup_music_set_ok", "zh-TW", "啟動音樂設置成功");
+		addLocalizedString("startup_music_set_ok", "en", "Startup music set successfully");
+		addLocalizedString("startup_hint_title", "zh-CN", "启动提示");
+		addLocalizedString("startup_hint_title", "zh-TW", "啟動提示");
+		addLocalizedString("startup_hint_title", "en", "Startup Hint");
+		addLocalizedString("startup_hint_hint", "zh-CN", "在启动时显示文字提示");
+		addLocalizedString("startup_hint_hint", "zh-TW", "在啟動時顯示文字提示");
+		addLocalizedString("startup_hint_hint", "en", "Display text hint on startup");
+		addLocalizedString("startup_hint_type", "zh-CN", "提示内容");
+		addLocalizedString("startup_hint_type", "zh-TW", "提示內容");
+		addLocalizedString("startup_hint_type", "en", "Hint Content");
+		addLocalizedString("startup_hint_type_custom", "zh-CN", "自定义");
+		addLocalizedString("startup_hint_type_custom", "zh-TW", "自定義");
+		addLocalizedString("startup_hint_type_custom", "en", "Custom");
+		addLocalizedString("startup_hint_type_hitokoto", "zh-CN", "一言");
+		addLocalizedString("startup_hint_type_hitokoto", "zh-TW", "一言");
+		addLocalizedString("startup_hint_type_hitokoto", "en", "Hitokoto");
+		addLocalizedString("startup_hint_custom_text", "zh-CN", "自定义文字");
+		addLocalizedString("startup_hint_custom_text", "zh-TW", "自定義文字");
+		addLocalizedString("startup_hint_custom_text", "en", "Custom Text");
+		addLocalizedString("startup_hint_custom_text_hint", "zh-CN", "请输入想要显示的文字");
+		addLocalizedString("startup_hint_custom_text_hint", "zh-TW", "請輸入想要顯示的文字");
+		addLocalizedString("startup_hint_custom_text_hint", "en", "Enter text to be displayed");
+		addLocalizedString("startup_hint_hitokoto_api", "zh-CN", "一言API地址");
+		addLocalizedString("startup_hint_hitokoto_api", "zh-TW", "一言API地址");
+		addLocalizedString("startup_hint_hitokoto_api", "en", "Hitokoto API URL");
+		addLocalizedString("startup_hint_hitokoto_api_hint", "zh-CN", "请输入一言API地址");
+		addLocalizedString("startup_hint_hitokoto_api_hint", "zh-TW", "請輸入一言API地址");
+		addLocalizedString("startup_hint_hitokoto_api_hint", "en", "Enter Hitokoto API URL");
+		addLocalizedString("startup_hint_hitokoto_type", "zh-CN", "一言类型");
+		addLocalizedString("startup_hint_hitokoto_type", "zh-TW", "一言類型");
+		addLocalizedString("startup_hint_hitokoto_type", "en", "Hitokoto Type");
+		addLocalizedString("startup_hint_hitokoto_type_anime", "zh-CN", "动画");
+		addLocalizedString("startup_hint_hitokoto_type_anime", "zh-TW", "動畫");
+		addLocalizedString("startup_hint_hitokoto_type_anime", "en", "Anime");
+		addLocalizedString("startup_hint_hitokoto_type_comic", "zh-CN", "漫画");
+		addLocalizedString("startup_hint_hitokoto_type_comic", "zh-TW", "漫畫");
+		addLocalizedString("startup_hint_hitokoto_type_comic", "en", "Comic");
+		addLocalizedString("startup_hint_hitokoto_type_game", "zh-CN", "游戏");
+		addLocalizedString("startup_hint_hitokoto_type_game", "zh-TW", "遊戲");
+		addLocalizedString("startup_hint_hitokoto_type_game", "en", "Game");
+		addLocalizedString("startup_hint_hitokoto_type_literature", "zh-CN", "文学");
+		addLocalizedString("startup_hint_hitokoto_type_literature", "zh-TW", "文學");
+		addLocalizedString("startup_hint_hitokoto_type_literature", "en", "Literature");
+		addLocalizedString("startup_hint_hitokoto_type_original", "zh-CN", "原创");
+		addLocalizedString("startup_hint_hitokoto_type_original", "zh-TW", "原創");
+		addLocalizedString("startup_hint_hitokoto_type_original", "en", "Original");
+		addLocalizedString("startup_hint_hitokoto_type_internet", "zh-CN", "网络");
+		addLocalizedString("startup_hint_hitokoto_type_internet", "zh-TW", "網絡");
+		addLocalizedString("startup_hint_hitokoto_type_internet", "en", "Internet");
+		addLocalizedString("startup_hint_hitokoto_type_other", "zh-CN", "其他");
+		addLocalizedString("startup_hint_hitokoto_type_other", "zh-TW", "其他");
+		addLocalizedString("startup_hint_hitokoto_type_other", "en", "Other");
+		addLocalizedString("startup_hint_hitokoto_type_movie", "zh-CN", "影视");
+		addLocalizedString("startup_hint_hitokoto_type_movie", "zh-TW", "影視");
+		addLocalizedString("startup_hint_hitokoto_type_movie", "en", "Movie");
+		addLocalizedString("startup_hint_hitokoto_type_poetry", "zh-CN", "诗词");
+		addLocalizedString("startup_hint_hitokoto_type_poetry", "zh-TW", "詩詞");
+		addLocalizedString("startup_hint_hitokoto_type_poetry", "en", "Poetry");
+		addLocalizedString("startup_hint_hitokoto_type_philosophy", "zh-CN", "哲学");
+		addLocalizedString("startup_hint_hitokoto_type_philosophy", "zh-TW", "哲學");
+		addLocalizedString("startup_hint_hitokoto_type_philosophy", "en", "Philosophy");
+		addLocalizedString("startup_hint_hitokoto_length_title", "zh-CN", "句子长度设置");
+		addLocalizedString("startup_hint_hitokoto_length_title", "zh-TW", "句子長度設置");
+		addLocalizedString("startup_hint_hitokoto_length_title", "en", "Sentence Length Settings");
+		addLocalizedString("startup_hint_hitokoto_min_length", "zh-CN", "最小长度");
+		addLocalizedString("startup_hint_hitokoto_min_length", "zh-TW", "最小長度");
+		addLocalizedString("startup_hint_hitokoto_min_length", "en", "Minimum Length");
+		addLocalizedString("startup_hint_hitokoto_max_length", "zh-CN", "最大长度");
+		addLocalizedString("startup_hint_hitokoto_max_length", "zh-TW", "最大長度");
+		addLocalizedString("startup_hint_hitokoto_max_length", "en", "Maximum Length");
+		addLocalizedString("startup_hint_hitokoto_length_hint", "zh-CN", "设置返回句子的字符长度范围");
+		addLocalizedString("startup_hint_hitokoto_length_hint", "zh-TW", "設置返回句子的字符長度範圍");
+		addLocalizedString("startup_hint_hitokoto_length_hint", "en",
+				"Set the character length range of returned sentences");
+		addLocalizedString("startup_hint_hitokoto_select_hint", "zh-CN", "可多选，选择喜欢的句子类型");
+		addLocalizedString("startup_hint_hitokoto_select_hint", "zh-TW", "可多選，選擇喜歡的句子類型");
+		addLocalizedString("startup_hint_hitokoto_select_hint", "en",
+				"Multiple selections allowed, choose favorite sentence types");
+		addLocalizedString("version_selector_title", "zh-CN", "选择Via版本");
+		addLocalizedString("version_selector_title", "zh-TW", "選擇Via版本");
+		addLocalizedString("version_selector_title", "en", "Select Via Version");
+		addLocalizedString("version_selector_subtitle", "zh-CN", "选择您正在使用的Via版本");
+		addLocalizedString("version_selector_subtitle", "zh-TW", "選擇您正在使用的Via版本");
+		addLocalizedString("version_selector_subtitle", "en",
+				"Select the version of Via you are using");
+		addLocalizedString("version_selector_current", "zh-CN", "当前版本：%s");
+		addLocalizedString("version_selector_current", "zh-TW", "當前版本：%s");
+		addLocalizedString("version_selector_current", "en", "Current Version: %s");
+		addLocalizedString("version_selector_recommended", "zh-CN", "推荐版本");
+		addLocalizedString("version_selector_recommended", "zh-TW", "推薦版本");
+		addLocalizedString("version_selector_recommended", "en", "Recommended Version");
+		addLocalizedString("version_selector_select", "zh-CN", "选择版本");
+		addLocalizedString("version_selector_select", "zh-TW", "選擇版本");
+		addLocalizedString("version_selector_select", "en", "Select Version");
+		addLocalizedString("version_selector_hint", "zh-CN", "选择模块要使用的Via版本");
+		addLocalizedString("version_selector_hint", "zh-TW", "選擇模組要使用的Via版本");
+		addLocalizedString("version_selector_hint", "en", "Select the Via version for the module to use");
+		addLocalizedString("version_selector_dialog_title", "zh-CN", "Via版本选择");
+		addLocalizedString("version_selector_dialog_title", "zh-TW", "Via版本選擇");
+		addLocalizedString("version_selector_dialog_title", "en", "Via Version Selection");
+		addLocalizedString("version_selector_dialog_message", "zh-CN", "当前Via版本：%s\n\n请选择模块要使用的版本：");
+		addLocalizedString("version_selector_dialog_message", "zh-TW", "當前Via版本：%s\n\n請選擇模組要使用的版本：");
+		addLocalizedString("version_selector_dialog_message", "en",
+				"Current Via version: %s\n\nPlease select the version for the module to use:");
+		addLocalizedString("version_selector_version_700000", "zh-CN", "Via 7.0.0");
+		addLocalizedString("version_selector_version_700000", "zh-TW", "Via 7.0.0");
+		addLocalizedString("version_selector_version_700000", "en", "Via 7.0.0");
+		addLocalizedString("version_selector_version_609000", "zh-CN", "Via 6.9.0");
+		addLocalizedString("version_selector_version_609000", "zh-TW", "Via 6.9.0");
+		addLocalizedString("version_selector_version_609000", "en", "Via 6.9.0");
+		addLocalizedString("version_selector_version_608000", "zh-CN", "Via 6.8.0");
+		addLocalizedString("version_selector_version_608000", "zh-TW", "Via 6.8.0");
+		addLocalizedString("version_selector_version_608000", "en", "Via 6.8.0");
+		addLocalizedString("version_selector_version_607000", "zh-CN", "Via 6.7.1");
+		addLocalizedString("version_selector_version_607000", "zh-TW", "Via 6.7.1");
+		addLocalizedString("version_selector_version_607000", "en", "Via 6.7.1");
+		addLocalizedString("version_selector_version_606000", "zh-CN", "Via 6.6.0");
+		addLocalizedString("version_selector_version_606000", "zh-TW", "Via 6.6.0");
+		addLocalizedString("version_selector_version_606000", "en", "Via 6.6.0");
+		addLocalizedString("version_selector_cancel_hint", "zh-CN", "只有选择正确的Via版本，模块才能继续运行");
+		addLocalizedString("version_selector_cancel_hint", "zh-TW", "只有選擇正確的Via版本，模組才能繼續運行");
+		addLocalizedString("version_selector_cancel_hint", "en",
+				"Only by selecting the correct Via version can the module continue to run");
+		addLocalizedString("version_via_updated", "zh-CN", "Via已更新");
+		addLocalizedString("version_via_updated", "zh-TW", "Via已更新");
+		addLocalizedString("version_via_updated", "en", "Via Updated");
+		addLocalizedString("version_selector_update_hint", "zh-CN", "检测到Via已更新，请重新选择模块版本以保持兼容性");
+		addLocalizedString("version_selector_update_hint", "zh-TW", "檢測到Via已更新，請重新選擇模組版本以保持兼容性");
+		addLocalizedString("version_selector_update_hint", "en",
+				"Via has been updated, please reselect the module version for compatibility");
+		addLocalizedString("startup_restart_hint", "zh-CN", "设置已保存，即将重启Via以生效");
+		addLocalizedString("startup_restart_hint", "zh-TW", "設置已保存，即將重啟Via以生效");
+		addLocalizedString("startup_restart_hint", "en", "Settings saved, restarting Via to apply changes");
+		addLocalizedString("version_unsupported_warning_title", "zh-CN", "版本兼容性警告");
+		addLocalizedString("version_unsupported_warning_title", "zh-TW", "版本相容性警告");
+		addLocalizedString("version_unsupported_warning_title", "en", "Version Compatibility Warning");
+		addLocalizedString("version_unsupported_warning_message", "zh-CN",
+				"您所使用的Via版本疑似不在模块支持范围内，建议您切换Via版本至模块支持版本。错误版本可能会导致Via闪退和模块失效，请谨慎选择。");
+		addLocalizedString("version_unsupported_warning_message", "zh-TW",
+				"您所使用的Via版本疑似不在模組支持範圍內，建議您切換Via版本至模組支持版本。錯誤版本可能會導致Via閃退和模組失效，請謹慎選擇。");
+		addLocalizedString("version_unsupported_warning_message", "en",
+				"The Via version you are using appears to be outside the module's supported range. It is recommended to switch to a supported Via version. Incorrect versions may cause Via crashes and module failures. Please choose carefully.");
+		addLocalizedString("version_unsupported_warning_icon", "zh-CN", "⚠");
+		addLocalizedString("version_unsupported_warning_icon", "zh-TW", "⚠");
+		addLocalizedString("version_unsupported_warning_icon", "en", "⚠");
 	}
 	private void addLocalizedString(String key, String locale, String value) {
 		Map<String, String> localeMap = localizedStrings.get(key);

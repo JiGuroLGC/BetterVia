@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诗词天气·时间</title>
+    <style>
+        /* 24小时制时间样式（含动态渐变） */
+        #time {
+            font-size: 50px;
+            /* Keep your desired font size */
+            text-align: center;
+            /* Center the text */
+            background: -webkit-linear-gradient(left, #F596AA, #66CCFF 25%, #F596AA 50%, #66CCFF 75%, #F596AA);
+            background: linear-gradient(to right, #F596AA, #66CCFF 25%, #F596AA 50%, #66CCFF 75%, #F596AA);
+            /* Added standard syntax */
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* Added standard syntax */
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            /* Added standard syntax for better compatibility */
+            -webkit-background-size: 200% 100%;
+            background-size: 200% 100%;
+            /* Added standard syntax */
+            -webkit-animation: runs 3s infinite linear;
+            animation: runs 3s infinite linear;
+            /* Added standard syntax */
+            margin-top: 1px;
+            filter: brightness(1);
+        }
+
+        /* 日期和星期样式 */
+        #date {
+            text-align: center;
+            background: -webkit-linear-gradient(left, #F596AA, #66CCFF 25%, #F596AA 50%, #66CCFF 75%, #F596AA);
+            background: linear-gradient(to right, #F596AA, #66CCFF 25%, #F596AA 50%, #66CCFF 75%, #F596AA);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-background-size: 200% 100%;
+            background-size: 200% 100%;
+            -webkit-animation: runs 3s infinite linear;
+            animation: runs 3s infinite linear;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Your keyframes for the animation */
+        @-webkit-keyframes runs {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        @keyframes runs {
+
+            /* Added standard syntax for keyframes */
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100% 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 日期和星期显示 -->
+    <div id="date"></div>
+
+    <!-- 24小时制动态时间 -->
+    <p id="time"></p>
+
+    <!-- 日期时间更新脚本 -->
+    <script type="text/javascript">
+        function showTime() {
+            var myDate = new Date();
+            var year = myDate.getFullYear();
+            var month = myDate.getMonth() + 1;
+            var date = myDate.getDate();
+            var dateArr = ["<i>𝕊𝕦𝕟", "<i>𝕄𝕠𝕟", '<i>𝕋𝕦𝕖𝕤', '<i>𝕎𝕖𝕕𝕟𝕖𝕤', '<i>𝕋𝕙𝕦𝕣𝕤', '<i>𝔽𝕣𝕚', '<i>𝕊𝕒𝕥𝕦𝕣'];
+            var day = myDate.getDay();
+            var hours = myDate.getHours();
+            var minutes = formatTime(myDate.getMinutes());
+            var seconds = formatTime(myDate.getSeconds());
+
+            // 更新日期和星期
+            document.getElementById("date").innerHTML = year + "-" + month + "-" + date + "  " + dateArr[day] + "𝕕𝕒𝕪";
+
+            // 更新时间（保持原有格式）
+            document.getElementById("time").innerHTML = hours + " : " + minutes + " : " + seconds;
+
+            setTimeout(showTime, 500);
+        }
+
+        //格式化时间：分秒。
+        function formatTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        // 立即执行日期时间显示
+        showTime();
+    </script>
+
+    <!-- 诗词随机显示（每7分钟切换，去重） -->
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        let displayedPoems = new Set();
+        let currentAPI = Math.random() > 0.5 ? 'api1' : 'api2'; // 随机选择API
+
+        function getNewPoem() {
+            // 随机选择下一次使用的API
+            currentAPI = Math.random() > 0.5 ? 'api1' : 'api2';
+
+            if (currentAPI === 'api1') {
+                // 使用第一个API (jinrishici)
+                jinrishici.load(function(result) {
+                    const poem = result.data.content;
+                    if (!displayedPoems.has(poem)) {
+                        displayedPoems.add(poem);
+                        document.title = poem; // 标题显示诗词
+                    } else {
+                        getNewPoem(); // 重复则重新获取
+                    }
+                    // 限制存储数量，避免内存占用过多
+                    if (displayedPoems.size > 50) {
+                        displayedPoems.clear();
+                    }
+                });
+            } else {
+                // 使用第二个API (顶栏一言)
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', 'https://v1.jinrishici.com/all.txt');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const poem = xhr.responseText;
+                        if (!displayedPoems.has(poem)) {
+                            displayedPoems.add(poem);
+                            document.title = poem; // 标题显示诗词
+                        } else {
+                            getNewPoem(); // 重复则重新获取
+                        }
+                        // 限制存储数量，避免内存占用过多
+                        if (displayedPoems.size > 50) {
+                            displayedPoems.clear();
+                        }
+                    }
+                };
+                xhr.send();
+            }
+        }
+
+        getNewPoem(); // 初始加载
+        setInterval(getNewPoem, 7 * 60 * 1000); // 每7分钟更新一次
+    </script>
+
+    <!-- 时间问候（优先显示诗词，问候作为备选） -->
+    <script type="text/javascript">
+        const d = new Date();
+        const time = d.getHours();
+        let greeting = "";
+
+        if (time < 7) greeting = "｡ﾟ(ﾟ-_–ﾟ)ﾟ｡睡的很安详";
+        else if (time < 8) greeting = "清晨,还能再睡会(´Д｀ﾟ)ﾟ";
+        else if (time < 12) greeting = "( >_＜。)早啊,被迫营业ing";
+        else if (time < 18) greeting = "🐟ฅ(*ﾟ▽ﾟ*)ฅ下午摸个鱼可以理解吧";
+        else if (time < 22) greeting = "晚上,辛勤的一天过去了`▽´๑)۶";
+        else greeting = "(¦3[▓▓])困觉困觉";
+
+        // 若诗词加载失败，标题显示问候语
+        setTimeout(() => {
+            if (document.title === "诗词天气·时间") {
+                document.title = greeting;
+            }
+        }, 3000);
+    </script>
+</body>
+
+</html>
+<script type="text/javascript" src="https://gitee.com/jiguro/BetterVia/raw/master/Themes/Home_Sakura/Sakura.js">
+</script>

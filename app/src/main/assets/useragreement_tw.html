@@ -1,0 +1,632 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>用户协议 - Tw</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h2 id='用戶協議'><span>《用戶協議》</span></h2><p><span>歡迎您使用 BetterVia 軟件及服務！該軟件和服務由軟件開發者 JiGuro（以下簡稱「我們」）提供，為使用 BetterVia 軟件及服務（以下簡稱「本軟件」），您應當閱讀並遵守《用戶軟件許可使用協議》（以下簡稱「《協議》」）。本《協議》描述我們與您之間關於本軟件許可使用及相關方面的權利義務。請您務必審慎閱讀、充分理解各條款內容，並選擇接受或不接受（未成年人應在監護人的指導陪同下審閱）。</span></p><p><span>除非您已閱讀並接受本《協議》所有條款，否則您無權下載、安裝、構建或使用本軟件及其相關服務。您的下載、安裝、構建、使用等行為將視為對本《協議》的接受，並同意接受本《協議》各項條款的約束。</span></p><h3 id='一協議範圍'><span>一、協議範圍</span></h3><h4 id='11-協議適用主體範圍'><span>1.1 協議適用主體範圍</span></h4><p><span>本《協議》是您與我們之間關於您下載、安裝、構建、使用、複製本軟件，以及使用 BetterVia 相關服務所訂立的法律協議。</span></p><h4 id='12-本許可協議指向內容'><span>1.2 本許可協議指向內容</span></h4><p><span>本《協議》項下的許可內容是指我們向用戶提供的包括但不限於本軟件許可及服務（以下簡稱“本服務”）。</span></p><p><span>本《協議》內容同時包括我們可能不斷發佈的關於本服務的相關協議、業務規則等內容。上述內容一經正式發佈，即為本《協議》不可分割的組成部分，您同樣應當遵守。</span></p><h3 id='二關鍵術語定義'><span>二、關鍵術語定義</span></h3><h4 id='21-學習研究'><span>2.1 “學習研究”</span></h4><p><span>在本協議中，“學習研究”特指用戶出於個人非商業目的，在個人設備上於24小時之內，以BetterVia客戶端為媒介，對軟件（Via瀏覽器）及其所基於、關聯的第三方組件的以下行為：</span></p><p><span>(a) 分析：對軟件的工作原理、代碼結構、交互邏輯進行靜態或動態分析，以理解其技術實現。</span>
+<span>(b) 修改與實驗：在個人設備上，對軟體進行修改、編譯、替換部分組件，以測試其功能變化或驗證特定技術假設。</span>
+<span>(c) 教育目的：將軟體作為計算機科學、軟體工程或相關領域學習的參考案例。</span></p><h4 id='22-非學習研究行為'><span>2.2 非「學習研究」行為</span></h4><p><span>以下行為明確不屬於本協議所允許的「學習研究」範圍，且為協議所禁止：</span></p><p><span>(a) 將本軟體或基於本軟體產生的任何版本用於任何商業目的，包括但不限於銷售、捆綁、付費提供或用於商業產品的開發。</span>
+<span>(b) 對軟件進行大規模、公開的分發、傳播，無論是否收費。</span>
+<span>(c) 任何破壞、干擾原關聯軟體（Via瀏覽器）商業模式，損害其開發者利益的行為。</span>
+<span>(d) 任何導致原關聯軟體（Via瀏覽器）永久性功能喪失、數據損壞，或旨在竊取、濫用用戶數據等惡意行為。</span>
+<span>(e) 任何損害原關聯軟件（Via瀏覽器）社會輿論、網絡評價的行為。</span>
+<span>(f) 任何違反所涉及的開源許可證（如 BetterVia、Xposed 框架、Via 瀏覽器可能包含的開源組件所適用的許可證）條款的行為。</span></p><h4 id='23-目的達成'><span>2.3 「目的達成」</span></h4><p><span>當用戶已完成其特定的學習研究目標，或決定不再繼續上述「學習研究」活動時，即視為「目的達成」。用戶應在目的達成後，立即從所有設備中徹底刪除本軟件及其所有副本、修改版本。</span></p><h3 id='三關於本軟體'><span>三、關於本軟體</span></h3><p><span>本軟體是由我們開發的一款基於 Android 平台和 Xposed 框架的模組，其可對由 上海知為網絡科技有限公司 開發的網頁瀏覽工具 —— Via 瀏覽器（以下簡稱“Via”）進行增強。本軟體工作方案係我們從互聯網第三方公開渠道收集整理，分享僅供技術交流和學習研究。</span></p><h3 id='四關於本服務'><span>四、關於本服務</span></h3><h4 id='41-本服務的內容'><span>4.1 本服務的內容</span></h4><p><span>本服務是指我們提供安裝在移動終端設備上具有包括但不限於增強Via功能及學習研究Via運行邏輯的軟件許可及服務（以下簡稱“本服務”）。</span></p><h4 id='42-本服務的形式'><span>4.2 本服務的形式</span></h4><p><span>您使用本服務需要下載 BetterVia 客戶端軟體，對於此軟體，我們給予您一項個人的、不可轉讓及非排他性的許可。</span></p><h4 id='43-本服務許可的範圍'><span>4.3 本服務許可的範圍</span></h4><p><span>4.3.1 我們授予您一項個人的、不可轉讓及非排他性的許可，以使用本軟件。您可以為非商業目的在單一終端設備上安裝、使用、顯示、運行本軟件。</span></p><p><span>4.3.2 您可為使用本軟件及服務的目的用計算機可讀形式製作本軟件的一個副本，僅用作備份。備份副本必須包含原軟件中含有的所有著作權信息。</span></p><p><span>4.3.3 本條及本協議其他條款未明示授權的其他一切權利仍由我們保留，您在行使這些權利時須另外取得我們的書面許可。我們如果未行使前述任何權利，並不構成對該權利的放棄。</span></p><h3 id='五聲明條款'><span>五、聲明條款</span></h3><p><span>5.1 依據《中華人民共和國計算機軟件保護條例》相關規定，本軟件僅用於學習和研究軟件的設計思想與原理。您理解並同意，我們分享本軟件純粹是為了學習交流之目的，不帶有任何盈利意圖。</span></p><p><span>5.2 您理解並同意，由於本軟件工作方法來源的第三方屬性及我們能力的侷限性，我們無法對本軟件的合法性（如版權狀態）提供任何形式的保證或擔保。我們已對用於構建本軟件的公開技術資料進行了合理的檢索與審查，認為本軟件屬於《著作權法》第二十四條規定的「為個人學習、研究或者欣賞，使用他人已經發表的作品」的合理使用範疇，但我們不對此種判斷的絕對法律正確性提供擔保。</span></p><p><span>5.3 您理解並同意，在任何情況下，我們均不對因下載、安裝、使用、無法使用或依賴本軟件所導致的任何直接、間接、附帶、特殊、懲罰性或後果性的損害（包括但不限於數據丟失、系統損壞、業務中斷、利潤損失、隱私泄露、法律糾紛等）承擔任何責任，無論該等責任是基於合同、侵權（包括過失）、嚴格責任或其他法律理論產生，也無論我們是否事先被告知該等損害的可能性。</span></p><p><span>5.4 本軟件僅限學習研究用途，對於日常使用，我們推薦您透過 Via 開發者官方渠道獲取官方 Via 以確保安全性和合法性。官方軟件的使用不僅能確保良好的使用者體驗和穩定的性能，更是對軟件開發者創新和努力的尊重與支持。如果您發現 Via 對您有幫助或您喜歡它，請積極支持官方。我們承諾，本軟件的分享和編譯過程中未主動植入任何計算機病毒、後門程式，也未故意設置任何用於侵犯使用者隱私的功能。若使用者發現本軟件有此類問題，請務必及時聯繫我們，我們將立即採取刪除等措施，堅決阻止本軟件的進一步傳播。</span></p><p><span>5.5 本軟體不會收集、傳輸您的任何資料，所有在本軟體運行過程中產生的的設置資訊、日誌資訊、密碼資訊（加密）均儲存在本地，您可以隨時查看（可能需要 Root 權限）或刪除（在本軟體「設置」介面中清除全部資料）所有本地資料。</span></p><p><span>5.6 知識產權嚴格受法律保護，請勿侵權。我們堅決維護 上海知為網絡科技有限公司 對 Via 持有的知識產權。</span></p><h3 id='六用戶行為規範'><span>六、用戶行為規範</span></h3><h4 id='61-禁止行為'><span>6.1 禁止行為</span></h4><p><span>除非法律允許或我們書面許可，您不得從事下列行為：</span></p><p><span>6.1.1 刪除本軟體及其副本上關於著作權的資訊。</span></p><p><span>6.1.2 對本軟件進行反向修改，添加或刪減任何代碼或邏輯。</span></p><p><span>6.1.3 將本軟件用於任何商業或非法目的，或進行大規模的傳播。</span></p><p><span>6.1.4 其他未經我們明示授權的行為。</span></p><p><span>6.1.5 其他違反法律法規、政策的行為。</span></p><h4 id='62-義務行為'><span>6.2 義務行為</span></h4><p><span>接受本《協議》條款後，您有保證履行以下行為的義務：</span></p><p><span>6.2.1 當學習研究目的達成，或您決定不再用於學習研究目的時，立即將本軟體從儲存設備中徹底刪除。</span></p><p><span>6.2.2 確保自身使用行為符合《中華人民共和國著作權法》、《中華人民共和國計算機軟件保護條例》、《中華人民共和國網絡安全法》、《中華人民共和國數據安全法》、《中華人民共和國個人信息保護法》等相關法律法規的規定，並與我們一起共同維護良好的網絡環境和法律秩序。</span></p><p><span>6.2.3 遵守本軟件和Via包含或基於的開源部分的開源許可證的條款。</span></p><h3 id='七法律責任'><span>七、法律責任</span></h3><p><span>7.1 用戶違反本《協議》或相關的服務條款的規定，我們有權視用戶的行為性質採取包括但不限於中斷使用許可、法律追究等措施。</span></p><p><span>7.2 用戶導致任何第三方損害的，用戶應當獨立承擔責任。</span></p><p><span>7.3 用戶未將本軟件嚴格用於技術交流和學習研究的，用戶應當獨立承擔責任。</span></p><p><span>7.4 用戶因使用本軟體所造成的一切法律責任由用戶自行承擔。</span></p><p><span>7.5 您必須充分了解使用本軟件的用途和風險。十分必要時，我們所承擔的責任僅限於軟件版本的升級和公告。</span></p><h3 id='八知識產權'><span>八、知識產權</span></h3><h4 id='81-權利聲明'><span>8.1 權利聲明</span></h4><h5 id='811-本軟體'><span>8.1.1 本軟體</span></h5><p><span>開發者（JiGuro）是本軟件整體編譯產物及其獨創性表達（包括但不限於特定的代碼組織、構建腳本、模塊集成方式、文檔）的權利人。用戶根據本協議獲得使用許可。</span></p><h5 id='812-第三方元件'><span>8.1.2 第三方元件</span></h5><p><span>本軟件基於 Xposed 框架開發，並設計用於增強 Via 瀏覽器。本軟件的運行依賴於這些第三方軟件。本協議不授予用戶任何關於 Xposed 框架、Via 瀏覽器或其任何組件的知識產權許可。用戶應確保其使用這些第三方軟件的行為已獲得相應權利人的合法授權。</span></p><h5 id='813-開源程式碼'><span>8.1.3 開源程式碼</span></h5><p><span>本軟件中如包含來源於開源項目的代碼，則該部分代碼繼續受其原有的開源許可證（如MIT、Apache等）條款約束。本協議不應被解釋為對任何開源許可證條款的修改或限制。用戶在使用本軟件時，須同時遵守相關開源許可證的規定。</span></p><h5 id='82-用戶義務'><span>8.2 用戶義務</span></h5><p><span>8.2.1 未經開發者 JiGuro 及相關第三方權利人（如 Via 瀏覽器開發者、開源項目作者）的明確書面許可，用戶不得為任何商業目的行使本《協議》8.1.1 條所述的權利。</span></p><p><span>8.2.2 用戶基於本軟體或本軟體開源代碼而產生的任何衍生作品，若進行分發，必須：</span></p><p><span>(a) 清晰、顯著地標明其中包含 JiGuro 的原創貢獻；</span>
+<span>(b) 完整保留原軟件中的所有著作權和所有權聲明；</span>
+<span>(c) 遵守所涉及的所有開源許可證的條款。</span></p><h3 id='九其他條款'><span>九、其他條款</span></h3><p><span>9.1 電子文本形式的授權協議如同雙方書面簽署的協議一樣，具有完全的和等同的法律效力。您使用本軟件或本服務即視為您已閱讀並同意受本《協議》的約束。本《協議》許可範圍以外的行為，將直接違反本授權協議並構成侵權，我們有權隨時終止授權，責令停止損害，並保留追究相關責任的權力。</span></p><p><span>9.2 我們有權在必要時修改本《協議》條款。您可以在本軟件的最新版本中查閱相關協議條款。本協議條款變更後，如果您繼續使用本軟件，即視為您已接受修改後的協議。如果您不接受修改後的協議，應當停止使用本軟件。</span></p><p><span>9.3 本《協議》簽訂地為中華人民共和國江西省撫州市臨川區。</span></p><p><span>9.4 本《協議》的成立、生效、履行、解釋及糾紛解決，適用中華人民共和國大陸地區法律（不包括衝突法）。</span></p><p><span>9.5 若您和我們之間發生任何糾紛或爭議，首先應友好協商解決；協商不成的，您同意將糾紛或爭議提交本協議簽訂地有管轄權的人民法院管轄。</span></p><p><span>9.6 本《協議》條款無論因何種原因部分無效或不可執行，其餘條款仍有效，對雙方具有約束力。</span></p><p><span>9.7 本《協議》所有條款的標題僅為閱讀方便，本身並無實際涵義，不能作為本《協議》涵義解釋的依據。</span></p><p><span>9.8 在首次運行本軟件時，您將被強制要求透過本軟件提供的交互界面（如彈出窗口）完整閱讀本《協議》內容，並需主動選擇「同意」或「我已理解」等類似選項，明確同意本聲明內容。您一旦運行或繼續使用本軟件，即視為已仔細閱讀、完全理解且同意接受本《協議》的全部內容。</span></p><p><span>9.9若您對本《協議》存在任何異議，您可以隨時在本軟件本體主頁面右上角功能表列選項中點擊「撤回用戶協議同意」按鈕或依次進入 Via →「設定」→「模塊」→「關於」介面，點擊「撤回用戶協議同意」按鈕。 以上兩種行為達成任意一種，即代表著您取消了對本《協議》的同意狀態，並且不能繼續使用本軟件及本服務。 此時，您必須立即從所有設備中徹底删除本軟件及其所有副本、修改版本。</span></p><p><span>9.10 我們保留對本《協議》的最終解釋權。</span></p><h3 id='十聯絡方式'><span>十、聯絡方式</span></h3><p><span>所有有關本《協議》及本軟件的疑問、通知、要求或請求，請發送至我們的郵箱：</span><a href='mailto:JiGuroLiu@qq.com' target='_blank' class='url'>JiGuroLiu@qq.com</a>
+<span>若無特殊情況，我們將會在7個工作日內回覆您。</span></p></div></div>
+</body>
+</html>

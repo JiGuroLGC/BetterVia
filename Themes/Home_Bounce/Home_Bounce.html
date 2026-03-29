@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<div style="font-size:40px;font-weight:bold;"><p style="display:inline;color:#FF69B4;margin:0;">Search</p><p style="display:inline;color:#FFB6C1;margin:0;"> For</p></div>
+
+<script>
+// === 搜索引擎切换功能 ===
+document.addEventListener("DOMContentLoaded", function() {
+    // 检查必需元素
+    if (!document.getElementById("search_submit") || !document.getElementById("search_input")) return;
+    
+    // 搜索引擎配置
+    const engines = {
+        i: {name: "默认", url: ""},
+        bd: {name: "百度", url: "https://m.baidu.com/s?word="},
+        gg: {name: "谷歌", url: "https://www.google.com/search?query="},
+        by: {name: "必应", url: "https://cn.bing.com/search?q="},
+        mt: {name: "秘塔", url: "https://metaso.cn/?q="},
+        sm: {name: "神马", url: "https://yz.m.sm.cn/s?q="},
+        km: {name: "Kimi", url: "https://kimi.moonshot.cn/_prefill_chat?prefill_prompt=%s&send_immediately=true&force_search=false"},
+        ai: {name: "百度AI", url: "https://chat.baidu.com/deepseek?word="},
+        go: {name: "勾勾", url: "https://gogo.webbillion.cn/search?q="},
+        yd: {name: "言得", url: "https://www.yandex.com/search/touch/?text="},
+        oh: {name: "Ocean", url: "https://oceanhero.today/web?q="},
+        dd: {name: "Duck", url: "https://duckduckgo.com/?q="},
+        gk: {name: "夸克", url: "https://quark.sm.cn/s?q="},
+        sg: {name: "搜狗", url: "https://m.sogou.com/web/searchList.jsp?keyword="},
+        hs: {name: "360", url: "https://m.so.com/s?q="},
+        tt: {name: "头条", url: "https://so.toutiao.com/search?keyword="},
+        bb: {name: "B站", url: "https://m.bilibili.com/search?keyword="},
+        wxt: {name: "微信文章", url: "https://weixin.sogou.com/weixinwap?type=2&query="},
+        zht: {name: "知乎帖", url: "https://m.sogou.com/web/searchList.jsp?insite=zhihu.com&keyword="},
+        tb: {name: "贴吧", url: "https://tieba.baidu.com/mo/q/hybrid/search?keyword="},
+        wb: {name: "微博", url: "https://s.weibo.com/weibo/%s"},
+        wz: {name: "无追", url: "https://wuzhuiso.com/s?q="},
+        zh: {name: "知乎", url: "https://www.zhihu.com/search?q="},
+        c: {name: "其他", url: localStorage.c || ""},
+        m: {name: "重设", disabled: (!localStorage.c || localStorage.se !== "c") ? "disabled" : ""}
+    };
+    
+    const search_submit = document.getElementById("search_submit");
+    const o_search = window.search;
+    const select = localStorage.se || "i";
+    const search_input = document.getElementById("search_input");
+    
+    // 创建切换按钮
+    const switch_btn = document.createElement("button");
+    switch_btn.id = "switch_btn";
+    switch_btn.type = "button";
+    switch_btn.classList.add("url");
+    switch_btn.textContent = engines[select].name;
+    search_submit.parentElement.insertBefore(switch_btn, search_submit);
+    
+    // 创建切换窗口
+    const switch_window = document.createElement("div");
+    switch_window.id = "switch_window";
+    document.body.appendChild(switch_window);
+    
+    // 填充引擎选项
+    switch_window.innerHTML = Object.keys(engines).map(key => 
+        `<div class="url switch_engine ${key === select ? 'active' : ''}" 
+              data-key="${key}" 
+              ${engines[key].disabled || ''}>${engines[key].name}</div>`
+    ).join('');
+    
+    // 更新窗口位置
+    const updatePosition = () => {
+        const btn_rect = switch_btn.getBoundingClientRect();
+        const scrollTop = window.scrollY;
+        switch_window.style.left = btn_rect.left + "px";
+        switch_window.style.top = (btn_rect.bottom + scrollTop + 5) + "px";
+    };
+    
+    updatePosition();
+    window.addEventListener("resize", () => setTimeout(updatePosition, 100));
+    search_input.addEventListener("focus", updatePosition);
+    
+    // 切换按钮事件
+    switch_btn.addEventListener("click", e => {
+        e.stopPropagation();
+        e.preventDefault();
+        const isActive = switch_btn.classList.contains("active");
+        switch_btn.classList.toggle("active", !isActive);
+        switch_window.classList.toggle("active", !isActive);
+        updatePosition();
+    });
+    
+    // 引擎选择事件
+    switch_window.addEventListener("click", e => {
+        const target = e.target;
+        if (!target.classList.contains("switch_engine")) return;
+        if (target.hasAttribute("disabled")) return;
+        
+        const key = target.dataset.key;
+        
+        if (key === "c") {
+            const url = prompt("请输入自定义搜索引擎URL（使用%s作为搜索词占位符）：", localStorage.c || "");
+            if (url !== null) {
+                const trimmed = url.trim();
+                if (trimmed) {
+                    localStorage.c = trimmed;
+                    localStorage.se = "c";
+                    switch_btn.textContent = engines.c.name;
+                    document.querySelectorAll(".switch_engine").forEach(el => 
+                        el.classList.toggle("active", el.dataset.key === "c")
+                    );
+                }
+            }
+        } else if (key === "m") {
+            if (localStorage.c) {
+                localStorage.removeItem("c");
+                localStorage.se = "i";
+                switch_btn.textContent = engines.i.name;
+                document.querySelectorAll(".switch_engine").forEach(el => 
+                    el.classList.toggle("active", el.dataset.key === "i")
+                );
+                alert("自定义搜索引擎已重置");
+            }
+        } else {
+            localStorage.se = key;
+            switch_btn.textContent = engines[key].name;
+            document.querySelectorAll(".switch_engine").forEach(el => 
+                el.classList.toggle("active", el.dataset.key === key)
+            );
+        }
+        
+        switch_btn.classList.remove("active");
+        switch_window.classList.remove("active");
+    });
+    
+    // 点击外部关闭
+    document.addEventListener("click", e => {
+        if (!switch_btn.contains(e.target) && !switch_window.contains(e.target)) {
+            switch_btn.classList.remove("active");
+            switch_window.classList.remove("active");
+        }
+    });
+    
+    // 重写搜索函数
+    window.search = () => {
+        const val = search_input.value.trim();
+        if (!val) return false;
+        
+        const key = localStorage.se || "i";
+        const url = engines[key].url;
+        
+        if (key === "i") {
+            search_input.value = url + val;
+        } else {
+            search_input.value = /%[sS@]/.test(url) ? 
+                url.replace(/%[sS@]/g, val) : url + val;
+        }
+        
+        o_search();
+        return false;
+    };
+});
+</script>
+
+<script>
+// === 一言API ===
+(function() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://v1.jinrishici.com/all.txt');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            document.title = xhr.responseText;
+        }
+    };
+    xhr.send();
+})();
+</script>
+
+<script>
+// === 禁用手势 ===
+Object.defineProperty(window, 'initGesture', {value: () => null});
+</script>
+</body>
+</html>

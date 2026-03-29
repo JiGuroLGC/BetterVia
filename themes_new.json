@@ -1,0 +1,204 @@
+{
+  "themes": [
+    {
+      "id": "concise",
+      "names": {
+        "zh-CN": "简洁",
+        "zh-TW": "簡潔",
+        "en": "Concise"
+      },
+      "authors": {
+        "zh-CN": "@半烟半雨溪桥畔",
+        "zh-TW": "@半烟半雨溪桥畔",
+        "en": "@半烟半雨溪桥畔"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Concise/Home_Concise.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Concise/Home_Concise.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Concise/Home_Concise.css"
+      }
+    },
+    {
+      "id": "sakura",
+      "names": {
+        "zh-CN": "樱花",
+        "zh-TW": "櫻花",
+        "en": "Sakura"
+      },
+      "authors": {
+        "zh-CN": "@ruolin",
+        "zh-TW": "@ruolin",
+        "en": "@ruolin"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Sakura/Home_Sakura.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Sakura/Home_Sakura.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Sakura/Home_Sakura.css"
+      }
+    },
+        {
+      "id": "bounce",
+      "names": {
+        "zh-CN": "跳跃",
+        "zh-TW": "跳躍",
+        "en": "Bounce"
+      },
+      "authors": {
+        "zh-CN": "@Clover_bee",
+        "zh-TW": "@Clover_bee",
+        "en": "@Clover_bee"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Bounce/Home_Bounce.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Bounce/Home_Bounce.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Bounce/Home_Bounce.css"
+      }
+    },
+    {
+      "id": "plus",
+      "names": {
+        "zh-CN": "Via Plus",
+        "zh-TW": "Via Plus",
+        "en": "Via Plus"
+      },
+      "authors": {
+        "zh-CN": "@wummu（该主题仅支持深色模式）",
+        "zh-TW": "@wummu（該主題僅支持深色模式）",
+        "en": "@wummu (This theme only supports dark mode)"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Plus/Home_Plus.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Plus/Home_Plus.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Plus/Home_Plus.css"
+      }
+    },
+        {
+      "id": "flow",
+      "names": {
+        "zh-CN": "流光",
+        "zh-TW": "流光",
+        "en": "Flow"
+      },
+      "authors": {
+        "zh-CN": "@不知道取什么名aaa",
+        "zh-TW": "@不知道取什么名aaa",
+        "en": "@不知道取什么名aaa"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Flow/Home_Flow.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Flow/Home_Flow.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Flow/Home_Flow.css"
+      }
+    },
+        {
+      "id": "pig",
+      "names": {
+        "zh-CN": "彩虹小猪",
+        "zh-TW": "彩虹小猪",
+        "en": "Rainbow Pig"
+      },
+      "authors": {
+        "zh-CN": "@轩辕落雪",
+        "zh-TW": "@轩辕落雪",
+        "en": "@轩辕落雪"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Pig/Home_Pig.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Pig/Home_Pig.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Pig/Home_Pig.css"
+      }
+    },
+      {
+      "id": "bear",
+      "names": {
+        "zh-CN": "白熊",
+        "zh-TW": "白熊",
+        "en": "Bear"
+      },
+      "authors": {
+        "zh-CN": "@银太",
+        "zh-TW": "@银太",
+        "en": "@银太"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Bear/Home_Bear.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Bear/Home_Bear.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Bear/Home_Bear.css"
+      }
+    },
+    {
+      "id": "card",
+      "names": {
+        "zh-CN": "卡片",
+        "zh-TW": "卡片",
+        "en": "Card"
+      },
+      "authors": {
+        "zh-CN": "@坐忆",
+        "zh-TW": "@坐忆",
+        "en": "@坐忆"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Card/Home_Card.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Card/Home_Card.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Card/Home_Card.css"
+      }
+    },
+    {
+      "id": "oneplus",
+      "names": {
+        "zh-CN": "一加",
+        "zh-TW": "一加",
+        "en": "OnePlus"
+      },
+      "authors": {
+        "zh-CN": "@東京下小雨",
+        "zh-TW": "@東京下小雨",
+        "en": "@東京下小雨"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Oneplus/Home_Oneplus.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Oneplus/Home_Oneplus.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Oneplus/Home_Oneplus.css"
+      }
+    },
+    {
+      "id": "modern",
+      "names": {
+        "zh-CN": "现代",
+        "zh-TW": "現代",
+        "en": "Modern"
+      },
+      "authors": {
+        "zh-CN": "@四层的鸡腿堡",
+        "zh-TW": "@四层的鸡腿堡",
+        "en": "@四层的鸡腿堡"
+      },
+      "previewUrl": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Modern/Home_Modern.jpg",
+      "htmlUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Modern/Home_Modern.html"
+      },
+      "cssUrls": {
+        "sourse": "https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/Themes/Home_Modern/Home_Modern.css"
+      }
+    }
+  ]
+}

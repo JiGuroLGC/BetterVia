@@ -1,0 +1,54 @@
+{
+    "comment": "当此文件为空或只包含comment字段时，模块将使用内置的本地Mapping。下方可添加对应版本的mapping信息",
+    "versions": [
+        {
+            "versionCode": 20260211,
+            "versionName": "7.0.0",
+            "mappings": {
+                "VIA_CHECK_CLASS": {
+                    "className": "k.a.c0.i.k",
+                    "methodName": "u",
+                    "parameterClassName": "k.a.c0.i.a"
+                },
+                "PRIVACY_LOCK_WHITELIST": {
+                    "className": "k.a.o0.g7",
+                    "methodName": "f3"
+                },
+                "PRIVACY_LOCK_OVERLAY": {
+                    "className": "e.h.g.g.a0$a",
+                    "methodName": "a"
+                },
+                "SETTINGS_ITEM_CLASS": {
+                    "className": "e.h.g.g.y"
+                },
+                "COMPONENT_BLOCK_CLASS": {
+                    "className": "e.h.g.g.n"
+                },
+                "COMPONENT_CHECK_METHOD": {
+                    "className": "k.a.o0.g6",
+                    "methodName": "X1"
+                },
+                "FIREBASE_ANALYTICS": {
+                    "className": "com.google.firebase.analytics.FirebaseAnalytics",
+                    "methodName": "a"
+                },
+                "PRIVACY_LOCK_VERIFY_1": {
+                    "className": "k.a.y.bb",
+                    "methodName": "B"
+                },
+                "PRIVACY_LOCK_VERIFY_2": {
+                    "className": "k.a.z.b0.f",
+                    "methodName": "f"
+                },
+                "SCRIPT_REPO_1": {
+                    "className": "k.a.c0.l.c",
+                    "methodName": "g"
+                },
+                "SCRIPT_REPO_2": {
+                    "className": "k.a.y.ya",
+                    "methodName": "Sb"
+                }
+            }
+        }
+    ]
+}

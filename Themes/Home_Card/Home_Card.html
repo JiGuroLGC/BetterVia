@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- ✅ 告诉浏览器：本页支持浅色/深色 -->
+  <meta name="color-scheme" content="light dark">
+
+  <!-- ✅ theme-color 做成跟随系统（支持的浏览器会用对应值） -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F0F5FB">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0B0F14">
+
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600&family=Antonio:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Home</title>
+</head>
+
+<body>
+  <div class="main-wrapper" onclick="event.preventDefault(); event.stopPropagation(); return false;">
+    <div class="title-box">START<br>SEARCH</div>
+
+    <div class="cards-grid">
+      <div class="card-cell bg-blue" onclick="event.stopPropagation(); window.location.href='https://gemini.google.com'">
+        <span class="material-symbols-outlined icon-large">auto_awesome</span>
+        <span class="card-name">AI</span>
+      </div>
+
+      <div class="card-cell bg-gray" onclick="event.stopPropagation(); window.location.href='https://news.google.com'">
+        <span class="material-symbols-outlined icon-large dark-icon">newspaper</span>
+        <span class="card-name dark-text">NEWS</span>
+      </div>
+
+      <div class="card-cell bg-gray" onclick="event.stopPropagation(); window.location.href='https://www.taobao.com'">
+        <span class="material-symbols-outlined icon-large dark-icon">shopping_bag</span>
+        <span class="card-name dark-text">SHOP</span>
+      </div>
+
+      <div class="card-cell bg-gray" onclick="event.stopPropagation(); window.location.href='https://www.youtube.com'">
+        <span class="material-symbols-outlined icon-large dark-icon">smart_display</span>
+        <span class="card-name dark-text">YOUTUBE</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const engines = {
+    i:    { name: "默认", url: "" },
+    bd:   { name: "百度", url: "https://www.baidu.com/s?word=" },
+    gg:   { name: "谷歌", url: "https://www.google.com/search?q=" },
+    bing: { name: "必应", url: "https://cn.bing.com/search?q=" },
+    fs:   { name: "F 搜", url: "https://fsoufsou.com/search?q=" },
+    gk:   { name: "夸克", url: "https://quark.sm.cn/s?q=" },
+    wz:   { name: "无追", url: "https://www.wuzhuiso.com/s?q=" },
+    sg:   { name: "搜狗", url: "https://m.sogou.com/web/searchList.jsp?keyword=" },
+    hs:   { name: "360",  url: "https://m.so.com/s?q=" },
+    tt:   { name: "头条", url: "https://so.toutiao.com/search?keyword=" },
+  };
+
+  const bar = document.querySelector(".search_bar");
+  if (!bar) return;
+
+  const input =
+    bar.querySelector("input") ||
+    bar.querySelector("textarea") ||
+    bar.querySelector("[contenteditable='true']");
+  if (!input) return;
+
+  const submitBtn =
+    bar.querySelector("#search_submit") ||
+    bar.querySelector("button[type='submit']") ||
+    bar.querySelector("button") ||
+    bar.querySelector("[role='button']");
+  if (!submitBtn) return;
+
+  // ==== 输入法/浏览器提示：不强行关闭（保留属性设置即可）====
+  input.setAttribute("autocorrect", "off");
+  input.setAttribute("autocapitalize", "off");
+  input.setAttribute("spellcheck", "false");
+  if (!input.getAttribute("name")) input.setAttribute("name", "q");
+  input.setAttribute("inputmode", "search");
+
+  // =========================================================
+  // ✅（你满意的部分）联想框处理：保留该逻辑不变的思路
+  //    - 通过观察并“停靠/替换 children”的方式，让它不会在页面底部乱出现
+  // =========================================================
+  const sugDock = document.createElement("div");
+  sugDock.id = "sugDock";
+  document.body.appendChild(sugDock);
+
+  const isOurUI = (el) => {
+    if (!el || el.nodeType !== 1) return true;
+    return el.id === "seBtn" || el.id === "seMenu" || el.id === "sugDock" || el.closest("#seMenu") || el.closest("#sugDock");
+  };
+
+  const SUG_SELECTORS = [
+    '[id*="suggest"]','[class*="suggest"]',
+    '[id*="autocomplete"]','[class*="autocomplete"]',
+    '[id*="recommend"]','[class*="recommend"]',
+    '[id*="hint"]','[class*="hint"]',
+    '[id*="candidate"]','[class*="candidate"]',
+    '[id*="assoc"]','[class*="assoc"]',
+    '.opSug_wpr'
+  ];
+
+  const pickSuggestRoots = () => {
+    const nodes = Array.from(document.querySelectorAll(SUG_SELECTORS.join(",")));
+    return nodes.filter(el => !isOurUI(el) && el !== document.body && el !== document.documentElement);
+  };
+
+  const dockSuggest = () => {
+    const roots = pickSuggestRoots();
+    if (!roots.length) {
+      sugDock.classList.remove("active");
+      sugDock.replaceChildren();
+      return;
+    }
+
+    const candidates = roots.filter(el => {
+      const r = el.getBoundingClientRect();
+      return (r.width > 120 && r.height > 18);
+    });
+
+    const panel = candidates[0] || roots[0];
+    try {
+      sugDock.replaceChildren(panel);
+      sugDock.classList.add("active");
+    } catch {
+      sugDock.classList.add("active");
+    }
+  };
+
+  const mo = new MutationObserver(() => {
+    if (document.activeElement === input) dockSuggest();
+  });
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+
+  // =========================================================
+  // ✅ 搜索引擎按钮 + 菜单
+  // =========================================================
+  const saved = localStorage.getItem("se") || "i";
+  const curKey = engines[saved] ? saved : "i";
+  localStorage.setItem("se", curKey);
+
+  const seBtn = document.createElement("button");
+  seBtn.id = "seBtn";
+  seBtn.type = "button";
+  seBtn.textContent = engines[curKey].name;
+  document.body.appendChild(seBtn);
+
+  const seMenu = document.createElement("div");
+  seMenu.id = "seMenu";
+  seMenu.innerHTML = Object.entries(engines).map(([k, v]) => {
+    const active = (k === curKey) ? "active" : "";
+    return `<button type="button" class="se-item ${active}" data-key="${k}">${v.name}</button>`;
+  }).join("");
+  document.body.appendChild(seMenu);
+
+  let raf = 0;
+
+  const placeBtnMenuAndSug = () => {
+    const r = bar.getBoundingClientRect();
+    const top = r.top + window.scrollY;
+    const left = r.left + window.scrollX;
+
+    // 引擎按钮贴住搜索框
+    seBtn.style.top  = (top + (r.height - 32) / 2) + "px";
+    seBtn.style.left = (left + 12) + "px";
+
+    // 菜单
+    seMenu.style.top = (r.bottom + window.scrollY + 8) + "px";
+    seMenu.style.left = left + "px";
+    seMenu.style.width = r.width + "px";
+
+    // 联想停靠区
+    sugDock.style.top = (r.bottom + window.scrollY + 8) + "px";
+    sugDock.style.left = left + "px";
+    sugDock.style.width = r.width + "px";
+  };
+
+  // ✅ 跟随定位：用于键盘弹出/收起时搜索框位置变化（避免残影错位）
+  const startFollow = (ms = 0) => {
+    cancelAnimationFrame(raf);
+    const t0 = performance.now();
+
+    const tick = () => {
+      placeBtnMenuAndSug();
+      if (ms > 0 && performance.now() - t0 > ms) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+        return;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+  };
+
+  const stopFollow = () => {
+    cancelAnimationFrame(raf);
+    raf = 0;
+  };
+
+  const showBtn = () => {
+    seBtn.classList.add("show");
+    // 聚焦：文字从按钮右侧开始（CSS 负责过渡）
+    try { input.style.setProperty("padding-left", "88px", "important"); } catch {}
+    placeBtnMenuAndSug();
+    startFollow(); // 聚焦期间持续跟随
+  };
+
+  const hideAll = () => {
+    // 失焦：文字顺滑顶回左侧
+    try { input.style.setProperty("padding-left", "14px", "important"); } catch {}
+
+    // 收起菜单
+    seBtn.classList.remove("active");
+    seMenu.classList.remove("active");
+
+    // ✅ 按钮开始淡出，但仍短暂跟随搜索框回弹（避免残影）
+    seBtn.classList.remove("show");
+
+    // 联想 dock 收起（保留你满意的逻辑思路）
+    sugDock.classList.remove("active");
+    sugDock.replaceChildren();
+
+    // ✅ 关键：键盘收起/页面回弹的 260ms 内继续跟随
+    startFollow(260);
+    setTimeout(() => stopFollow(), 300);
+  };
+
+  // ---- blur 关闭策略：点击按钮/菜单不触发 hide ----
+  let pointerDownInMenu = false;
+  const markPointerDown = (e) => {
+    pointerDownInMenu = seBtn.contains(e.target) || seMenu.contains(e.target);
+  };
+  document.addEventListener("pointerdown", markPointerDown, true);
+  document.addEventListener("mousedown", markPointerDown, true);
+  document.addEventListener("touchstart", markPointerDown, true);
+
+  input.addEventListener("focus", () => {
+    showBtn();
+    dockSuggest();
+  });
+
+  input.addEventListener("blur", () => {
+    setTimeout(() => {
+      if (pointerDownInMenu) return;
+      if (seMenu.classList.contains("active")) return;
+      hideAll();
+    }, 120);
+  });
+
+  // 初始：未聚焦隐藏
+  hideAll();
+
+  const openMenu = () => {
+    placeBtnMenuAndSug();
+    seBtn.classList.add("active");
+    seMenu.classList.add("active");
+  };
+  const closeMenu = () => {
+    seBtn.classList.remove("active");
+    seMenu.classList.remove("active");
+  };
+  const toggleMenu = () => {
+    if (seMenu.classList.contains("active")) closeMenu();
+    else openMenu();
+  };
+
+  seBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (input.focus) input.focus();
+    toggleMenu();
+  });
+
+  seMenu.addEventListener("click", (e) => {
+    const item = e.target.closest(".se-item");
+    if (!item) return;
+
+    const k = item.dataset.key;
+    if (!engines[k]) return;
+
+    localStorage.setItem("se", k);
+    seBtn.textContent = engines[k].name;
+
+    seMenu.querySelectorAll(".se-item").forEach(el => {
+      el.classList.toggle("active", el.dataset.key === k);
+    });
+
+    closeMenu();
+    if (input.focus) input.focus();
+  });
+
+  document.addEventListener("pointerdown", (e) => {
+    if (seBtn.contains(e.target)) return;
+    if (seMenu.contains(e.target)) return;
+    closeMenu();
+  });
+
+  const doSearch = () => {
+    const kw = (input.value || "").trim();
+    if (!kw) return;
+
+    const key = localStorage.getItem("se") || "i";
+    const prefix = engines[key]?.url ?? "";
+
+    if (!prefix) {
+      submitBtn.click();
+      return;
+    }
+    window.location.href = prefix + encodeURIComponent(kw);
+  };
+
+  submitBtn.addEventListener("click", (e) => {
+    const key = localStorage.getItem("se") || "i";
+    if (key === "i") return;
+    e.preventDefault();
+    e.stopPropagation();
+    doSearch();
+  }, true);
+
+  if (input.tagName) {
+    const tag = input.tagName.toLowerCase();
+    if (tag === "input" || tag === "textarea") {
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          const key = localStorage.getItem("se") || "i";
+          if (key === "i") return;
+          e.preventDefault();
+          doSearch();
+        }
+      });
+    }
+  }
+
+  window.addEventListener("resize", placeBtnMenuAndSug);
+  window.addEventListener("scroll", placeBtnMenuAndSug, true);
+
+  input.addEventListener("input", () => dockSuggest(), true);
+});
+  </script>
+</body>
+</html>
