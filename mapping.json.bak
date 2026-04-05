@@ -47,6 +47,33 @@
                 "SCRIPT_REPO_2": {
                     "className": "k.a.y.ya",
                     "methodName": "Sb"
+                },
+                "VIDEO_PLAYER_CLASS": {
+                    "className": "e.h.g.l.q"
+                },
+                "VIDEO_PLAYER_FIELD_SPEED": {
+                    "className": "e.h.g.l.q",
+                    "methodName": "D"
+                },
+                "VIDEO_PLAYER_FIELD_CALLBACK": {
+                    "className": "e.h.g.l.q",
+                    "methodName": "A"
+                },
+                "VIDEO_PLAYER_FIELD_SPEED_TEXT": {
+                    "className": "e.h.g.l.q",
+                    "methodName": "s"
+                },
+                "VIDEO_PLAYER_FIELD_START_X": {
+                    "className": "e.h.g.l.q",
+                    "methodName": "R"
+                },
+                "VIDEO_PLAYER_FIELD_START_Y": {
+                    "className": "e.h.g.l.q",
+                    "methodName": "S"
+                },
+                "VIDEO_PLAYER_CALLBACK_SET_SPEED": {
+                    "className": "e.h.g.l.q.b",
+                    "methodName": "c"
                 }
             }
         }
