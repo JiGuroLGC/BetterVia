@@ -1,5 +1,5 @@
 {
-  "versionName": "1.8.0",
+  "versionName": "1.9.0",
   "updateLog": {
     "en": "1. Added native support for version 7.1.0\n2. Switched the source from Gitee to jsDelivr\n3. Revised the layout of the main dialog box\n4. Added video playback features\n5. Added a remote announcement feature\n6. Fixed several bugs",
     "zh-CN": "1. 添加了 7.1.0 版本本地支持\n2. 更换 Gitee 源至 jsDelivr 源\n3. 修改了主对话框布局\n4. 新增了视频播放相关功能\n5. 新增远程公告功能\n6. 修复了若干错误",
