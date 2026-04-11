@@ -1,9 +1,9 @@
 {
-  "versionName": "1.8.0",
+  "versionName": "1.9.0",
   "updateLog": {
-    "en": "1. Added multi-version support and network synchronization features\n2. Add startup execution function\n3. Refactor the theme replacement logic and fix bugs related to the theme\n4. Add the function of fetching URL scheme\n5. The newly added beautification prompt function is more aligned with the Via style\n6. Beautify UI details for a smoother experience",
-    "zh-CN": "1. 添加了多版本支持和网络同步功能\n2. 新增启动执行功能\n3. 重构主题更换逻辑，修复有关主题的 Bug\n4. 新增抓取 URL 方案功能\n5. 新增美化提示功能，更贴近 Via 风格\n6. 美化 UI 细节，体验更流畅",
-    "zh-TW": "1. 添加了多版本支持和網絡同步功能\n2. 新增啟動執行功能\n3. 重構主題更換邏輯，修復有關主題的吧 Bug\n4. 新增抓取 URL 方案功能\n5. 新增美化提示功能，更貼近 Via 風格\n6. 美化 UI 細節，體驗更流暢"
+    "en": "1. Added native support for version 7.1.0\n2. Switched the source from Gitee to jsDelivr\n3. Revised the layout of the main dialog box\n4. Added video playback features\n5. Added a remote announcement feature\n6. Fixed several bugs",
+    "zh-CN": "1. 添加了 7.1.0 版本本地支持\n2. 更换 Gitee 源至 jsDelivr 源\n3. 修改了主对话框布局\n4. 新增了视频播放相关功能\n5. 新增远程公告功能\n6. 修复了若干错误",
+    "zh-TW": "1. 新增 7.1.0 版本的本地支援\n2. 將 Gitee 源更換為 jsDelivr 源\n3. 修改了主對話框的佈局\n4. 新增了影片播放相關功能\n5. 新增遠端公告功能\n6. 修復了若干錯誤"
   },
-  "apkUrl": "https://github.com/JiGuroLGC/BetterVia/releases/download/20260401_1.8.0/BetterVia_1.8.0.apk"
+  "apkUrl": "https://github.com/JiGuroLGC/BetterVia/releases/download/20260412_1.9.0/BetterVia_1.9.0.apk"
 }
