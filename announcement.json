@@ -23,7 +23,7 @@
       "zh-TW": "確定",
       "en": "Confirm"
     },
-    "action": "dismiss",
+    "action": "dismiss"
   },
   "negativeButton": {
     "enabled": false,
