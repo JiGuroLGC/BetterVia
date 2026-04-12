@@ -93,7 +93,7 @@ However, **Via** still has some shortcomings, such as incomplete features and oc
 <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/icon.png" width = "100" height = "100" alt="LOGO"/>
 
 **Via** (**mark.via** / **mark.via.gp** / **any other package name**)  
-*Supports version V7.0.0*  
+*Supports V6.6.0 and later versions*  
 
 > This project supports both the China-based and Google-based versions of Via  
 
@@ -112,6 +112,8 @@ However, **Via** still has some shortcomings, such as incomplete features and oc
 - Screenshot protection
 - Eye protection mode
 - Block components
+- Start execution
+- Video zoom speed ratio
 
 To be continued...
 
@@ -429,24 +431,27 @@ No worries. We have prepared alternative download links for you. We guarantee th
 
 ## Acknowledgments
 
-
 | Name | Link | Details |
 | :--- | :--- | :--- |
-| IntelliJ IDEA | [IntelliJ IDEA - JetBrains](https://www.jetbrains.com/idea/) | Development and packaging software |
-| AIDE + / AIDE Pro | [AIDE-Plus - GitHub](https://github.com/AndroidIDE-CN/AIDE-Plus) | Development and packaging software |
-| Android IDE | [Android IDE - GitHub](https://github.com/AndroidIDEOfficial/AndroidIDE) | Development and packaging software |
+| GitHub | [GitHub - Change is constant](https://github.com/) | Open-source platform |
+| IntelliJ IDEA | [IntelliJ IDEA - JetBrains](https://www.jetbrains.com/idea/) | Software Development and Packaging |
+| AIDE + / AIDE Pro | [AIDE-Plus - GitHub](https://github.com/AndroidIDE-CN/AIDE-Plus) | Software Development and Packaging |
+| Android IDE | [Android IDE - GitHub](https://github.com/AndroidIDEOfficial/AndroidIDE) | Software Development and Packaging |
 | AOSP | [Android Open Source Project](https://source.android.google.cn) | Provides resources and references |
 | Xposed Framework API | [Xposed Framework API](https://api.xposed.info) | Provides Xposed interface support |
+| jsDelivr | [jsDelivr - A free, fast, and reliable CDN](https://www.jsdelivr.com/) | Provides CDN acceleration services |
 | apksig | [apksig - mvnrepository](https://mvnrepository.com/artifact/com.android.tools.build/apksig) | Provides APK signing support |
 | MT Manager | [MT Official Website](https://mt2.cn) | Manages projects, etc. |
-| NP Manager | [NP-Manager - Github](https://github.com/githubXiaowangzi/NP-Manager) | Provides obfuscation protection support |
+| NP Manager | [NP-Manager - GitHub](https://github.com/githubXiaowangzi/NP-Manager) | Provides obfuscation protection |
 | DeepSeek | [DeepSeek - Deep Exploration](https://www.deepseek.com) | Assists with programming and file organization |
-| Kimi | [Kimi AI Official Website](https://www.kimi.com) | Programming assistance and file organization |
-| ChatGPT | [ChatGPT Official Website](https://chatgpt.com) | Programming assistance and file organization |
-| Google Gemini | [Google Gemini](https://gemini.google.com) | Programming assistance and file organization |
-| iFlow | [iFlow - Flow Open Platform](https://platform.iflow.cn) | Programming assistance and file organization |
-| Coolapk @半烟半雨溪桥畔 | [HalfDreamHalfAwake - Gitee](https://gitee.com/daybreak166/) | Provides themes and reference materials |
-| Coolapk @sgfox | [sgfox - Shihui Collection](https://www.sgfox.cc/archives/via-shisui.html) | Provides "Shihui" content |
+| Kimi | [Kimi AI Official Site](https://www.kimi.com) | Assists with programming and file organization |
+| ChatGPT | [ChatGPT Official Site](https://chatgpt.com) | Assists with programming and file organization |
+| Google Gemini | [Google Gemini](https://gemini.google.com) | Assists with programming and file organization |
+| iFlow | [iFlow - Flow Open Platform](https://platform.iflow.cn) | Assists with programming and file organization |
+| Hitokoto | [Hitokoto](https://hitokoto.cn) | Provides sentence API support |
+| HTML2WEB | [HTML2WEB - Paste code, share ideas](https://www.html2web.com) | Provides online file hosting |
+| Coolapk @半烟半雨溪桥畔 | [Half-Awake - Gitee](https://gitee.com/daybreak166/) | Provides resources such as themes |
+| Coolapk @sgfox | [sgfox - Shisui and Organizing](https://www.sgfox.cc/archives/via-shisui.html) | Provides "Shisui" content |
 
 > [!NOTE]
 > Due to the large number of entries, they are not listed individually here. For details, please refer to the respective module pages.
