@@ -1,81 +1,87 @@
 {
-    "comment": "当此文件为空或只包含comment字段时，模块将使用内置的本地Mapping。下方可添加对应版本的mapping信息",
-    "versions": [
-        {
-            "versionCode": 20260211,
-            "versionName": "7.0.0",
-            "mappings": {
-                "VIA_CHECK_CLASS": {
-                    "className": "k.a.c0.i.k",
-                    "methodName": "u",
-                    "parameterClassName": "k.a.c0.i.a"
-                },
-                "PRIVACY_LOCK_WHITELIST": {
-                    "className": "k.a.o0.g7",
-                    "methodName": "f3"
-                },
-                "PRIVACY_LOCK_OVERLAY": {
-                    "className": "e.h.g.g.a0$a",
-                    "methodName": "a"
-                },
-                "SETTINGS_ITEM_CLASS": {
-                    "className": "e.h.g.g.y"
-                },
-                "COMPONENT_BLOCK_CLASS": {
-                    "className": "e.h.g.g.n"
-                },
-                "COMPONENT_CHECK_METHOD": {
-                    "className": "k.a.o0.g6",
-                    "methodName": "X1"
-                },
-                "FIREBASE_ANALYTICS": {
-                    "className": "com.google.firebase.analytics.FirebaseAnalytics",
-                    "methodName": "a"
-                },
-                "PRIVACY_LOCK_VERIFY_1": {
-                    "className": "k.a.y.bb",
-                    "methodName": "B"
-                },
-                "PRIVACY_LOCK_VERIFY_2": {
-                    "className": "k.a.z.b0.f",
-                    "methodName": "f"
-                },
-                "SCRIPT_REPO_1": {
-                    "className": "k.a.c0.l.c",
-                    "methodName": "g"
-                },
-                "SCRIPT_REPO_2": {
-                    "className": "k.a.y.ya",
-                    "methodName": "Sb"
-                },
-                "VIDEO_PLAYER_CLASS": {
-                    "className": "e.h.g.l.q"
-                },
-                "VIDEO_PLAYER_FIELD_SPEED": {
-                    "className": "e.h.g.l.q",
-                    "methodName": "D"
-                },
-                "VIDEO_PLAYER_FIELD_CALLBACK": {
-                    "className": "e.h.g.l.q",
-                    "methodName": "A"
-                },
-                "VIDEO_PLAYER_FIELD_SPEED_TEXT": {
-                    "className": "e.h.g.l.q",
-                    "methodName": "s"
-                },
-                "VIDEO_PLAYER_FIELD_START_X": {
-                    "className": "e.h.g.l.q",
-                    "methodName": "R"
-                },
-                "VIDEO_PLAYER_FIELD_START_Y": {
-                    "className": "e.h.g.l.q",
-                    "methodName": "S"
-                },
-                "VIDEO_PLAYER_CALLBACK_SET_SPEED": {
-                    "className": "e.h.g.l.q.b",
-                    "methodName": "c"
-                }
-            }
+  "comment": "当此文件为空或只包含comment字段时，模块将使用内置的本地Mapping。下方可添加对应版本的mapping信息",
+  "versions": [
+    {
+      "versionCode": 20260410,
+      "versionName": "7.1.0",
+      "mappings": {
+        "VIA_CHECK_CLASS": {
+          "className": "t9.k",
+          "methodName": "u",
+          "parameterClassName": "t9.a"
+        },
+        "PRIVACY_LOCK_WHITELIST": {
+          "className": "kb.a6",
+          "methodName": "h3"
+        },
+        "PRIVACY_LOCK_OVERLAY": {
+          "className": "b6.a0$a",
+          "methodName": "a"
+        },
+        "SETTINGS_ITEM_CLASS": {
+          "className": "b6.y"
+        },
+        "COMPONENT_BLOCK_CLASS": {
+          "className": "b6.m"
+        },
+        "COMPONENT_CHECK_METHOD": {
+          "className": "kb.d",
+          "methodName": "X1"
+        },
+        "FIREBASE_ANALYTICS": {
+          "className": "com.google.firebase.analytics.FirebaseAnalytics",
+          "methodName": "a"
+        },
+        "PRIVACY_LOCK_VERIFY_1": {
+          "className": "e8.ra",
+          "methodName": "H0"
+        },
+        "PRIVACY_LOCK_VERIFY_2": {
+          "className": "v8.f",
+          "methodName": "f"
+        },
+        "SCRIPT_REPO_1": {
+          "className": "w9.c",
+          "methodName": "h"
+        },
+        "SCRIPT_REPO_2": {
+          "className": "e8.r6",
+          "methodName": "i9"
+        },
+        "VIDEO_PLAYER_CLASS": {
+          "className": "com.tuyafeng.support.widget.v"
+        },
+        "VIDEO_PLAYER_FIELD_SPEED": {
+          "className": "com.tuyafeng.support.widget.v",
+          "methodName": "z"
+        },
+        "VIDEO_PLAYER_FIELD_CALLBACK": {
+          "className": "com.tuyafeng.support.widget.v",
+          "methodName": "w"
+        },
+        "VIDEO_PLAYER_FIELD_SPEED_TEXT": {
+          "className": "com.tuyafeng.support.widget.v",
+          "methodName": "o"
+        },
+        "VIDEO_PLAYER_FIELD_START_X": {
+          "className": "com.tuyafeng.support.widget.v",
+          "methodName": "P"
+        },
+        "VIDEO_PLAYER_FIELD_START_Y": {
+          "className": "com.tuyafeng.support.widget.v",
+          "methodName": "Q"
+        },
+        "VIDEO_PLAYER_CALLBACK_SET_SPEED": {
+          "className": "com.tuyafeng.support.widget.v$b",
+          "methodName": "c"
         }
-    ]
+      },
+      "resourceMappings": {
+        "DOWNLOAD_DIALOG_COPY_LINK_BUTTON": 2131362008,
+        "DOWNLOAD_DIALOG_CANCEL_BUTTON": 2131362007,
+        "DOWNLOAD_DIALOG_OK_BUTTON": 2131362012,
+        "DOWNLOAD_DIALOG_SHARE_BUTTON": 2131488797
+      }
+    }
+  ]
 }
