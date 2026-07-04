@@ -32,7 +32,7 @@
     <string name="blog_url">https://jigurolgc.github.io</string>
     <string name="email_address">JiGuroLiu@qq.com</string>
     <string name="menu">菜单</string>
-    <string name="version_info">BetterVia v1.8.0</string>
+    <string name="version_info">BetterVia v2.0.0</string>
     <string name="copyright_info">严禁用作商业用途，违者必究</string>
     <string name="withdraw_agreement">撤回用户协议同意</string>
     <string name="withdraw_agreement_title">撤回用户协议同意</string>
@@ -44,7 +44,7 @@
 	<string name="auto_check_updates">自动检查更新</string>
 	<string name="select_update_source">选择更新源</string>
 	<string name="github">GitHub</string>
-	<string name="gitee">Gitee</string>
+	<string name="gitee">Vercel</string>
 	<string name="new_version_found">发现新版本: v%1$s</string>
 	<string name="download_now">立即下载</string>
 	<string name="later">以后再说</string>

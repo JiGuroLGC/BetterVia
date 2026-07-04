@@ -14,7 +14,6 @@ public class PermissionHelper {
 		void onPermissionResult(boolean granted, String type);
 	}
 
-	// 对用户申请root权限
 	public static void requestRootPermission(final Context context, final PermissionCallback callback) {
 		new Thread(new Runnable() {
 			public void run() {
@@ -67,4 +66,3 @@ public class PermissionHelper {
 				.putBoolean(PREF_KEY_ROOT_GRANTED, false).apply();
 	}
 }
-
