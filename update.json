@@ -1,9 +1,9 @@
 {
-  "versionName": "2.0.0",
+  "versionName": "2.1.0",
   "updateLog": {
-    "en": "1. Added native support for Via version 7.2.0\n2. Switched the jsDelivr source to a self-hosted Vercel source to speed up resource access and updates\n3. Added a user sandbox feature to protect privacy\n4. Added an online preview feature that allows real-time previews of Word, Excel, PDF, PPT, and other file types\n5. Optimized UI styling and responsiveness\n6. Fixed some minor bugs to enhance the user experience",
-    "zh-CN": "1. 添加了 Via 7.2.0 版本本地支持\n2. 更换 jsDelivr 源至自建 Vercel 源，加快资源访问更新速度\n3. 新增用户沙箱功能，保护隐私\n4. 新增在线预览功能，可实时在线预览 Word、Excel、PDF、PPT 等类型文件\n5. 优化 UI 样式和响应\n6. 修复一些细微 Bug，增强用户体验",
-    "zh-TW": "1. 新增對 Via 7.2.0 版本的本地支援\n2. 將 jsDelivr 來源更換為自建的 Vercel 來源，加快資源存取與更新速度\n3. 新增使用者沙盒功能，以保護隱私\n4. 新增線上預覽功能，可即時線上預覽 Word、Excel、PDF、PPT 等類型的檔案\n5. 優化 UI 樣式與響應性\n6. 修復若干細微錯誤，提升使用者體驗"
+    "en": "1. Upgrade from Via version 1.2.0 to the official release 1.2.1\n2. Added “Boss Gesture” feature for seamless camouflage, so you can slack off with peace of mind\n3. Added random User-agent feature to prevent tracking\n4. Optimized network sources to improve remote maintainability\n5. Fixed bugs in the script repository and user sandbox\n6. Optimized animations and UI to enhance the user experience",
+    "zh-CN": "1. 从 Via 1.2.0 版本切换到正式版 1.2.1\n2. 新增老板手势功能，完美伪装，安心摸鱼\n3. 新增随机标识功能，防止追踪\n4. 优化网络源，提升远程维护性\n5. 修复脚本仓库、用户沙箱的 Bug\n6. 优化动画和 UI，增强用户体验",
+    "zh-TW": "1. 從 Via 1.2.0 版本切換至正式版 1.2.1\n2. 新增老闆手勢功能，完美偽裝，安心偷懶\n3. 新增隨機標識功能，防止追蹤\n4. 優化網路來源，提升遠端維護性\n5. 修復腳本儲存庫及使用者沙盒的錯誤\n6. 優化動畫與使用者介面，提升使用者體驗"
   },
-  "apkUrl": "https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN@1.9.8/Releases/BetterVia_2.0.0.apk"
+  "apkUrl": "https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN@1.9.8/Releases/BetterVia_2.1.0.apk"
 }
