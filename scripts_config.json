@@ -1,0 +1,4 @@
+{
+  "description": "Vercel 源的脚本配置文件，修改\n  vercel_scripts_url 即可切换 Vercel 源所指向的真实链接",
+  "vercel_scripts_url": "https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN@1.9.8/scripts.json"
+}

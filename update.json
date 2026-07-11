@@ -5,5 +5,5 @@
     "zh-CN": "1. 添加了 Via 7.2.0 版本本地支持\n2. 更换 jsDelivr 源至自建 Vercel 源，加快资源访问更新速度\n3. 新增用户沙箱功能，保护隐私\n4. 新增在线预览功能，可实时在线预览 Word、Excel、PDF、PPT 等类型文件\n5. 优化 UI 样式和响应\n6. 修复一些细微 Bug，增强用户体验",
     "zh-TW": "1. 新增對 Via 7.2.0 版本的本地支援\n2. 將 jsDelivr 來源更換為自建的 Vercel 來源，加快資源存取與更新速度\n3. 新增使用者沙盒功能，以保護隱私\n4. 新增線上預覽功能，可即時線上預覽 Word、Excel、PDF、PPT 等類型的檔案\n5. 優化 UI 樣式與響應性\n6. 修復若干細微錯誤，提升使用者體驗"
   },
-  "apkUrl": "https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN@1.9.7/Releases/BetterVia_2.0.0.apk"
+  "apkUrl": "https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN@1.9.8/Releases/BetterVia_2.0.0.apk"
 }
