@@ -123,7 +123,7 @@ public class ViaClassMapping {
 
 	private static final Map<ResourceKey, ResourceMapping> DEFAULT_RESOURCE_MAPPINGS = new HashMap<>();
 
-	private static final int[] DEFAULT_VERSION_CODES = {20260703, 20260410, 20260211, 20251223, 20251024, 20250907,
+	private static final int[] DEFAULT_VERSION_CODES = {20260706, 20260410, 20260211, 20251223, 20251024, 20250907,
 			20250713};
 
 	static {
@@ -164,14 +164,14 @@ public class ViaClassMapping {
 				new ClassMethodMapping("com.tuyafeng.support.widget.v", "Q", ""));
 		v720Map.put(ClassMethodKey.VIDEO_PLAYER_CALLBACK_SET_SPEED,
 				new ClassMethodMapping("com.tuyafeng.support.widget.v$b", "c", ""));
-		VERSION_MAPPINGS.put(20260703, v720Map);
+		VERSION_MAPPINGS.put(20260706, v720Map);
 
 		Map<ResourceKey, ResourceMapping> v720ResourceMap = new HashMap<>();
 		v720ResourceMap.put(ResourceKey.DOWNLOAD_DIALOG_COPY_LINK_BUTTON, new ResourceMapping(0x7f0900c8));
 		v720ResourceMap.put(ResourceKey.DOWNLOAD_DIALOG_CANCEL_BUTTON, new ResourceMapping(0x7f0900c7));
 		v720ResourceMap.put(ResourceKey.DOWNLOAD_DIALOG_OK_BUTTON, new ResourceMapping(0x7f0900cc));
 		v720ResourceMap.put(ResourceKey.DOWNLOAD_DIALOG_SHARE_BUTTON, new ResourceMapping(0x7f09abcd));
-		RESOURCE_ID_MAPPINGS.put(20260703, v720ResourceMap);
+		RESOURCE_ID_MAPPINGS.put(20260706, v720ResourceMap);
 
 		Map<ClassMethodKey, ClassMethodMapping> v710Map = new HashMap<>();
 		v710Map.put(ClassMethodKey.VIA_CHECK_CLASS, new ClassMethodMapping("t9.k", "u", "t9.a"));

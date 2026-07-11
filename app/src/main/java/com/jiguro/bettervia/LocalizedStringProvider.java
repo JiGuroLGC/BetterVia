@@ -356,6 +356,238 @@ public class LocalizedStringProvider {
 		addLocalizedString("screenshot_protection_hint", "en",
 				"Prevent third-party apps from taking screenshots or recording screen to protect privacy");
 
+		addLocalizedString("random_ua_title", "zh-CN", "随机标识");
+		addLocalizedString("random_ua_title", "zh-TW", "隨機標識");
+		addLocalizedString("random_ua_title", "en", "Random User-Agent");
+
+		addLocalizedString("random_ua_config", "zh-CN", "配置");
+		addLocalizedString("random_ua_config", "zh-TW", "配置");
+		addLocalizedString("random_ua_config", "en", "Config");
+
+		addLocalizedString("random_ua_hint", "zh-CN", "随机生成浏览器标识，防止追踪");
+		addLocalizedString("random_ua_hint", "zh-TW", "隨機生成瀏覽器標識，以防止追蹤");
+		addLocalizedString("random_ua_hint", "en", "Generate random User-Agent to prevent tracking");
+
+		addLocalizedString("random_ua_dialog_title", "zh-CN", "随机标识");
+		addLocalizedString("random_ua_dialog_title", "zh-TW", "隨機標識");
+		addLocalizedString("random_ua_dialog_title", "en", "Random User-Agent");
+
+		addLocalizedString("random_ua_dialog_subtitle", "zh-CN", "自定义随机标识的生成范围");
+		addLocalizedString("random_ua_dialog_subtitle", "zh-TW", "自訂隨機標識的生成範圍");
+		addLocalizedString("random_ua_dialog_subtitle", "en", "Customize the generation range of random User-Agent");
+
+		addLocalizedString("random_ua_enable", "zh-CN", "启用随机标识");
+		addLocalizedString("random_ua_enable", "zh-TW", "啟用隨機標識");
+		addLocalizedString("random_ua_enable", "en", "Enable Random User-Agent");
+
+		addLocalizedString("random_ua_enable_hint", "zh-CN", "开启后，每次进入浏览器随机生成新的标识");
+		addLocalizedString("random_ua_enable_hint", "zh-TW", "啟用後，每次開啟瀏覽器時都會隨機產生新的標識");
+		addLocalizedString("random_ua_enable_hint", "en",
+				"Once enabled, a new User-Agent is randomly generated each time you open the browser");
+
+		addLocalizedString("random_ua_notes_title", "zh-CN", "注意事项");
+		addLocalizedString("random_ua_notes_title", "zh-TW", "注意事項");
+		addLocalizedString("random_ua_notes_title", "en", "Notes");
+
+		addLocalizedString("random_ua_notes_content", "zh-CN",
+				"• 随机标识仅修改浏览器的 User-Agent 字符串，不影响其他隐私设置。\n" + "• 部分网站可能因 User-Agent 异常而显示异常或拒绝访问，如遇问题请关闭此功能。\n"
+						+ "• 建议保留至少一个平台和一个浏览器选项，以确保正常的浏览体验。\n" + "• 随机标识仅在您指定的平台和浏览器范围内生成。");
+		addLocalizedString("random_ua_notes_content", "zh-TW",
+				"• 隨機標識僅修改瀏覽器的 User-Agent 字符串，不影響其他隱私設置。\n" + "• 部分網站可能因 User-Agent 異常而顯示異常或拒絕訪問，如遇問題請關閉此功能。\n"
+						+ "• 建議保留至少一個平台和一個瀏覽器選項，以確保正常的瀏覽體驗。\n" + "• 隨機標識僅在您指定的平台和瀏覽器範圍內生成。");
+		addLocalizedString("random_ua_notes_content", "en",
+				"• Random User-Agent only modifies the browser's User-Agent string and does not affect other privacy settings.\n"
+						+ "• Some websites may display abnormally or refuse access due to unusual User-Agent. Disable this feature if you encounter issues.\n"
+						+ "• It is recommended to keep at least one platform and one browser option for a normal browsing experience.\n"
+						+ "• Random User-Agent is generated only within your specified platform and browser range.");
+
+		addLocalizedString("random_ua_config_section", "zh-CN", "参数配置");
+		addLocalizedString("random_ua_config_section", "zh-TW", "參數配置");
+		addLocalizedString("random_ua_config_section", "en", "Parameter Configuration");
+
+		addLocalizedString("random_ua_platform_label", "zh-CN", "目标平台");
+		addLocalizedString("random_ua_platform_label", "zh-TW", "目標平台");
+		addLocalizedString("random_ua_platform_label", "en", "Target Platform");
+
+		addLocalizedString("random_ua_platform_android", "zh-CN", "Android");
+		addLocalizedString("random_ua_platform_android", "zh-TW", "Android");
+		addLocalizedString("random_ua_platform_android", "en", "Android");
+
+		addLocalizedString("random_ua_platform_ios", "zh-CN", "iOS");
+		addLocalizedString("random_ua_platform_ios", "zh-TW", "iOS");
+		addLocalizedString("random_ua_platform_ios", "en", "iOS");
+
+		addLocalizedString("random_ua_platform_windows", "zh-CN", "Windows");
+		addLocalizedString("random_ua_platform_windows", "zh-TW", "Windows");
+		addLocalizedString("random_ua_platform_windows", "en", "Windows");
+
+		addLocalizedString("random_ua_platform_macos", "zh-CN", "macOS");
+		addLocalizedString("random_ua_platform_macos", "zh-TW", "macOS");
+		addLocalizedString("random_ua_platform_macos", "en", "macOS");
+
+		addLocalizedString("random_ua_platform_linux", "zh-CN", "Linux");
+		addLocalizedString("random_ua_platform_linux", "zh-TW", "Linux");
+		addLocalizedString("random_ua_platform_linux", "en", "Linux");
+
+		addLocalizedString("random_ua_browser_label", "zh-CN", "浏览器类型");
+		addLocalizedString("random_ua_browser_label", "zh-TW", "瀏覽器類型");
+		addLocalizedString("random_ua_browser_label", "en", "Browser Type");
+
+		addLocalizedString("random_ua_browser_chrome", "zh-CN", "Chrome");
+		addLocalizedString("random_ua_browser_chrome", "zh-TW", "Chrome");
+		addLocalizedString("random_ua_browser_chrome", "en", "Chrome");
+
+		addLocalizedString("random_ua_browser_safari", "zh-CN", "Safari");
+		addLocalizedString("random_ua_browser_safari", "zh-TW", "Safari");
+		addLocalizedString("random_ua_browser_safari", "en", "Safari");
+
+		addLocalizedString("random_ua_browser_edge", "zh-CN", "Edge");
+		addLocalizedString("random_ua_browser_edge", "zh-TW", "Edge");
+		addLocalizedString("random_ua_browser_edge", "en", "Edge");
+
+		addLocalizedString("random_ua_browser_firefox", "zh-CN", "Firefox");
+		addLocalizedString("random_ua_browser_firefox", "zh-TW", "Firefox");
+		addLocalizedString("random_ua_browser_firefox", "en", "Firefox");
+
+		addLocalizedString("random_ua_saved", "zh-CN", "随机标识设置已保存");
+		addLocalizedString("random_ua_saved", "zh-TW", "隨機標識設置已保存");
+		addLocalizedString("random_ua_saved", "en", "Random User-Agent settings saved");
+
+		addLocalizedString("random_ua_select_platform", "zh-CN", "请至少选择一个目标平台");
+		addLocalizedString("random_ua_select_platform", "zh-TW", "請至少選擇一個目標平台");
+		addLocalizedString("random_ua_select_platform", "en", "Please select at least one target platform");
+
+		addLocalizedString("random_ua_select_browser", "zh-CN", "请至少选择一个浏览器类型");
+		addLocalizedString("random_ua_select_browser", "zh-TW", "請至少選擇一個瀏覽器類型");
+		addLocalizedString("random_ua_select_browser", "en", "Please select at least one browser type");
+
+		addLocalizedString("random_ua_custom_label", "zh-CN", "高级参数（逗号分隔）");
+		addLocalizedString("random_ua_custom_label", "zh-TW", "進階參數（逗號分隔）");
+		addLocalizedString("random_ua_custom_label", "en", "Advanced Parameters (comma-separated)");
+
+		addLocalizedString("random_ua_android_versions", "zh-CN", "Android 系统版本");
+		addLocalizedString("random_ua_android_versions", "zh-TW", "Android 系統版本");
+		addLocalizedString("random_ua_android_versions", "en", "Android OS Versions");
+
+		addLocalizedString("random_ua_android_devices", "zh-CN", "安卓设备型号");
+		addLocalizedString("random_ua_android_devices", "zh-TW", "安卓設備型號");
+		addLocalizedString("random_ua_android_devices", "en", "Android Device Models");
+
+		addLocalizedString("random_ua_ios_versions", "zh-CN", "iOS 系统版本");
+		addLocalizedString("random_ua_ios_versions", "zh-TW", "iOS 系統版本");
+		addLocalizedString("random_ua_ios_versions", "en", "iOS Versions");
+
+		addLocalizedString("random_ua_windows_versions", "zh-CN", "Windows 系统标识（逗号分隔多版本）");
+		addLocalizedString("random_ua_windows_versions", "zh-TW", "Windows 系統標識（逗號分隔多版本）");
+		addLocalizedString("random_ua_windows_versions", "en",
+				"Windows OS Token (comma-separated for multiple versions)");
+
+		addLocalizedString("random_ua_macos_versions", "zh-CN", "macOS 系统标识（逗号分隔多版本）");
+		addLocalizedString("random_ua_macos_versions", "zh-TW", "macOS 系統標識（逗號分隔多版本）");
+		addLocalizedString("random_ua_macos_versions", "en", "macOS Token (comma-separated for multiple versions)");
+
+		addLocalizedString("random_ua_linux_versions", "zh-CN", "Linux 系统标识（逗号分隔多版本）");
+		addLocalizedString("random_ua_linux_versions", "zh-TW", "Linux 系統標識（逗號分隔多版本）");
+		addLocalizedString("random_ua_linux_versions", "en", "Linux Token (comma-separated for multiple versions)");
+
+		addLocalizedString("boss_gesture_title", "zh-CN", "老板手势");
+		addLocalizedString("boss_gesture_title", "zh-TW", "老闆手勢");
+		addLocalizedString("boss_gesture_title", "en", "Boss Gesture");
+
+		addLocalizedString("boss_gesture_config", "zh-CN", "配置");
+		addLocalizedString("boss_gesture_config", "zh-TW", "配置");
+		addLocalizedString("boss_gesture_config", "en", "Config");
+
+		addLocalizedString("boss_gesture_hint", "zh-CN", "翻转手机应急避险，安心摸鱼");
+		addLocalizedString("boss_gesture_hint", "zh-TW", "將手機翻轉以應急避險，安心偷懶");
+		addLocalizedString("boss_gesture_hint", "en",
+				"Flip Your Phone to Stay Safe in an Emergency, and Feel Free to Slack Off");
+
+		addLocalizedString("boss_gesture_dialog_title", "zh-CN", "老板手势");
+		addLocalizedString("boss_gesture_dialog_title", "zh-TW", "老闆手勢");
+		addLocalizedString("boss_gesture_dialog_title", "en", "Boss Gesture");
+
+		addLocalizedString("boss_gesture_dialog_subtitle", "zh-CN", "翻转手机扣桌面时自动执行避险操作");
+		addLocalizedString("boss_gesture_dialog_subtitle", "zh-TW", "翻轉手機扣桌面時自動執行避險操作");
+		addLocalizedString("boss_gesture_dialog_subtitle", "en",
+				"Automatically execute emergency action when flipping phone face-down");
+
+		addLocalizedString("boss_gesture_enable", "zh-CN", "启用老板手势");
+		addLocalizedString("boss_gesture_enable", "zh-TW", "啟用老闆手勢");
+		addLocalizedString("boss_gesture_enable", "en", "Enable Boss Gesture");
+
+		addLocalizedString("boss_gesture_enable_hint", "zh-CN", "开启后，监控加速度传感器，检测翻转扣桌手势");
+		addLocalizedString("boss_gesture_enable_hint", "zh-TW", "開啟後，監控加速度傳感器，檢測翻轉扣桌手勢");
+		addLocalizedString("boss_gesture_enable_hint", "en",
+				"Once enabled, monitor accelerometer sensor for flip-to-face-down gesture");
+
+		addLocalizedString("boss_gesture_notes_title", "zh-CN", "注意事项");
+		addLocalizedString("boss_gesture_notes_title", "zh-TW", "注意事項");
+		addLocalizedString("boss_gesture_notes_title", "en", "Notes");
+
+		addLocalizedString("boss_gesture_notes_content", "zh-CN", "• 手势触发条件为 前置朝上(2秒内) + 快速翻转(<3秒) + 扣桌静止(>0.4秒)\n"
+				+ "• 持续监控传感器会略微增加耗电，请按需启用\n" + "• 由于算法形式限制，可能有时存在误判情况，敬请见谅\n" + "• 触发后执行的操作在下方「参数配置」中设置");
+		addLocalizedString("boss_gesture_notes_content", "zh-TW", "• 手勢觸發條件為 前置朝上(2秒內) + 快速翻轉(<3秒) + 扣桌靜止(>0.4秒)\n"
+				+ "• 持續監控傳感器會略微增加耗電，請按需啟用\n" + "• 由於算法形式的限制，有時可能會出現誤判的情況，敬請見諒\n" + "• 觸發後執行的操作在下方「參數配置」中設定");
+		addLocalizedString("boss_gesture_notes_content", "en",
+				"• Trigger conditions are Face-up (within 2s) + Quick flip (<3s) + Face-down stationary (>0.4s)\n"
+						+ "• Continuous sensor monitoring slightly increases battery drain, enable as needed\n"
+						+ "• Due to limitations in the algorithm, there may occasionally be misclassifications, we appreciate your understanding\n"
+						+ "• The action executed on trigger is configured in 'Parameter Configuration' below");
+
+		addLocalizedString("boss_gesture_config_section", "zh-CN", "参数配置");
+		addLocalizedString("boss_gesture_config_section", "zh-TW", "參數配置");
+		addLocalizedString("boss_gesture_config_section", "en", "Parameter Configuration");
+
+		addLocalizedString("boss_gesture_action_label", "zh-CN", "触发动作");
+		addLocalizedString("boss_gesture_action_label", "zh-TW", "觸發動作");
+		addLocalizedString("boss_gesture_action_label", "en", "Trigger Action");
+
+		addLocalizedString("boss_gesture_action_go_home", "zh-CN", "返回桌面");
+		addLocalizedString("boss_gesture_action_go_home", "zh-TW", "返回桌面");
+		addLocalizedString("boss_gesture_action_go_home", "en", "Go to Home Screen");
+
+		addLocalizedString("boss_gesture_action_kill_process", "zh-CN", "强制杀死进程（直接退出Via）");
+		addLocalizedString("boss_gesture_action_kill_process", "zh-TW", "強制殺死進程（直接退出Via）");
+		addLocalizedString("boss_gesture_action_kill_process", "en", "Force Kill Process (Exit Via)");
+
+		addLocalizedString("boss_gesture_action_open_app", "zh-CN", "打开指定应用（需填写包名）");
+		addLocalizedString("boss_gesture_action_open_app", "zh-TW", "打開指定應用（需填寫包名）");
+		addLocalizedString("boss_gesture_action_open_app", "en", "Open Specified App (package name required)");
+
+		addLocalizedString("boss_gesture_action_open_url", "zh-CN", "跳转网页（需填写URL）");
+		addLocalizedString("boss_gesture_action_open_url", "zh-TW", "跳轉網頁（需填寫URL）");
+		addLocalizedString("boss_gesture_action_open_url", "en", "Open URL (URL required)");
+
+		addLocalizedString("boss_gesture_action_kill_and_open", "zh-CN", "杀死Via并打开指定应用");
+		addLocalizedString("boss_gesture_action_kill_and_open", "zh-TW", "殺死Via並打開指定應用");
+		addLocalizedString("boss_gesture_action_kill_and_open", "en", "Kill Via and Open Specified App");
+
+		addLocalizedString("boss_gesture_param_label", "zh-CN", "动作参数（包名或URL，根据所选动作填写）");
+		addLocalizedString("boss_gesture_param_label", "zh-TW", "動作參數（包名或URL，根據所選動作填寫）");
+		addLocalizedString("boss_gesture_param_label", "en",
+				"Action Parameter (package name or URL based on selected action)");
+
+		addLocalizedString("boss_gesture_param_hint_none", "zh-CN", "当前动作无需参数");
+		addLocalizedString("boss_gesture_param_hint_none", "zh-TW", "當前動作無需參數");
+		addLocalizedString("boss_gesture_param_hint_none", "en", "No parameter needed for current action");
+
+		addLocalizedString("boss_gesture_param_hint_package", "zh-CN", "请输入应用包名，如 com.tencent.mm");
+		addLocalizedString("boss_gesture_param_hint_package", "zh-TW", "請輸入應用包名，如 com.tencent.mm");
+		addLocalizedString("boss_gesture_param_hint_package", "en", "Enter app package name, e.g. com.tencent.mm");
+
+		addLocalizedString("boss_gesture_param_hint_url", "zh-CN", "请输入网址，如 https://www.baidu.com");
+		addLocalizedString("boss_gesture_param_hint_url", "zh-TW", "請輸入網址，如 https://www.baidu.com");
+		addLocalizedString("boss_gesture_param_hint_url", "en", "Enter URL, e.g. https://www.baidu.com");
+
+		addLocalizedString("boss_gesture_saved", "zh-CN", "老板手势设置已保存");
+		addLocalizedString("boss_gesture_saved", "zh-TW", "老闆手勢設置已保存");
+		addLocalizedString("boss_gesture_saved", "en", "Boss Gesture settings saved");
+
+		addLocalizedString("boss_gesture_param_required", "zh-CN", "当前动作需要填写参数");
+		addLocalizedString("boss_gesture_param_required", "zh-TW", "當前動作需要填寫參數");
+		addLocalizedString("boss_gesture_param_required", "en", "Parameter is required for the selected action");
+
 		addLocalizedString("keep_screen_on_switch", "zh-CN", "屏幕常亮");
 		addLocalizedString("keep_screen_on_switch", "zh-TW", "屏幕常亮");
 		addLocalizedString("keep_screen_on_switch", "en", "Keep Screen On");
@@ -1346,31 +1578,30 @@ public class LocalizedStringProvider {
 		addLocalizedString("about_update_title", "zh-TW", "更新");
 		addLocalizedString("about_update_title", "en", "Update");
 
-		addLocalizedString("about_update_log0", "zh-CN", "添加了 Via 7.2.0 版本本地支持");
-		addLocalizedString("about_update_log0", "zh-TW", "新增對 Via 7.2.0 版本的本地支援");
-		addLocalizedString("about_update_log0", "en", "Added native support for Via version 7.2.0");
+		addLocalizedString("about_update_log0", "zh-CN", "从 Via 1.2.0 版本切换到正式版 1.2.1");
+		addLocalizedString("about_update_log0", "zh-TW", "從 Via 1.2.0 版本切換至正式版 1.2.1");
+		addLocalizedString("about_update_log0", "en", "Upgrade from Via version 1.2.0 to the official release 1.2.1");
 
-		addLocalizedString("about_update_log1", "zh-CN", "更换 jsDelivr 源至自建 Vercel 源，加快资源访问更新速度");
-		addLocalizedString("about_update_log1", "zh-TW", "將 jsDelivr 來源更換為自建的 Vercel 來源，加快資源存取與更新速度");
+		addLocalizedString("about_update_log1", "zh-CN", "新增老板手势功能，完美伪装，安心摸鱼");
+		addLocalizedString("about_update_log1", "zh-TW", "新增老闆手勢功能，完美偽裝，安心偷懶");
 		addLocalizedString("about_update_log1", "en",
-				"Switched the jsDelivr source to a self-hosted Vercel source to speed up resource access and updates");
+				"Added “Boss Gesture” feature for seamless camouflage, so you can slack off with peace of mind");
 
-		addLocalizedString("about_update_log2", "zh-CN", "新增用户沙箱功能，保护隐私");
-		addLocalizedString("about_update_log2", "zh-TW", "新增使用者沙盒功能，以保護隱私");
-		addLocalizedString("about_update_log2", "en", "Added a user sandbox feature to protect privacy");
+		addLocalizedString("about_update_log2", "zh-CN", "新增随机标识功能，防止追踪");
+		addLocalizedString("about_update_log2", "zh-TW", "新增隨機標識功能，防止追蹤");
+		addLocalizedString("about_update_log2", "en", "Added random User-agent feature to prevent tracking");
 
-		addLocalizedString("about_update_log3", "zh-CN", "新增在线预览功能，可实时在线预览 Word、Excel、PDF、PPT 等类型文件");
-		addLocalizedString("about_update_log3", "zh-TW", "新增線上預覽功能，可即時線上預覽 Word、Excel、PDF、PPT 等類型的檔案");
-		addLocalizedString("about_update_log3", "en",
-				"Added an online preview feature that allows real-time previews of Word, Excel, PDF, PPT, and other file types");
+		addLocalizedString("about_update_log3", "zh-CN", "优化网络源，提升远程维护性");
+		addLocalizedString("about_update_log3", "zh-TW", "優化網路來源，提升遠端維護性");
+		addLocalizedString("about_update_log3", "en", "Optimized network sources to improve remote maintainability");
 
-		addLocalizedString("about_update_log4", "zh-CN", "优化 UI 样式和响应");
-		addLocalizedString("about_update_log4", "zh-TW", "優化 UI 樣式與響應性");
-		addLocalizedString("about_update_log4", "en", "Optimized UI styling and responsiveness");
+		addLocalizedString("about_update_log4", "zh-CN", "修复脚本仓库、用户沙箱的 Bug");
+		addLocalizedString("about_update_log4", "zh-TW", "修復腳本儲存庫及使用者沙盒的錯誤");
+		addLocalizedString("about_update_log4", "en", "Fixed bugs in the script repository and user sandbox");
 
-		addLocalizedString("about_update_log5", "zh-CN", "修复一些细微 Bug ，增强用户体验");
-		addLocalizedString("about_update_log5", "zh-TW", "修復若干細微錯誤，提升使用者體驗");
-		addLocalizedString("about_update_log5", "en", "Fixed some minor bugs to enhance the user experience");
+		addLocalizedString("about_update_log5", "zh-CN", "优化动画和 UI ，增强用户体验");
+		addLocalizedString("about_update_log5", "zh-TW", "優化動畫與使用者介面，提升使用者體驗");
+		addLocalizedString("about_update_log5", "en", "Optimized animations and UI to enhance the user experience");
 
 		addLocalizedString("about_thanks_title", "zh-CN", "鸣谢");
 		addLocalizedString("about_thanks_title", "zh-TW", "鳴謝");
@@ -2819,9 +3050,9 @@ public class LocalizedStringProvider {
 		addLocalizedString("version_selector_dialog_message", "en",
 				"Current Via version: %s\n\nPlease select the version for the module to use:");
 
-		addLocalizedString("version_selector_version_702000", "zh-CN", "Via 7.2.0");
-		addLocalizedString("version_selector_version_702000", "zh-TW", "Via 7.2.0");
-		addLocalizedString("version_selector_version_702000", "en", "Via 7.2.0");
+		addLocalizedString("version_selector_version_702000", "zh-CN", "Via 7.2.1");
+		addLocalizedString("version_selector_version_702000", "zh-TW", "Via 7.2.1");
+		addLocalizedString("version_selector_version_702000", "en", "Via 7.2.1");
 
 		addLocalizedString("version_selector_version_701000", "zh-CN", "Via 7.1.0");
 		addLocalizedString("version_selector_version_701000", "zh-TW", "Via 7.1.0");

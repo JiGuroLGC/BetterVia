@@ -41,7 +41,7 @@ public class AnnouncementManager {
 			@Override
 			public void run() {
 				try {
-
+				
 					String networkSource = getNetworkSource(context);
 					String announcementUrl = networkSource.equals(Hook.NETWORK_SOURCE_VERCEL)
 							? VERCEL_ANNOUNCEMENT_URL
@@ -72,7 +72,7 @@ public class AnnouncementManager {
 						});
 					}
 				} catch (Exception e) {
-
+				
 					Log.e("AnnouncementManager", "加载公告失败: " + e.getMessage());
 				}
 			}
@@ -262,11 +262,11 @@ public class AnnouncementManager {
 			negativeButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-
+				
 					handleCheckboxIfPresent(root);
-
+				
 					executeButtonAction(announcementData.negativeButtonAction, announcementData.negativeButtonUrl);
-
+				
 					if (dialogRef[0] != null) {
 						dialogRef[0].dismiss();
 					}
@@ -297,11 +297,11 @@ public class AnnouncementManager {
 			positiveButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-
+				
 					handleCheckboxIfPresent(root);
-
+				
 					executeButtonAction(announcementData.positiveButtonAction, announcementData.positiveButtonUrl);
-
+				
 					if (dialogRef[0] != null) {
 						dialogRef[0].dismiss();
 					}
@@ -313,7 +313,7 @@ public class AnnouncementManager {
 		scrollRoot.addView(root);
 
 		dialogRef[0] = new AlertDialog.Builder(activity).setView(scrollRoot).setCancelable(false).create();
-
+	
 		Window win = dialogRef[0].getWindow();
 		if (win != null) {
 			win.setBackgroundDrawableResource(android.R.color.transparent);
@@ -326,7 +326,7 @@ public class AnnouncementManager {
 		}
 
 		dialogRef[0].show();
-
+	
 		animateDialogEntrance(root, activity);
 	}
 
@@ -404,7 +404,7 @@ public class AnnouncementManager {
 					if (subChild instanceof CheckBox) {
 						CheckBox checkbox = (CheckBox) subChild;
 						if (checkbox.isChecked()) {
-
+						
 							markAnnouncementAsDismissed(context, announcementData.id);
 						}
 						return;
@@ -421,10 +421,10 @@ public class AnnouncementManager {
 
 		switch (action) {
 			case AnnouncementData.ACTION_NONE :
-
+			
 				break;
 			case AnnouncementData.ACTION_OPEN_VIA :
-
+			
 				try {
 					Intent intent = new Intent();
 					intent.setAction(Intent.ACTION_VIEW);
@@ -435,12 +435,12 @@ public class AnnouncementManager {
 				}
 				break;
 			case AnnouncementData.ACTION_EXIT_VIA :
-
+			
 				activity.finish();
 				System.exit(0);
 				break;
 			case AnnouncementData.ACTION_SHARE :
-
+			
 				try {
 					Intent shareIntent = new Intent(Intent.ACTION_SEND);
 					shareIntent.setType("text/plain");
@@ -452,7 +452,7 @@ public class AnnouncementManager {
 				}
 				break;
 			case AnnouncementData.ACTION_OPEN_URL :
-
+			
 				if (url != null && !url.isEmpty()) {
 					try {
 						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -464,7 +464,7 @@ public class AnnouncementManager {
 				break;
 			case AnnouncementData.ACTION_DISMISS :
 			default :
-
+			
 				break;
 		}
 	}

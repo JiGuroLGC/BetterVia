@@ -127,7 +127,7 @@ public class AnnouncementData {
 
 		if (value instanceof JSONObject) {
 			JSONObject langObj = (JSONObject) value;
-
+		
 			if (langObj.has("zh-CN")) {
 				return langObj.getString("zh-CN");
 			} else if (langObj.has("zh-TW")) {
@@ -135,7 +135,7 @@ public class AnnouncementData {
 			} else if (langObj.has("en")) {
 				return langObj.getString("en");
 			}
-
+		
 			if (langObj.length() > 0) {
 				return langObj.getString(langObj.keys().next());
 			}
@@ -173,7 +173,7 @@ public class AnnouncementData {
 	}
 
 	private String getLocalizedStringFromContext(Context ctx, String value) {
-
+	
 		if (!value.trim().startsWith("{")) {
 			return value;
 		}
@@ -202,14 +202,14 @@ public class AnnouncementData {
 				return langObj.getString(langObj.keys().next());
 			}
 		} catch (JSONException e) {
-
+		
 		}
 
 		return value;
 	}
 
 	public boolean isValid() {
-
+	
 		if (id == null || id.isEmpty()) {
 			return false;
 		}

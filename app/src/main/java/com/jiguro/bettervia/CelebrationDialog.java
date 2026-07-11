@@ -13,7 +13,6 @@ import android.view.animation.*;
 import android.widget.*;
 import java.util.*;
 
-
 public class CelebrationDialog {
 
 	public static void show(final Activity act, final Context ctx, final AnnouncementData data) {
@@ -34,7 +33,7 @@ public class CelebrationDialog {
 	}
 
 	private static void showInternal(final Activity act, final Context ctx, final AnnouncementData data) {
-		
+	
 		final int bgColor = Hook.getBgColorStatic(act);
 		final int textColor = Hook.getTextColorStatic(act);
 		final int hintColor = Hook.getHintColorStatic(act);
@@ -48,7 +47,6 @@ public class CelebrationDialog {
 
 		final FrameLayout rootFrame = new FrameLayout(act);
 
-		
 		final LinearLayout card = new LinearLayout(act);
 		card.setOrientation(LinearLayout.VERTICAL);
 		card.setPadding(dp(act, 24), dp(act, 28), dp(act, 24), dp(act, 20));
@@ -58,7 +56,6 @@ public class CelebrationDialog {
 		cardBg.setCornerRadius(dp(act, 24));
 		card.setBackground(cardBg);
 
-		
 		final TextView kTextCard = new TextView(act);
 		kTextCard.setText("1K");
 		kTextCard.setTextSize(TypedValue.COMPLEX_UNIT_SP, 52);
@@ -72,7 +69,6 @@ public class CelebrationDialog {
 		kLp.bottomMargin = dp(act, 2);
 		card.addView(kTextCard, kLp);
 
-		
 		final TextView starsLabelCard = new TextView(act);
 		starsLabelCard.setText(LocalizedStringProvider.getInstance().get(act, "celebration_stars_label"));
 		starsLabelCard.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
@@ -83,7 +79,6 @@ public class CelebrationDialog {
 		starsLp.bottomMargin = dp(act, 16);
 		card.addView(starsLabelCard, starsLp);
 
-		
 		String dialogTitle = data.getLocalizedDialogTitle(act);
 		if (dialogTitle != null && !dialogTitle.isEmpty()) {
 			TextView dtView = new TextView(act);
@@ -99,7 +94,6 @@ public class CelebrationDialog {
 			card.addView(dtView, dtLp);
 		}
 
-		
 		String dialogSubtitle = data.getLocalizedDialogSubtitle(act);
 		if (dialogSubtitle != null && !dialogSubtitle.isEmpty()) {
 			TextView dsView = new TextView(act);
@@ -115,7 +109,6 @@ public class CelebrationDialog {
 			card.addView(dsView, dsLp);
 		}
 
-		
 		String content = data.getLocalizedDialogContent(act);
 		if (content != null && !content.isEmpty()) {
 			LinearLayout contentContainer = new LinearLayout(act);
@@ -124,7 +117,7 @@ public class CelebrationDialog {
 
 			GradientDrawable contentBg = new GradientDrawable();
 			contentBg.setColor(itemBgColor);
-			contentBg.setAlpha(245); 
+			contentBg.setAlpha(245);
 			contentBg.setCornerRadius(dp(act, 12));
 			contentContainer.setBackground(contentBg);
 
@@ -142,7 +135,6 @@ public class CelebrationDialog {
 			card.addView(contentContainer, ccLp);
 		}
 
-		
 		LinearLayout buttonRow = new LinearLayout(act);
 		buttonRow.setOrientation(LinearLayout.HORIZONTAL);
 		buttonRow.setGravity(Gravity.CENTER);
@@ -203,19 +195,16 @@ public class CelebrationDialog {
 
 		card.addView(buttonRow);
 
-		
 		rootFrame.addView(card,
 				new FrameLayout.LayoutParams(contentWidth, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 		card.setAlpha(0f);
 
-		
 		final FireworksView fireworks = new FireworksView(act);
 		fireworks.setClickable(false);
 		fireworks.setFocusable(false);
 		rootFrame.addView(fireworks,
 				new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-		
 		final FrameLayout entryView = new FrameLayout(act);
 		entryView.setClickable(false);
 
@@ -223,7 +212,6 @@ public class CelebrationDialog {
 		entryInner.setOrientation(LinearLayout.VERTICAL);
 		entryInner.setGravity(Gravity.CENTER);
 
-		
 		final TextView kTextEntry = new TextView(act);
 		kTextEntry.setText("1K");
 		kTextEntry.setTextSize(TypedValue.COMPLEX_UNIT_SP, 80);
@@ -234,8 +222,6 @@ public class CelebrationDialog {
 		entryInner.addView(kTextEntry, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
 				ViewGroup.LayoutParams.WRAP_CONTENT));
 
-		
-		
 		final TextView starsLabelEntry = new TextView(act);
 		starsLabelEntry.setText(LocalizedStringProvider.getInstance().get(act, "celebration_stars_label"));
 		starsLabelEntry.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
@@ -251,7 +237,6 @@ public class CelebrationDialog {
 		rootFrame.addView(entryView,
 				new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-		
 		final Dialog dialog = new Dialog(act, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(rootFrame);
@@ -275,9 +260,8 @@ public class CelebrationDialog {
 			}
 		}
 
-		
 		TextView backBtn = new TextView(act);
-		backBtn.setText("\u2715"); 
+		backBtn.setText("\u2715");
 		backBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
 		backBtn.setTextColor(textColor);
 		backBtn.setGravity(Gravity.CENTER);
@@ -298,7 +282,6 @@ public class CelebrationDialog {
 
 		dialog.show();
 
-		
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
@@ -310,24 +293,17 @@ public class CelebrationDialog {
 				kTextCard.getLocationOnScreen(cardTextLoc);
 				entryView.getLocationOnScreen(evLoc);
 
-				
 				float pivotX = evLoc[0] + entryView.getWidth() / 2f;
 				float pivotY = evLoc[1] + entryView.getHeight() / 2f;
 
-				
 				float entryTextCX = entryTextLoc[0] + kTextEntry.getWidth() / 2f;
 				float entryTextCY = entryTextLoc[1] + kTextEntry.getHeight() / 2f;
 
-				
 				float cardTextCX = cardTextLoc[0] + kTextCard.getWidth() / 2f;
 				float cardTextCY = cardTextLoc[1] + kTextCard.getHeight() / 2f;
 
 				float scale = 52f / 80f;
 
-				
-				
-				
-				
 				float targetX = cardTextCX - pivotX - scale * (entryTextCX - pivotX);
 				float targetY = cardTextCY - pivotY - scale * (entryTextCY - pivotY);
 
@@ -336,24 +312,20 @@ public class CelebrationDialog {
 			}
 		}, 800);
 
-		
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				
+			
 				for (int i = 2; i < card.getChildCount(); i++) {
 					View v = card.getChildAt(i);
 					if (v != null)
 						v.setAlpha(0f);
 				}
 
-				
 				entryView.animate().alpha(0f).setDuration(200).setInterpolator(new AccelerateInterpolator()).start();
 
-				
 				card.animate().alpha(1f).setDuration(250).setInterpolator(new DecelerateInterpolator()).start();
 
-				
 				new Handler().postDelayed(new Runnable() {
 					@Override
 					public void run() {
@@ -361,7 +333,6 @@ public class CelebrationDialog {
 					}
 				}, 200);
 
-				
 				new Handler().postDelayed(new Runnable() {
 					@Override
 					public void run() {
@@ -378,7 +349,6 @@ public class CelebrationDialog {
 			}
 		}, 1400);
 
-		
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
@@ -386,7 +356,6 @@ public class CelebrationDialog {
 			}
 		}, 2200);
 
-		
 		confirmBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -397,7 +366,6 @@ public class CelebrationDialog {
 		});
 	}
 
-	
 	private static void applyClickAnim(final View v) {
 		if (v == null)
 			return;
@@ -421,7 +389,6 @@ public class CelebrationDialog {
 		});
 	}
 
-	
 	private static class FireworksView extends View {
 		private final List<Confetti> confettiList = new ArrayList<Confetti>();
 		private final Random random = new Random();
@@ -458,9 +425,8 @@ public class CelebrationDialog {
 			handler.removeCallbacksAndMessages(null);
 		}
 
-		
 		private void shootBurst() {
-			
+		
 			for (int i = 0; i < BURST_PER_SIDE; i++) {
 				Confetti c = new Confetti();
 				double angle = Math.toRadians(-30 + random.nextDouble() * -60);
@@ -485,7 +451,6 @@ public class CelebrationDialog {
 				confettiList.add(c);
 			}
 
-			
 			for (int i = 0; i < BURST_PER_SIDE; i++) {
 				Confetti c = new Confetti();
 				double angle = Math.toRadians(-90 + random.nextDouble() * -60);
@@ -588,4 +553,3 @@ public class CelebrationDialog {
 		return (int) (dp * density + 0.5f);
 	}
 }
-

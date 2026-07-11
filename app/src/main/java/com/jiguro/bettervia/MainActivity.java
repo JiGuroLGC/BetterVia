@@ -58,8 +58,8 @@ public class MainActivity extends Activity {
 	private static final int REQUEST_STORAGE_PERMISSION_FOR_FIX = 1002;
 
 	private static final String EXPECTED_PACKAGE_NAME = "com.jiguro.bettervia";
-	private static final int EXPECTED_VERSION_CODE = 20260704;
-	private static final String EXPECTED_VERSION_NAME = "2.0.0";
+	private static final int EXPECTED_VERSION_CODE = 20260711;
+	private static final String EXPECTED_VERSION_NAME = "2.1.0";
 
 	private TextView appNameText;
 	private TextView byAuthorText;
@@ -1528,31 +1528,6 @@ public class MainActivity extends Activity {
 					public void run() {
 						if (result) {
 							Toast.makeText(MainActivity.this, getString(R.string.security_fix_success),
-									Toast.LENGTH_LONG).show();
-						} else {
-							Toast.makeText(MainActivity.this, getString(R.string.security_fix_no_issue),
-									Toast.LENGTH_SHORT).show();
-						}
-					}
-				});
-			}
-		}).start();
-	}
-
-	private void performSecurityFixWithoutRoot() {
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				boolean fixed = fixConfigInPublicDirectory();
-
-				final boolean result = fixed;
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						if (result) {
-							Toast.makeText(MainActivity.this, getString(R.string.security_fix_success),
-									Toast.LENGTH_LONG).show();
-							Toast.makeText(MainActivity.this, getString(R.string.security_fix_suggest_root),
 									Toast.LENGTH_LONG).show();
 						} else {
 							Toast.makeText(MainActivity.this, getString(R.string.security_fix_no_issue),

@@ -37,9 +37,9 @@ import android.os.Process;
 
 public class Hook implements IXposedHookLoadPackage {
 
-	private static final String MODULE_VERSION_NAME = "2.0.0";
-	private static final int MODULE_VERSION_CODE = 20260704;
-	private static final String SUPPORTED_VIA_VERSION = "7.2.0";
+	private static final String MODULE_VERSION_NAME = "2.1.0";
+	private static final int MODULE_VERSION_CODE = 20260711;
+	private static final String SUPPORTED_VIA_VERSION = "7.2.1";
 
 	private static Activity Context = null;
 
@@ -66,6 +66,25 @@ public class Hook implements IXposedHookLoadPackage {
 	private static final String KEY_HIDE_STATUS_BAR = "hide_status_bar";
 	private static final String KEY_KEEP_SCREEN_ON = "keep_screen_on";
 	private static final String KEY_SCREENSHOT_PROTECTION = "screenshot_protection";
+	private static final String KEY_RANDOM_UA = "random_ua";
+
+	private static final String KEY_UA_PLATFORM_ANDROID = "ua_platform_android";
+	private static final String KEY_UA_PLATFORM_IOS = "ua_platform_ios";
+	private static final String KEY_UA_PLATFORM_WINDOWS = "ua_platform_windows";
+	private static final String KEY_UA_PLATFORM_MACOS = "ua_platform_macos";
+	private static final String KEY_UA_PLATFORM_LINUX = "ua_platform_linux";
+
+	private static final String KEY_UA_BROWSER_CHROME = "ua_browser_chrome";
+	private static final String KEY_UA_BROWSER_SAFARI = "ua_browser_safari";
+	private static final String KEY_UA_BROWSER_EDGE = "ua_browser_edge";
+	private static final String KEY_UA_BROWSER_FIREFOX = "ua_browser_firefox";
+
+	private static final String KEY_UA_ANDROID_VERSIONS = "ua_android_versions";
+	private static final String KEY_UA_ANDROID_DEVICES = "ua_android_devices";
+	private static final String KEY_UA_IOS_VERSIONS = "ua_ios_versions";
+	private static final String KEY_UA_WINDOWS_TOKENS = "ua_windows_tokens";
+	private static final String KEY_UA_MACOS_TOKENS = "ua_macos_tokens";
+	private static final String KEY_UA_LINUX_TOKENS = "ua_linux_tokens";
 	static final String KEY_NETWORK_SOURCE = "network_source";
 	private static final String KEY_HAS_NETWORK_SOURCE = "has_network_source";
 	private static final String KEY_MODULE_THEME = "module_theme";
@@ -111,6 +130,7 @@ public class Hook implements IXposedHookLoadPackage {
 	private static boolean blockGoogleServicesEnabled = false;
 	private static boolean blockStartupMessageEnabled = false;
 	private static boolean screenshotProtectionEnabled = false;
+	private static boolean randomUaEnabled = false;
 	private static boolean keepScreenOnEnabled = false;
 	private static boolean hideStatusBarEnabled = false;
 	private static boolean autoUpdateEnabled = true;
@@ -134,7 +154,7 @@ public class Hook implements IXposedHookLoadPackage {
 	private static boolean isApplyBookmarksCbChanging = false;
 	private static boolean isApplyOfflineCbChanging = false;
 	private static boolean isApplyComprehensiveCbChanging = false;
-	private static int selectedViaVersionCode = 20260703;
+	private static int selectedViaVersionCode = 20260706;
 	private static String currentDetectedVersion = null;
 	private static boolean hasShownStartupDialog = false;
 
@@ -150,8 +170,28 @@ public class Hook implements IXposedHookLoadPackage {
 	private static XC_MethodHook.Unhook showUrlSchemeHook = null;
 	private static XC_MethodHook.Unhook backgroundVideoHook = null;
 	private static XC_MethodHook.Unhook swipeBackHook = null;
+	private static XC_MethodHook.Unhook randomUaGetSettingsHook = null;
+	private static XC_MethodHook.Unhook randomUaGetHook = null;
+	private static XC_MethodHook.Unhook randomUaSetHook = null;
+	private static String currentRandomUa = null;
+
+	private static boolean uaAndroid = true, uaIos = true, uaWindows = false, uaMacos = false, uaLinux = false;
+
+	private static boolean uaChrome = true, uaSafari = true, uaEdge = false, uaFirefox = false;
+
+	private static String uaAndroidVersions = "9,10,11,12,13,14,15,16,17";
+	private static String uaAndroidDevices = "SM-G9910,SM-S9080,SM-S9180,Pixel 7,Pixel 8,Pixel 9,"
+			+ "M2012K11AC,23127PN0CC," + "PGT-AN00,ALN-AL80,BRA-AL00," + "CPH2581,PHN110,PJV110,PJG110,"
+			+ "RMX3850,RMX3706,RMX3888," + "LE2120,NE2210,PHB110," + "XQ-DQ72,XQ-CT72," + "V2357A,V2405A,V2429A,"
+			+ "24090RA29C,24094RAD4C,25010PN30C";
+	private static String uaIosVersions = "15.0,15.1,16.0,16.1,16.2,17.0,17.1,17.2,18.0,18.1,18.2";
+	private static String uaWindowsTokens = "Windows NT 10.0; Win64; x64";
+	private static String uaMacosTokens = "Macintosh; Intel Mac OS X 10_15_7";
+	private static String uaLinuxTokens = "X11; Linux x86_64";
 
 	private MonetMomentManager monetManager;
+
+	private BossGestureHelper bossGestureHelper;
 
 	private static final String[] COMPONENT_KEYS = {"block_update",
 			"block_telegram",
@@ -376,6 +416,14 @@ public class Hook implements IXposedHookLoadPackage {
 					monetManager = new MonetMomentManager(Hook.this);
 				}
 
+				if (bossGestureHelper == null) {
+					bossGestureHelper = new BossGestureHelper(Hook.this);
+				}
+			
+				if (getPrefBoolean(ctx, BossGestureHelper.KEY_BOSS_GESTURE, false)) {
+					bossGestureHelper.startMonitoring(ctx);
+				}
+
 				final boolean[] versionChecked = {false};
 				new Thread(new Runnable() {
 					@Override
@@ -452,7 +500,7 @@ public class Hook implements IXposedHookLoadPackage {
 					bvLog("[BetterVia] 无法检测Via版本，使用默认类名映射");
 				}
 
-				int savedVersionCode = getPrefInt(ctx, KEY_SELECTED_VIA_VERSION, 20260703);
+				int savedVersionCode = getPrefInt(ctx, KEY_SELECTED_VIA_VERSION, 20260706);
 				selectedViaVersionCode = savedVersionCode;
 
 				ViaClassMapping.setUserSelectedVersionCode(savedVersionCode);
@@ -617,6 +665,26 @@ public class Hook implements IXposedHookLoadPackage {
 				
 					screenshotProtectionEnabled = getPrefBoolean(ctx, KEY_SCREENSHOT_PROTECTION, false);
 					setScreenshotProtection(ctx, cl, screenshotProtectionEnabled);
+				
+					randomUaEnabled = getPrefBoolean(ctx, KEY_RANDOM_UA, false);
+					setRandomUa(ctx, cl, randomUaEnabled);
+				
+					uaAndroid = getPrefBoolean(ctx, KEY_UA_PLATFORM_ANDROID, true);
+					uaIos = getPrefBoolean(ctx, KEY_UA_PLATFORM_IOS, true);
+					uaWindows = getPrefBoolean(ctx, KEY_UA_PLATFORM_WINDOWS, false);
+					uaMacos = getPrefBoolean(ctx, KEY_UA_PLATFORM_MACOS, false);
+					uaLinux = getPrefBoolean(ctx, KEY_UA_PLATFORM_LINUX, false);
+					uaChrome = getPrefBoolean(ctx, KEY_UA_BROWSER_CHROME, true);
+					uaSafari = getPrefBoolean(ctx, KEY_UA_BROWSER_SAFARI, true);
+					uaEdge = getPrefBoolean(ctx, KEY_UA_BROWSER_EDGE, false);
+					uaFirefox = getPrefBoolean(ctx, KEY_UA_BROWSER_FIREFOX, false);
+				
+					uaAndroidVersions = getPrefString(ctx, KEY_UA_ANDROID_VERSIONS, uaAndroidVersions);
+					uaAndroidDevices = getPrefString(ctx, KEY_UA_ANDROID_DEVICES, uaAndroidDevices);
+					uaIosVersions = getPrefString(ctx, KEY_UA_IOS_VERSIONS, uaIosVersions);
+					uaWindowsTokens = getPrefString(ctx, KEY_UA_WINDOWS_TOKENS, uaWindowsTokens);
+					uaMacosTokens = getPrefString(ctx, KEY_UA_MACOS_TOKENS, uaMacosTokens);
+					uaLinuxTokens = getPrefString(ctx, KEY_UA_LINUX_TOKENS, uaLinuxTokens);
 				
 					hideStatusBarEnabled = getPrefBoolean(ctx, KEY_HIDE_STATUS_BAR, false);
 					setHideStatusBar(ctx, cl, hideStatusBarEnabled);
@@ -954,6 +1022,10 @@ public class Hook implements IXposedHookLoadPackage {
 							}
 						});
 			
+				addBossGestureItem(root, act, ctx);
+			
+				addRandomUaItem(root, act, ctx);
+			
 				addPrivacyLockItem(root, act, ctx);
 
 				addUserSandboxItem(root, act, ctx);
@@ -1028,7 +1100,7 @@ public class Hook implements IXposedHookLoadPackage {
 					supportedVersionNamesList.add(initialVersionNames[i]);
 				}
 
-				int savedVersionCode = getPrefInt(ctx, KEY_SELECTED_VIA_VERSION, 20260703);
+				int savedVersionCode = getPrefInt(ctx, KEY_SELECTED_VIA_VERSION, 20260706);
 				int versionIdx = 0;
 				for (int i = 0; i < supportedVersionCodesList.size(); i++)
 					if (supportedVersionCodesList.get(i) == savedVersionCode) {
@@ -4037,6 +4109,246 @@ public class Hook implements IXposedHookLoadPackage {
 		bvLog("[BetterVia] 已移除所有Activity的截屏防护");
 	}
 
+	private void setRandomUa(Context ctx, ClassLoader cl, boolean on) {
+		if (on) {
+			currentRandomUa = null;
+		
+			if (randomUaGetSettingsHook == null) {
+				try {
+					randomUaGetSettingsHook = XposedHelpers.findAndHookMethod(WebView.class, "getSettings",
+							new XC_MethodHook() {
+								private boolean uaMethodsHooked = false;
+
+								@Override
+								protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+									if (!randomUaEnabled || uaMethodsHooked) {
+										return;
+									}
+									Object settings = param.getResult();
+									if (settings == null) {
+										return;
+									}
+									try {
+										Method getUa = settings.getClass().getMethod("getUserAgentString");
+										randomUaGetHook = XposedBridge.hookMethod(getUa, new XC_MethodHook() {
+											@Override
+											protected void beforeHookedMethod(MethodHookParam p) throws Throwable {
+												if (!randomUaEnabled) {
+													return;
+												}
+												if (currentRandomUa == null) {
+													currentRandomUa = generateRandomUserAgent();
+													XposedBridge.log("[BetterVia] 已生成随机标识: " + currentRandomUa);
+												}
+												p.setResult(currentRandomUa);
+											}
+										});
+
+										Method setUa = settings.getClass().getMethod("setUserAgentString",
+												String.class);
+										randomUaSetHook = XposedBridge.hookMethod(setUa, new XC_MethodHook() {
+											@Override
+											protected void beforeHookedMethod(MethodHookParam p) throws Throwable {
+												if (!randomUaEnabled) {
+													return;
+												}
+												if (currentRandomUa == null) {
+													currentRandomUa = generateRandomUserAgent();
+												}
+												p.args[0] = currentRandomUa;
+											}
+										});
+
+										uaMethodsHooked = true;
+										XposedBridge.log("[BetterVia] 随机标识已启用，已Hook " + settings.getClass().getName()
+												+ ".getUserAgentString/setUserAgentString");
+									} catch (Exception e) {
+										XposedBridge.log("[BetterVia] 动态Hook WebSettings失败: " + e.getMessage());
+									}
+								}
+							});
+				} catch (Exception e) {
+					XposedBridge.log("[BetterVia] 随机标识getSettings Hook失败: " + e.getMessage());
+				}
+			}
+		} else {
+			if (randomUaGetHook != null) {
+				randomUaGetHook.unhook();
+				randomUaGetHook = null;
+			}
+			if (randomUaSetHook != null) {
+				randomUaSetHook.unhook();
+				randomUaSetHook = null;
+			}
+			if (randomUaGetSettingsHook != null) {
+				randomUaGetSettingsHook.unhook();
+				randomUaGetSettingsHook = null;
+			}
+			currentRandomUa = null;
+			XposedBridge.log("[BetterVia] 随机标识已停用");
+		}
+		randomUaEnabled = on;
+		putPrefBoolean(ctx, KEY_RANDOM_UA, on);
+	}
+
+	private static String generateRandomUserAgent() {
+		java.util.Random rnd = new java.util.Random();
+
+		java.util.List<String> platforms = new java.util.ArrayList<String>();
+		if (uaAndroid)
+			platforms.add("android");
+		if (uaIos)
+			platforms.add("ios");
+		if (uaWindows)
+			platforms.add("windows");
+		if (uaMacos)
+			platforms.add("macos");
+		if (uaLinux)
+			platforms.add("linux");
+		if (platforms.isEmpty())
+			platforms.add("android");
+
+		java.util.List<String> browsers = new java.util.ArrayList<String>();
+		if (uaChrome)
+			browsers.add("chrome");
+		if (uaSafari)
+			browsers.add("safari");
+		if (uaEdge)
+			browsers.add("edge");
+		if (uaFirefox)
+			browsers.add("firefox");
+		if (browsers.isEmpty())
+			browsers.add("chrome");
+
+		String platform = platforms.get(rnd.nextInt(platforms.size()));
+	
+		java.util.List<String> validBrowsers = new java.util.ArrayList<String>();
+		for (String b : browsers) {
+			if ("ios".equals(platform)) {
+				if ("chrome".equals(b) || "safari".equals(b) || "edge".equals(b) || "firefox".equals(b))
+					validBrowsers.add(b);
+			} else if ("android".equals(platform)) {
+				if ("chrome".equals(b) || "firefox".equals(b) || "edge".equals(b))
+					validBrowsers.add(b);
+			} else {
+				validBrowsers.add(b);
+			}
+		}
+		if (validBrowsers.isEmpty())
+			validBrowsers.add("chrome");
+		String browser = validBrowsers.get(rnd.nextInt(validBrowsers.size()));
+
+		return buildUA(platform, browser, rnd);
+	}
+
+	private static String buildUA(String platform, String browser, java.util.Random rnd) {
+		if ("android".equals(platform)) {
+			return buildAndroidUA(browser, rnd);
+		} else if ("ios".equals(platform)) {
+			return buildIOSUA(browser, rnd);
+		} else if ("windows".equals(platform)) {
+			return buildDesktopUA(uaWindowsTokens, browser, rnd);
+		} else if ("macos".equals(platform)) {
+			return buildDesktopUA(uaMacosTokens, browser, rnd);
+		} else {
+			return buildDesktopUA(uaLinuxTokens, browser, rnd);
+		}
+	}
+
+	private static String buildAndroidUA(String browser, java.util.Random rnd) {
+		String[] androidVersions = splitTrim(uaAndroidVersions);
+		String[] devices = splitTrim(uaAndroidDevices);
+		if (androidVersions.length == 0)
+			androidVersions = new String[]{"14"};
+		if (devices.length == 0)
+			devices = new String[]{"Pixel 8"};
+
+		String androidVer = androidVersions[rnd.nextInt(androidVersions.length)];
+		String device = devices[rnd.nextInt(devices.length)];
+
+		if ("chrome".equals(browser) || "edge".equals(browser)) {
+			int major = 100 + rnd.nextInt(32);
+			int build = 4000 + rnd.nextInt(3000);
+			int patch = 100 + rnd.nextInt(200);
+			String ua = "Mozilla/5.0 (Linux; Android " + androidVer + "; " + device + ") "
+					+ "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/" + major + ".0." + build + "." + patch + " "
+					+ "Mobile Safari/537.36";
+			if ("edge".equals(browser))
+				ua += " Edg/" + major + ".0." + build + "." + patch;
+			return ua;
+		} else {
+		
+			int major = 100 + rnd.nextInt(32);
+			return "Mozilla/5.0 (Android " + androidVer + "; " + device + "; rv:" + major + ".0) "
+					+ "Gecko/20100101 Firefox/" + major + ".0";
+		}
+	}
+
+	private static String buildIOSUA(String browser, java.util.Random rnd) {
+		String[] iosVersions = splitTrim(uaIosVersions);
+		if (iosVersions.length == 0)
+			iosVersions = new String[]{"17.0"};
+	
+		String iosVerDotted = iosVersions[rnd.nextInt(iosVersions.length)];
+		String iosVer = iosVerDotted.replace('.', '_');
+		String device = rnd.nextBoolean() ? "iPhone" : "iPad";
+
+		if ("safari".equals(browser)) {
+			return "Mozilla/5.0 (" + device + "; CPU " + device + " OS " + iosVer + " like Mac OS X) "
+					+ "AppleWebKit/605.1.15 (KHTML, like Gecko) " + "Version/" + iosVerDotted
+					+ " Mobile/15E148 Safari/604.1";
+		} else if ("chrome".equals(browser)) {
+			int major = 100 + rnd.nextInt(32);
+			return "Mozilla/5.0 (" + device + "; CPU " + device + " OS " + iosVer + " like Mac OS X) "
+					+ "AppleWebKit/605.1.15 (KHTML, like Gecko) " + "CriOS/" + major + ".0."
+					+ (4000 + rnd.nextInt(3000)) + "." + (100 + rnd.nextInt(200)) + " Mobile/15E148 Safari/604.1";
+		} else if ("edge".equals(browser)) {
+			int major = 100 + rnd.nextInt(32);
+			return "Mozilla/5.0 (" + device + "; CPU " + device + " OS " + iosVer + " like Mac OS X) "
+					+ "AppleWebKit/605.1.15 (KHTML, like Gecko) " + "EdgiOS/" + major + ".0."
+					+ (4000 + rnd.nextInt(3000)) + "." + (100 + rnd.nextInt(200)) + " Mobile/15E148 Safari/604.1";
+		} else {
+		
+			int major = 100 + rnd.nextInt(32);
+			return "Mozilla/5.0 (" + device + "; CPU " + device + " OS " + iosVer + " like Mac OS X) "
+					+ "AppleWebKit/605.1.15 (KHTML, like Gecko) " + "FxiOS/" + major
+					+ ".0 Mobile/15E148 Safari/605.1.15";
+		}
+	}
+
+	private static String buildDesktopUA(String osTokensCsv, String browser, java.util.Random rnd) {
+		String[] tokens = splitTrim(osTokensCsv);
+		if (tokens.length == 0)
+			tokens = new String[]{"Windows NT 10.0; Win64; x64"};
+		String osToken = tokens[rnd.nextInt(tokens.length)];
+		if ("firefox".equals(browser)) {
+			int major = 100 + rnd.nextInt(32);
+			return "Mozilla/5.0 (" + osToken + "; rv:" + major + ".0) " + "Gecko/20100101 Firefox/" + major + ".0";
+		} else {
+			int major = 100 + rnd.nextInt(32);
+			int build = 4000 + rnd.nextInt(3000);
+			int patch = 100 + rnd.nextInt(200);
+			String ua = "Mozilla/5.0 (" + osToken + ") " + "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/" + major
+					+ ".0." + build + "." + patch + " " + "Safari/537.36";
+			if ("edge".equals(browser))
+				ua += " Edg/" + major + ".0." + build + "." + patch;
+			return ua;
+		}
+	}
+
+	private static String[] splitTrim(String csv) {
+		if (csv == null || csv.trim().isEmpty())
+			return new String[0];
+		String[] parts = csv.split(",");
+		java.util.List<String> result = new java.util.ArrayList<String>();
+		for (String p : parts) {
+			String trimmed = p.trim();
+			if (!trimmed.isEmpty())
+				result.add(trimmed);
+		}
+		return result.toArray(new String[result.size()]);
+	}
+
 	private void setKeepScreenOn(Context ctx, ClassLoader cl, boolean on) {
 		if (on) {
 			if (keepScreenOnHook == null) {
@@ -4642,9 +4954,40 @@ public class Hook implements IXposedHookLoadPackage {
 			public void run() {
 				try {
 					String networkSource = getPrefString(ctx, KEY_NETWORK_SOURCE, DEFAULT_NETWORK_SOURCE);
-					String scriptsUrl = networkSource.equals(NETWORK_SOURCE_VERCEL)
-							? "https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN@1.9.5/scripts.json"
-							: "https://raw.githubusercontent.com/JiGuroLGC/CDN/main/scripts.json";
+					String scriptsUrl;
+
+					if (networkSource.equals(NETWORK_SOURCE_VERCEL)) {
+					
+						String configUrl = "https://raw.196104.xyz/scripts_config.json";
+						URL configUrlObj = new URL(configUrl);
+						HttpURLConnection configConn = (HttpURLConnection) configUrlObj.openConnection();
+						configConn.setConnectTimeout(15000);
+						configConn.setReadTimeout(15000);
+						configConn.setRequestProperty("User-Agent",
+								"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+
+						if (configConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+							InputStream configIs = configConn.getInputStream();
+							BufferedReader configReader = new BufferedReader(new InputStreamReader(configIs, "UTF-8"));
+							StringBuilder configResponse = new StringBuilder();
+							String configLine;
+							while ((configLine = configReader.readLine()) != null) {
+								configResponse.append(configLine);
+							}
+							configReader.close();
+
+							JSONObject configJson = new JSONObject(configResponse.toString());
+							scriptsUrl = configJson.optString("vercel_scripts_url",
+									"https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN/scripts.json");
+						} else {
+							callback.onLoadFailed("Config HTTP " + configConn.getResponseCode());
+							configConn.disconnect();
+							return;
+						}
+						configConn.disconnect();
+					} else {
+						scriptsUrl = "https://raw.githubusercontent.com/JiGuroLGC/CDN/main/scripts.json";
+					}
 
 					URL url = new URL(scriptsUrl);
 					HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -10926,6 +11269,90 @@ public class Hook implements IXposedHookLoadPackage {
 		parent.addView(container);
 	}
 
+	private void addBossGestureItem(LinearLayout parent, final Activity act, final Context ctx) {
+		LinearLayout container = new LinearLayout(ctx);
+		container.setOrientation(LinearLayout.VERTICAL);
+		container.setPadding(0, dp(ctx, 8), 0, dp(ctx, 8));
+
+		LinearLayout hor = new LinearLayout(ctx);
+		hor.setOrientation(LinearLayout.HORIZONTAL);
+		hor.setGravity(Gravity.CENTER_VERTICAL);
+
+		TextView tv = new TextView(ctx);
+		tv.setText(LocalizedStringProvider.getInstance().get(ctx, "boss_gesture_title"));
+		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+		tv.setTextColor(getTextColor(ctx));
+		hor.addView(tv, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+		TextView configBtn = new TextView(ctx);
+		applyClickAnim(configBtn);
+		configBtn.setText(LocalizedStringProvider.getInstance().get(ctx, "boss_gesture_config"));
+		configBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+		configBtn.setPadding(dp(ctx, 12), dp(ctx, 6), dp(ctx, 12), dp(ctx, 6));
+		configBtn.setBackground(getRoundBg(ctx, getBtnBgColor(ctx), 8));
+		configBtn.setTextColor(getBtnTextColor(ctx));
+		configBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (bossGestureHelper != null) {
+					bossGestureHelper.showDialog(ctx);
+				}
+			}
+		});
+		hor.addView(configBtn);
+
+		TextView hintTv = new TextView(ctx);
+		hintTv.setText(LocalizedStringProvider.getInstance().get(ctx, "boss_gesture_hint"));
+		hintTv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+		hintTv.setTextColor(getHintColor(ctx));
+		hintTv.setPadding(0, dp(ctx, 4), 0, 0);
+
+		container.addView(hor);
+		container.addView(hintTv);
+		parent.addView(container);
+	}
+
+	private void addRandomUaItem(LinearLayout parent, final Activity act, final Context ctx) {
+		LinearLayout container = new LinearLayout(ctx);
+		container.setOrientation(LinearLayout.VERTICAL);
+		container.setPadding(0, dp(ctx, 8), 0, dp(ctx, 8));
+
+		LinearLayout hor = new LinearLayout(ctx);
+		hor.setOrientation(LinearLayout.HORIZONTAL);
+		hor.setGravity(Gravity.CENTER_VERTICAL);
+
+		TextView tv = new TextView(ctx);
+		tv.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_title"));
+		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+		tv.setTextColor(getTextColor(ctx));
+		hor.addView(tv, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+		TextView configBtn = new TextView(ctx);
+		applyClickAnim(configBtn);
+		configBtn.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_config"));
+		configBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+		configBtn.setPadding(dp(ctx, 12), dp(ctx, 6), dp(ctx, 12), dp(ctx, 6));
+		configBtn.setBackground(getRoundBg(ctx, getBtnBgColor(ctx), 8));
+		configBtn.setTextColor(getBtnTextColor(ctx));
+		configBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showRandomUaDialog(ctx);
+			}
+		});
+		hor.addView(configBtn);
+
+		TextView hintTv = new TextView(ctx);
+		hintTv.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_hint"));
+		hintTv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+		hintTv.setTextColor(getHintColor(ctx));
+		hintTv.setPadding(0, dp(ctx, 4), 0, 0);
+
+		container.addView(hor);
+		container.addView(hintTv);
+		parent.addView(container);
+	}
+
 	private void addOnlinePreviewItem(LinearLayout parent, final Activity act, final Context ctx) {
 		LinearLayout container = new LinearLayout(ctx);
 		container.setOrientation(LinearLayout.VERTICAL);
@@ -11611,6 +12038,9 @@ public class Hook implements IXposedHookLoadPackage {
 						if (isChecked) {
 						
 							showOnlinePreviewEnableWarningDialog(act, ctx, onlineSwitch);
+						} else {
+						
+							putPrefBoolean(ctx, KEY_ONLINE_PREVIEW_ENABLE, false);
 						}
 					}
 				});
@@ -11750,6 +12180,501 @@ public class Hook implements IXposedHookLoadPackage {
 				animateDialogEntrance(root, act);
 			}
 		});
+	}
+
+	private void showRandomUaDialog(final Context ctx) {
+		final Activity act = getActivityFrom(ctx);
+		if (act == null) {
+			return;
+		}
+
+		act.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				if (act.isFinishing() || act.isDestroyed()) {
+					return;
+				}
+
+				final int bgColor = getBgColor(ctx);
+				final int titleColor = getTitleColor(ctx);
+				final int textColor = getTextColor(ctx);
+				final int hintColor = getHintColor(ctx);
+				final int okBtnBgColor = getOkBtnBgColor(ctx);
+				final int okBtnTextColor = getOkBtnTextColor(ctx);
+				final int itemBgColor = getItemBgColor(ctx);
+				final int dividerColor = getDividerColor(ctx);
+				final int switchOnColor = getSwitchOnColor(ctx);
+				final int switchOffColor = getSwitchOffColor(ctx);
+				final int btnBgColor = getBtnBgColor(ctx);
+
+				final Dialog dialog = new Dialog(act);
+				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+				dialog.setCancelable(true);
+
+				FrameLayout dialogContainer = new FrameLayout(act);
+				GradientDrawable containerBg = new GradientDrawable();
+				containerBg.setColor(bgColor);
+				containerBg.setCornerRadius(dp(act, 24));
+				dialogContainer.setBackground(containerBg);
+
+				ScrollView scrollRoot = new ScrollView(act);
+				scrollRoot.setOverScrollMode(View.OVER_SCROLL_NEVER);
+
+				final LinearLayout root = new LinearLayout(act);
+				root.setOrientation(LinearLayout.VERTICAL);
+				root.setPadding(dp(act, 24), dp(act, 40), dp(act, 24), dp(act, 24));
+
+				TextView title = new TextView(act);
+				title.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_dialog_title"));
+				title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 21);
+				title.setTextColor(titleColor);
+				title.setTypeface(null, Typeface.BOLD);
+				title.setGravity(Gravity.CENTER);
+				LinearLayout.LayoutParams titleLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+						ViewGroup.LayoutParams.WRAP_CONTENT);
+				titleLp.bottomMargin = dp(act, 6);
+				root.addView(title, titleLp);
+
+				TextView subtitle = new TextView(act);
+				subtitle.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_dialog_subtitle"));
+				subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+				subtitle.setTextColor(hintColor);
+				subtitle.setGravity(Gravity.CENTER);
+				subtitle.setPadding(0, 0, 0, dp(act, 36));
+				root.addView(subtitle);
+
+				TextView enableTitle = new TextView(act);
+				enableTitle.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_enable"));
+				enableTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+				enableTitle.setTypeface(null, Typeface.BOLD);
+				enableTitle.setTextColor(textColor);
+				enableTitle.setGravity(Gravity.START);
+				LinearLayout.LayoutParams enableTitleLp = new LinearLayout.LayoutParams(
+						ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+				enableTitleLp.bottomMargin = dp(act, 8);
+				root.addView(enableTitle, enableTitleLp);
+
+				LinearLayout enableContainer = new LinearLayout(act);
+				enableContainer.setOrientation(LinearLayout.VERTICAL);
+				enableContainer.setPadding(dp(act, 12), dp(act, 12), dp(act, 12), dp(act, 12));
+				GradientDrawable enableBg = new GradientDrawable();
+				enableBg.setColor(itemBgColor);
+				enableBg.setCornerRadius(dp(act, 8));
+				enableBg.setStroke(dp(act, 1), dividerColor);
+				enableContainer.setBackground(enableBg);
+
+				final Switch uaSwitch = new Switch(act);
+				uaSwitch.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_enable"));
+				uaSwitch.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+				uaSwitch.setTextColor(textColor);
+				uaSwitch.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+				uaSwitch.setChecked(getPrefBoolean(ctx, KEY_RANDOM_UA, false));
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+					int[][] states = new int[][]{new int[]{android.R.attr.state_checked},
+							new int[]{-android.R.attr.state_checked}};
+					int[] colors = new int[]{switchOnColor, switchOffColor};
+					ColorStateList colorStateList = new ColorStateList(states, colors);
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+						uaSwitch.setThumbTintList(colorStateList);
+					}
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+						uaSwitch.setTrackTintList(colorStateList);
+					}
+				}
+				LinearLayout.LayoutParams switchLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+						ViewGroup.LayoutParams.WRAP_CONTENT);
+				switchLp.bottomMargin = dp(act, 8);
+				enableContainer.addView(uaSwitch, switchLp);
+
+				TextView switchHint = new TextView(act);
+				switchHint.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_enable_hint"));
+				switchHint.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+				switchHint.setTextColor(hintColor);
+				switchHint.setGravity(Gravity.START);
+				enableContainer.addView(switchHint);
+
+				LinearLayout.LayoutParams enableLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+						ViewGroup.LayoutParams.WRAP_CONTENT);
+				enableLp.bottomMargin = dp(act, 16);
+				root.addView(enableContainer, enableLp);
+
+				TextView notesTitle = new TextView(act);
+				notesTitle.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_notes_title"));
+				notesTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+				notesTitle.setTypeface(null, Typeface.BOLD);
+				notesTitle.setTextColor(textColor);
+				notesTitle.setGravity(Gravity.START);
+				LinearLayout.LayoutParams notesTitleLp = new LinearLayout.LayoutParams(
+						ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+				notesTitleLp.bottomMargin = dp(act, 8);
+				root.addView(notesTitle, notesTitleLp);
+
+				LinearLayout notesContainer = new LinearLayout(act);
+				notesContainer.setOrientation(LinearLayout.VERTICAL);
+				notesContainer.setPadding(dp(act, 12), dp(act, 12), dp(act, 12), dp(act, 12));
+				GradientDrawable notesBg = new GradientDrawable();
+				notesBg.setColor(itemBgColor);
+				notesBg.setCornerRadius(dp(act, 8));
+				notesBg.setStroke(dp(act, 1), dividerColor);
+				notesContainer.setBackground(notesBg);
+
+				TextView notesContent = new TextView(act);
+				notesContent.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_notes_content"));
+				notesContent.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+				notesContent.setTextColor(textColor);
+				notesContent.setLineSpacing(dp(act, 4), 1.2f);
+				notesContainer.addView(notesContent);
+
+				LinearLayout.LayoutParams notesLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+						ViewGroup.LayoutParams.WRAP_CONTENT);
+				notesLp.bottomMargin = dp(act, 16);
+				root.addView(notesContainer, notesLp);
+
+				TextView configTitle = new TextView(act);
+				configTitle.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_config_section"));
+				configTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+				configTitle.setTypeface(null, Typeface.BOLD);
+				configTitle.setTextColor(textColor);
+				configTitle.setGravity(Gravity.START);
+				LinearLayout.LayoutParams configTitleLp = new LinearLayout.LayoutParams(
+						ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+				configTitleLp.bottomMargin = dp(act, 8);
+				root.addView(configTitle, configTitleLp);
+
+				final FrameLayout configContainer = new FrameLayout(act);
+				LinearLayout configInner = new LinearLayout(act);
+				configInner.setOrientation(LinearLayout.VERTICAL);
+				configInner.setPadding(dp(act, 16), dp(act, 12), dp(act, 16), dp(act, 12));
+				GradientDrawable configBg = new GradientDrawable();
+				configBg.setColor(itemBgColor);
+				configBg.setCornerRadius(dp(act, 12));
+				configBg.setStroke(dp(act, 1), dividerColor);
+				configInner.setBackground(configBg);
+
+				TextView platformLabel = new TextView(act);
+				platformLabel.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_platform_label"));
+				platformLabel.setTextColor(hintColor);
+				platformLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+				platformLabel.setTypeface(null, Typeface.BOLD);
+				platformLabel.setPadding(0, 0, 0, dp(act, 4));
+				configInner.addView(platformLabel);
+
+				LinearLayout androidCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_platform_android"),
+						KEY_UA_PLATFORM_ANDROID, true, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaAndroidCb = (CheckBox) androidCb.getChildAt(0);
+				setCbMargin(androidCb, dp(act, 4));
+				configInner.addView(androidCb);
+
+				LinearLayout iosCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_platform_ios"), KEY_UA_PLATFORM_IOS,
+						true, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaIosCb = (CheckBox) iosCb.getChildAt(0);
+				setCbMargin(iosCb, dp(act, 4));
+				configInner.addView(iosCb);
+
+				LinearLayout windowsCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_platform_windows"),
+						KEY_UA_PLATFORM_WINDOWS, false, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaWindowsCb = (CheckBox) windowsCb.getChildAt(0);
+				setCbMargin(windowsCb, dp(act, 4));
+				configInner.addView(windowsCb);
+
+				LinearLayout macosCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_platform_macos"),
+						KEY_UA_PLATFORM_MACOS, false, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaMacosCb = (CheckBox) macosCb.getChildAt(0);
+				setCbMargin(macosCb, dp(act, 4));
+				configInner.addView(macosCb);
+
+				LinearLayout linuxCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_platform_linux"),
+						KEY_UA_PLATFORM_LINUX, false, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaLinuxCb = (CheckBox) linuxCb.getChildAt(0);
+				setCbMargin(linuxCb, dp(act, 8));
+				configInner.addView(linuxCb);
+
+				TextView browserLabel = new TextView(act);
+				browserLabel.setPadding(0, dp(act, 4), 0, dp(act, 4));
+				browserLabel.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_browser_label"));
+				browserLabel.setTextColor(hintColor);
+				browserLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+				browserLabel.setTypeface(null, Typeface.BOLD);
+				configInner.addView(browserLabel);
+
+				LinearLayout chromeCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_browser_chrome"),
+						KEY_UA_BROWSER_CHROME, true, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaChromeCb = (CheckBox) chromeCb.getChildAt(0);
+				setCbMargin(chromeCb, dp(act, 4));
+				configInner.addView(chromeCb);
+
+				LinearLayout safariCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_browser_safari"),
+						KEY_UA_BROWSER_SAFARI, true, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaSafariCb = (CheckBox) safariCb.getChildAt(0);
+				setCbMargin(safariCb, dp(act, 4));
+				configInner.addView(safariCb);
+
+				LinearLayout edgeCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_browser_edge"), KEY_UA_BROWSER_EDGE,
+						false, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaEdgeCb = (CheckBox) edgeCb.getChildAt(0);
+				setCbMargin(edgeCb, dp(act, 4));
+				configInner.addView(edgeCb);
+
+				LinearLayout firefoxCb = createRandomUaCheckbox(act, ctx,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_browser_firefox"),
+						KEY_UA_BROWSER_FIREFOX, false, textColor, switchOnColor, switchOffColor);
+				final CheckBox uaFirefoxCb = (CheckBox) firefoxCb.getChildAt(0);
+				configInner.addView(firefoxCb);
+
+				configContainer.addView(configInner);
+				LinearLayout.LayoutParams configLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+						ViewGroup.LayoutParams.WRAP_CONTENT);
+				configLp.topMargin = dp(act, 8);
+				root.addView(configContainer, configLp);
+
+				TextView customLabel = new TextView(act);
+				customLabel.setText(LocalizedStringProvider.getInstance().get(ctx, "random_ua_custom_label"));
+				customLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+				customLabel.setTypeface(null, Typeface.BOLD);
+				customLabel.setTextColor(textColor);
+				customLabel.setGravity(Gravity.START);
+				LinearLayout.LayoutParams customLabelLp = new LinearLayout.LayoutParams(
+						ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+				customLabelLp.topMargin = dp(act, 16);
+				customLabelLp.bottomMargin = dp(act, 8);
+				root.addView(customLabel, customLabelLp);
+
+				LinearLayout customContainer = new LinearLayout(act);
+				customContainer.setOrientation(LinearLayout.VERTICAL);
+				customContainer.setPadding(dp(act, 16), dp(act, 12), dp(act, 16), dp(act, 12));
+				GradientDrawable customBg = new GradientDrawable();
+				customBg.setColor(itemBgColor);
+				customBg.setCornerRadius(dp(act, 12));
+				customBg.setStroke(dp(act, 1), dividerColor);
+				customContainer.setBackground(customBg);
+
+				final int editBgColor = getEditBgColor(ctx);
+				addCustomEditField(act, customContainer,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_android_versions"), uaAndroidVersions,
+						editBgColor, hintColor, textColor, dividerColor);
+				final EditText androidVersionsEt = (EditText) customContainer
+						.getChildAt(customContainer.getChildCount() - 1);
+
+				addCustomEditField(act, customContainer,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_android_devices"), uaAndroidDevices,
+						editBgColor, hintColor, textColor, dividerColor);
+				final EditText androidDevicesEt = (EditText) customContainer
+						.getChildAt(customContainer.getChildCount() - 1);
+
+				addCustomEditField(act, customContainer,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_ios_versions"), uaIosVersions,
+						editBgColor, hintColor, textColor, dividerColor);
+				final EditText iosVersionsEt = (EditText) customContainer
+						.getChildAt(customContainer.getChildCount() - 1);
+
+				addCustomEditField(act, customContainer,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_windows_versions"), uaWindowsTokens,
+						editBgColor, hintColor, textColor, dividerColor);
+				final EditText windowsTokensEt = (EditText) customContainer
+						.getChildAt(customContainer.getChildCount() - 1);
+
+				addCustomEditField(act, customContainer,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_macos_versions"), uaMacosTokens,
+						editBgColor, hintColor, textColor, dividerColor);
+				final EditText macosTokensEt = (EditText) customContainer
+						.getChildAt(customContainer.getChildCount() - 1);
+
+				addCustomEditField(act, customContainer,
+						LocalizedStringProvider.getInstance().get(ctx, "random_ua_linux_versions"), uaLinuxTokens,
+						editBgColor, hintColor, textColor, dividerColor);
+				final EditText linuxTokensEt = (EditText) customContainer
+						.getChildAt(customContainer.getChildCount() - 1);
+
+				LinearLayout.LayoutParams customLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+						ViewGroup.LayoutParams.WRAP_CONTENT);
+				customLp.topMargin = dp(act, 8);
+				root.addView(customContainer, customLp);
+
+				Button ok = new Button(act);
+				applyClickAnim(ok);
+				ok.setText(LocalizedStringProvider.getInstance().get(ctx, "dialog_ok"));
+				ok.setTextColor(okBtnTextColor);
+				ok.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+				ok.setTypeface(null, Typeface.BOLD);
+				GradientDrawable okBtnBg = new GradientDrawable();
+				okBtnBg.setColor(okBtnBgColor);
+				okBtnBg.setCornerRadius(dp(act, 12));
+				ok.setBackground(okBtnBg);
+				LinearLayout.LayoutParams okLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+						ViewGroup.LayoutParams.WRAP_CONTENT);
+				okLp.topMargin = dp(act, 16);
+				root.addView(ok, okLp);
+
+				scrollRoot.addView(root);
+				dialogContainer.addView(scrollRoot);
+				dialog.setContentView(dialogContainer);
+
+				Window win = dialog.getWindow();
+				if (win != null) {
+					win.setBackgroundDrawableResource(android.R.color.transparent);
+					win.setGravity(Gravity.CENTER);
+					DisplayMetrics dialogMetrics = new DisplayMetrics();
+					act.getWindowManager().getDefaultDisplay().getMetrics(dialogMetrics);
+					int dialogWidth = (int) (dialogMetrics.widthPixels * 0.9);
+					WindowManager.LayoutParams dialogLp = new WindowManager.LayoutParams();
+					dialogLp.copyFrom(win.getAttributes());
+					dialogLp.width = dialogWidth;
+					dialogLp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+					dialogLp.gravity = Gravity.CENTER;
+					win.setAttributes(dialogLp);
+				}
+
+				dialog.setContentView(dialogContainer);
+				dialog.show();
+				animateDialogEntrance(root, act);
+
+				WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+				lp.copyFrom(dialog.getWindow().getAttributes());
+				lp.width = (int) (act.getResources().getDisplayMetrics().widthPixels * 0.9);
+				dialog.getWindow().setAttributes(lp);
+
+				ok.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						boolean enable = uaSwitch.isChecked();
+
+						uaAndroid = uaAndroidCb.isChecked();
+						uaIos = uaIosCb.isChecked();
+						uaWindows = uaWindowsCb.isChecked();
+						uaMacos = uaMacosCb.isChecked();
+						uaLinux = uaLinuxCb.isChecked();
+						uaChrome = uaChromeCb.isChecked();
+						uaSafari = uaSafariCb.isChecked();
+						uaEdge = uaEdgeCb.isChecked();
+						uaFirefox = uaFirefoxCb.isChecked();
+
+						if (enable && !uaAndroid && !uaIos && !uaWindows && !uaMacos && !uaLinux) {
+							jiguroMessageWithContext(ctx,
+									LocalizedStringProvider.getInstance().get(ctx, "random_ua_select_platform"));
+							return;
+						}
+						if (enable && !uaChrome && !uaSafari && !uaEdge && !uaFirefox) {
+							jiguroMessageWithContext(ctx,
+									LocalizedStringProvider.getInstance().get(ctx, "random_ua_select_browser"));
+							return;
+						}
+
+						putPrefBoolean(ctx, KEY_RANDOM_UA, enable);
+						putPrefBoolean(ctx, KEY_UA_PLATFORM_ANDROID, uaAndroid);
+						putPrefBoolean(ctx, KEY_UA_PLATFORM_IOS, uaIos);
+						putPrefBoolean(ctx, KEY_UA_PLATFORM_WINDOWS, uaWindows);
+						putPrefBoolean(ctx, KEY_UA_PLATFORM_MACOS, uaMacos);
+						putPrefBoolean(ctx, KEY_UA_PLATFORM_LINUX, uaLinux);
+						putPrefBoolean(ctx, KEY_UA_BROWSER_CHROME, uaChrome);
+						putPrefBoolean(ctx, KEY_UA_BROWSER_SAFARI, uaSafari);
+						putPrefBoolean(ctx, KEY_UA_BROWSER_EDGE, uaEdge);
+						putPrefBoolean(ctx, KEY_UA_BROWSER_FIREFOX, uaFirefox);
+
+						uaAndroidVersions = androidVersionsEt.getText().toString().trim();
+						uaAndroidDevices = androidDevicesEt.getText().toString().trim();
+						uaIosVersions = iosVersionsEt.getText().toString().trim();
+						putPrefString(ctx, KEY_UA_ANDROID_VERSIONS, uaAndroidVersions);
+						putPrefString(ctx, KEY_UA_ANDROID_DEVICES, uaAndroidDevices);
+						putPrefString(ctx, KEY_UA_IOS_VERSIONS, uaIosVersions);
+						uaWindowsTokens = windowsTokensEt.getText().toString().trim();
+						uaMacosTokens = macosTokensEt.getText().toString().trim();
+						uaLinuxTokens = linuxTokensEt.getText().toString().trim();
+						putPrefString(ctx, KEY_UA_WINDOWS_TOKENS, uaWindowsTokens);
+						putPrefString(ctx, KEY_UA_MACOS_TOKENS, uaMacosTokens);
+						putPrefString(ctx, KEY_UA_LINUX_TOKENS, uaLinuxTokens);
+
+						dialog.dismiss();
+						setRandomUa(ctx, act.getClassLoader(), enable);
+						jiguroMessage(LocalizedStringProvider.getInstance().get(ctx, "random_ua_saved"));
+					}
+				});
+			}
+		});
+	}
+
+	private LinearLayout createRandomUaCheckbox(Activity act, Context ctx, String title, String prefKey, boolean defVal,
+			int textColor, int switchOnColor, int switchOffColor) {
+		LinearLayout container = new LinearLayout(act);
+		container.setOrientation(LinearLayout.HORIZONTAL);
+		container.setGravity(Gravity.CENTER_VERTICAL);
+
+		final CheckBox cb = new CheckBox(act);
+		cb.setText("");
+		cb.setChecked(getPrefBoolean(ctx, prefKey, defVal));
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			int[][] states = new int[][]{new int[]{android.R.attr.state_checked},
+					new int[]{-android.R.attr.state_checked}};
+			int[] colors = new int[]{switchOnColor, switchOffColor};
+			cb.setButtonTintList(new ColorStateList(states, colors));
+		}
+		LinearLayout.LayoutParams cbLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+		cbLp.gravity = Gravity.CENTER_VERTICAL;
+		cbLp.rightMargin = dp(act, 8);
+		container.addView(cb, cbLp);
+
+		TextView tv = new TextView(act);
+		tv.setText(title);
+		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+		tv.setTextColor(textColor);
+		tv.setGravity(Gravity.CENTER_VERTICAL);
+		container.addView(tv);
+
+		return container;
+	}
+
+	private void setCbMargin(LinearLayout container, int bottomMargin) {
+		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) container.getLayoutParams();
+		if (lp != null) {
+			lp.bottomMargin = bottomMargin;
+			container.setLayoutParams(lp);
+		}
+	}
+
+	private void addCustomEditField(Activity act, LinearLayout parent, String label, String value, int editBgColor,
+			int hintColor, int textColor, int dividerColor) {
+		TextView labelTv = new TextView(act);
+		labelTv.setText(label);
+		labelTv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+		labelTv.setTextColor(hintColor);
+		labelTv.setTypeface(null, Typeface.BOLD);
+		labelTv.setPadding(0, dp(act, 8), 0, dp(act, 4));
+		parent.addView(labelTv);
+
+		EditText et = new EditText(act);
+		et.setText(value);
+		et.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+		et.setTextColor(textColor);
+		et.setHintTextColor(hintColor);
+		et.setSingleLine(false);
+		et.setMinLines(2);
+		et.setMaxLines(4);
+		et.setMovementMethod(new android.text.method.ScrollingMovementMethod());
+	
+		et.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				v.getParent().requestDisallowInterceptTouchEvent(true);
+				return false;
+			}
+		});
+		et.setPadding(dp(act, 10), dp(act, 8), dp(act, 10), dp(act, 8));
+		GradientDrawable etBg = new GradientDrawable();
+		etBg.setColor(editBgColor);
+		etBg.setCornerRadius(dp(act, 8));
+		etBg.setStroke(dp(act, 1), dividerColor);
+		et.setBackground(etBg);
+		LinearLayout.LayoutParams etLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+		parent.addView(et, etLp);
 	}
 
 	private LinearLayout createOnlinePreviewCheckbox(Activity act, Context ctx, String title, String hint,
@@ -16210,7 +17135,7 @@ public class Hook implements IXposedHookLoadPackage {
 
 			boolean hasVersionSelection = getPrefBoolean(ctx, "has_version_selection", false);
 
-			int savedVersionCode = getPrefInt(ctx, KEY_SELECTED_VIA_VERSION, 20260703);
+			int savedVersionCode = getPrefInt(ctx, KEY_SELECTED_VIA_VERSION, 20260706);
 			selectedViaVersionCode = savedVersionCode;
 
 			ViaClassMapping.setUserSelectedVersionCode(savedVersionCode);

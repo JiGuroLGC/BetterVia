@@ -79,9 +79,9 @@ public class ViaVersionDetector {
 	}
 
 	private static final List<Integer> SUPPORTED_VERSION_CODES_LIST = new ArrayList<Integer>(
-			Arrays.asList(20260703, 20260410, 20260211, 20251223, 20251024, 20250907, 20250713));
+			Arrays.asList(20260706, 20260410, 20260211, 20251223, 20251024, 20250907, 20250713));
 	private static final List<String> SUPPORTED_VERSION_NAMES_LIST = new ArrayList<String>(
-			Arrays.asList("7.2.0", "7.1.0", "7.0.0", "6.9.0", "6.8.0", "6.7.1", "6.6.0"));
+			Arrays.asList("7.2.1", "7.1.0", "7.0.0", "6.9.0", "6.8.0", "6.7.1", "6.6.0"));
 
 	public static int[] getSupportedVersionCodes() {
 		int[] result = new int[SUPPORTED_VERSION_CODES_LIST.size()];
@@ -124,8 +124,8 @@ public class ViaVersionDetector {
 	public static void resetSupportedVersions() {
 		SUPPORTED_VERSION_CODES_LIST.clear();
 		SUPPORTED_VERSION_NAMES_LIST.clear();
-		SUPPORTED_VERSION_CODES_LIST.addAll(Arrays.asList(20260703, 20260410, 20260211, 20251223, 20251024, 20250907, 20250713));
-		SUPPORTED_VERSION_NAMES_LIST.addAll(Arrays.asList("7.2.0", "7.1.0", "7.0.0", "6.9.0", "6.8.0", "6.7.1", "6.6.0"));
+		SUPPORTED_VERSION_CODES_LIST.addAll(Arrays.asList(20260706, 20260410, 20260211, 20251223, 20251024, 20250907, 20250713));
+		SUPPORTED_VERSION_NAMES_LIST.addAll(Arrays.asList("7.2.1", "7.1.0", "7.0.0", "6.9.0", "6.8.0", "6.7.1", "6.6.0"));
 		Log.i(TAG, "已重置版本支持列表到默认状态");
 	}
 
@@ -184,8 +184,8 @@ public class ViaVersionDetector {
 		return SUPPORTED_VERSION_CODES_LIST.get(0);
 	}
 
-	private static final int[] DEFAULT_VERSION_CODES = {20260703, 20260410, 20260211, 20251223, 20251024, 20250907, 20250713};
-	private static final String[] DEFAULT_VERSION_NAMES = {"7.2.0", "7.1.0", "7.0.0", "6.9.0", "6.8.0", "6.7.1", "6.6.0"};
+	private static final int[] DEFAULT_VERSION_CODES = {20260706, 20260410, 20260211, 20251223, 20251024, 20250907, 20250713};
+	private static final String[] DEFAULT_VERSION_NAMES = {"7.2.1", "7.1.0", "7.0.0", "6.9.0", "6.8.0", "6.7.1", "6.6.0"};
 
 	public static void saveSupportedVersions(Context context) {
 		try {
