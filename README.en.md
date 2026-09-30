@@ -9,16 +9,15 @@
     <img src="https://img.shields.io/github/downloads/Xposed-Modules-Repo/com.jiguro.bettervia/total?color=0000CD" height="20" alt="download-num">
   </a>
   <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://img.shields.io/github/repo-size/JiGuroLGC/BetterVia" height="20" alt="repo-size">
+    <img src="https://img.shields.io/github/repo-size/JiGuroLGC/BetterVia?color=ff1414" height="20" alt="repo-size">
   </a>
-  <a href="https://github.com/pre-commit/pre-commit">
-    <img src="https://img.shields.io/badge/pre--commit-open-brightgreen?logo=pre-commit&logoColor=white" height="20" alt="pre-commit">
+  <a href="https://t.me/+GOYO4wK2NiNkNmE1"><img alt="Telegram Group" src="https://img.shields.io/badge/Telegram-Group-blue.svg?logo=telegram">
   </a>
   <a href="https://github.com/JiGuroLGC/BetterVia/releases">
-    <img src="https://img.shields.io/badge/download-lastest_now-white?branch=master&color=FF90E8" height="20" alt="download">
+    <img src="https://img.shields.io/badge/Download-Lastest_now-white?branch=master&color=FF90E8" height="20" alt="Download">
   </a>
-  <a href="https://jigurolgc.github.io">
-    <img alt="Page_Online" src="https://img.shields.io/badge/blog-online-white?branch=master&color=25A162">
+  <a href="https://bettervia.196104.xyz/">
+    <img alt="Page_Online" src="https://img.shields.io/badge/Website-Online-white?branch=master&color=25A162">
   </a>
      <a href="https://github.com/JiGuroLGC/BetterVia">
         <img src="https://img.shields.io/badge/Github-BetterVia-yellow.svg" alt="socialify"/>
@@ -119,211 +118,10 @@ To be continued...
 
 <p align="center">
 <a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings.png" width="315" height="660">
+    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/viaset.png" width="315" height="660">
 </a>
 </p>
-<div align="center">Settings Interface</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings2.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Settings Interface (Continued1)</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/settings3.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Settings Interface (Continued2)</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/theme.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Theme Browser</div>
-
-<!----------------------- 主题编辑器 ------------------------>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/editer.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Theme Editor</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/script.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Script Collection</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/adrule.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Advertising Rules</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/monet.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Monet Moment</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/monet2.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Monet Moment (Continued1)</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/monet3.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Monet Moment (Continued2)</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/lock.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Privacy Lock</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/lock2.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Privacy Lock (Continued1)</div>
-
-<!----------------------- Cookie 管理 ------------------------>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie.png" width="315" height="660">
-</a>
-</p>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookie2.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Cookie Manager</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cookieinfo.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Cookie Info</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/eye.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Eye Care Settings</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/block.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Blocking Settings</div>
-
-<!----------------------- 美化功能 ------------------------>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/beautify.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Beautification Settings</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/source.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Beautification Effect</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/cmd.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Quick Commands</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/blockmenu.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Block Menu Bar</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/ua.png" width="315" height="660">
-</a>
-</p>
-<div align="center">UA Collection</div>
-
-<br>
-
-<p align="center">
-<a href="https://github.com/JiGuroLGC/BetterVia">
-    <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/shisui.png" width="315" height="660">
-</a>
-</p>
-<div align="center">Shihui</div>
+<div align="center">BetterVia Settings interface</div>
 
 ## Getting Started  
 
@@ -433,25 +231,21 @@ No worries. We have prepared alternative download links for you. We guarantee th
 
 | Name | Link | Details |
 | :--- | :--- | :--- |
-| GitHub | [GitHub - Change is constant](https://github.com/) | Open-source platform |
-| IntelliJ IDEA | [IntelliJ IDEA - JetBrains](https://www.jetbrains.com/idea/) | Software Development and Packaging |
-| AIDE + / AIDE Pro | [AIDE-Plus - GitHub](https://github.com/AndroidIDE-CN/AIDE-Plus) | Software Development and Packaging |
-| Android IDE | [Android IDE - GitHub](https://github.com/AndroidIDEOfficial/AndroidIDE) | Software Development and Packaging |
+| Github | [Github - Change is constant](https://github.com/) | Provides an open-source platform |
+| IntelliJ IDEA | [IntelliJ IDEA - JetBrains](https://www.jetbrains.com/idea/) | Development and packaging software |
+| AIDE + / AIDE Pro | [AIDE-Plus - GitHub](https://github.com/AndroidIDE-CN/AIDE-Plus) | Development and packaging software |
 | AOSP | [Android Open Source Project](https://source.android.google.cn) | Provides resources and references |
-| Xposed Framework API | [Xposed Framework API](https://api.xposed.info) | Provides Xposed interface support |
+| Xposed Framework API | [Xposed Framework API](https://api.xposed.info) | Provides Xposed API support |
 | jsDelivr | [jsDelivr - A free, fast, and reliable CDN](https://www.jsdelivr.com/) | Provides CDN acceleration services |
-| apksig | [apksig - mvnrepository](https://mvnrepository.com/artifact/com.android.tools.build/apksig) | Provides APK signing support |
+| apksig | [apksig - mvnrepository](https://mvnrepository.com/artifact/com.android.tools.build/apksig) | Provides installation package signing support |
 | MT Manager | [MT Official Website](https://mt2.cn) | Manages projects, etc. |
-| NP Manager | [NP-Manager - GitHub](https://github.com/githubXiaowangzi/NP-Manager) | Provides obfuscation protection |
-| DeepSeek | [DeepSeek - Deep Exploration](https://www.deepseek.com) | Assists with programming and file organization |
-| Kimi | [Kimi AI Official Site](https://www.kimi.com) | Assists with programming and file organization |
-| ChatGPT | [ChatGPT Official Site](https://chatgpt.com) | Assists with programming and file organization |
-| Google Gemini | [Google Gemini](https://gemini.google.com) | Assists with programming and file organization |
-| iFlow | [iFlow - Flow Open Platform](https://platform.iflow.cn) | Assists with programming and file organization |
-| Hitokoto | [Hitokoto](https://hitokoto.cn) | Provides sentence API support |
+| NP Manager | [NP-Manager - Github](https://github.com/githubXiaowangzi/NP-Manager) | Provides obfuscation protection support |
+| DeepSeek | [DeepSeek - DeepSeek](https://www.deepseek.com) | Assists with programming and file organization |
+| Codebuddy | [Tencent Cloud Code Assistant - CodeBuddy](https://www.codebuddy.cn/home) | Assists with programming and file organization |
+| Hitokoto | [One Sentence - Hitokoto](https://hitokoto.cn) | Provides sentence API support |
 | HTML2WEB | [HTML2WEB - Paste code, share ideas](https://www.html2web.com) | Provides online file hosting |
-| Coolapk @半烟半雨溪桥畔 | [Half-Awake - Gitee](https://gitee.com/daybreak166/) | Provides resources such as themes |
-| Coolapk @sgfox | [sgfox - Shisui and Organizing](https://www.sgfox.cc/archives/via-shisui.html) | Provides "Shisui" content |
+| Coolapk @半烟半雨溪桥畔 | [Half Dreaming, Half Awake - Gitee](https://gitee.com/daybreak166/) | Provides themes and other reference materials |
+| Coolapk @sgfox | [sgfox - Shisui Collection and Compilation](https://www.sgfox.cc/archives/via-shisui.html) | Provides "Shisui" content |
 
 > [!NOTE]
 > Due to the large number of entries, they are not listed individually here. For details, please refer to the respective module pages.
