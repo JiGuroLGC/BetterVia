@@ -17,7 +17,6 @@
     <string name="activated">已啟用</string>
     <string name="not_activated">未啟用</string>
     <string name="exit">退出</string>
-    <string name="security_fix">安全修復</string>
     <string name="hide_icon">隱藏桌面圖示</string>
     <string name="show_icon">恢復桌面圖示</string>
     <string name="toast_icon_hidden">圖示已隱藏</string>
@@ -32,7 +31,7 @@
     <string name="blog_url">https://jigurolgc.github.io</string>
     <string name="email_address">JiGuroLiu@qq.com</string>
     <string name="menu">選單</string>
-    <string name="version_info">BetterVia v2.2.0</string>
+    <string name="version_info">BetterVia v2.3.0</string>
     <string name="copyright_info">嚴禁用作商業用途，違者必究</string>
     <string name="withdraw_agreement">撤回用戶協議同意</string>
     <string name="withdraw_agreement_title">撤回用戶協議同意</string>
@@ -53,15 +52,6 @@
 	<string name="already_latest_version">已是最新版本</string>
 	<string name="checking_updates">正在檢查更新...</string>
 	<string name="update_source_description">選擇更新來源會影響檢查更新的速度和成功率</string>
-	<string name="security_fix_dialog_title">安全修復</string>
-	<string name="security_fix_dialog_message">此模式旨在修復模組受限功能，需要 Root 權限或檔案讀寫權限。要使用 Root 權限，您可能需要提前對 BetterVia 取消 Root 屏蔽。\n\n您確實要繼續修復嗎？</string>
-	<string name="security_fix_success">安全修復完成，已移除模組限制</string>
-	<string name="security_fix_no_issue">未檢測到需要修復的配置</string>
-	<string name="security_fix_need_permission">需要Root權限或檔案讀寫權限才能進行修復</string>
-	<string name="security_fix_storage_permission_denied">請授予檔案讀寫權限</string>
-	<string name="security_fix_suggest_root">若還有問題，請考慮使用Root權限再次修復</string>
-	<string name="root_permission_granted">Root權限獲取成功</string>
-	<string name="root_permission_denied">Root權限獲取失敗，請嘗試對BetterVia移除Root隱藏</string>
 	<string name="tamper_dialog_title">安全檢測異常</string>
 	<string name="tamper_dialog_message">檢測到應用修改痕跡或存在安全風險！\n為了您的系統安全，程式將會自動退出。\n請下載正版軟體或清空存儲重試。</string>
 </resources>

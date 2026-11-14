@@ -162,12 +162,12 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             
-            // 蜘蛛网参数 - 修改点数和线条粗细
+            // 蜘蛛网参数
             const config = {
                 zIndex: 4,
                 opacity: 0.5,
                 color: '0,0,0', // 黑色
-                count: 40,      // 点的数量减少到40（原来是80）
+                count: 40,      // 点的数量
                 spreadSpeed: 5  // 散开速度
             };
             
@@ -258,7 +258,7 @@
                     ctx.fillStyle = `rgba(${config.color}, 0.5)`;
                     ctx.fillRect(dot.x - 0.5, dot.y - 0.5, 1, 1);
                     
-                    // 绘制连线 - 修改线条粗细为0.3（原来是0.2）
+                    // 绘制连线
                     for (let j = i + 1; j < dots.length; j++) {
                         let nextDot = dots[j];
                         let dx = dot.x - nextDot.x;
@@ -268,7 +268,7 @@
                         if (distance < nextDot.max) {
                             let opacity = 1 - distance / nextDot.max;
                             ctx.beginPath();
-                            ctx.lineWidth = 0.3; // 线条粗细从0.2调整到0.3
+                            ctx.lineWidth = 0.3; // 线条粗细
                             ctx.strokeStyle = `rgba(${config.color}, ${opacity * 0.5})`;
                             ctx.moveTo(dot.x, dot.y);
                             ctx.lineTo(nextDot.x, nextDot.y);
@@ -284,11 +284,11 @@
             // 初始化
             initDots();
             
-            // 2秒后显示蜘蛛网并散开（原来是3秒）
+            // 2秒后显示蜘蛛网并散开
             setTimeout(() => {
                 canvas.classList.add('active');
                 spreadDots();
-            }, 2000); // 延迟时间从3000毫秒改为2000毫秒
+            }, 2000); // 延迟时间
             
             // 开始绘制
             draw();

@@ -17,7 +17,6 @@
     <string name="activated">Activated</string>
     <string name="not_activated">Not Activated</string>
     <string name="exit">Exit</string>
-    <string name="security_fix">Security Fix</string>
     <string name="hide_icon">Hide Desktop Icon</string>
     <string name="show_icon">Show Desktop Icon</string>
     <string name="toast_icon_hidden">Icon hidden</string>
@@ -32,7 +31,7 @@
     <string name="blog_url">https://jigurolgc.github.io</string>
     <string name="email_address">JiGuroLiu@qq.com</string>
     <string name="menu">Menu</string>
-    <string name="version_info">BetterVia v2.2.0</string>
+    <string name="version_info">BetterVia v2.3.0</string>
     <string name="copyright_info">Not For Commercial Use</string>
     <string name="withdraw_agreement">Withdraw Agreement</string>
     <string name="withdraw_agreement_title">Withdraw Agreement</string>
@@ -53,15 +52,6 @@
 	<string name="already_latest_version">Already the latest version</string>
 	<string name="checking_updates">Checking for updates...</string>
 	<string name="update_source_description">Selecting an update source affects the speed and success rate of update checks</string>
-	<string name="security_fix_dialog_title">Security Fix</string>
-	<string name="security_fix_dialog_message">This mode is designed to fix module restricted functions and requires Root permission or file read/write permissions. To use Root permission, you may need to remove Root hiding for BetterVia in advance.\n\nAre you sure you want to continue the repair?</string>
-	<string name="security_fix_success">Security fix completed, module restrictions have been removed</string>
-	<string name="security_fix_no_issue">No configuration issues detected</string>
-	<string name="security_fix_need_permission">Root permission or file read/write permissions are required to perform the repair</string>
-	<string name="security_fix_storage_permission_denied">Please grant file read/write permissions</string>
-	<string name="security_fix_suggest_root">If there are still issues, consider using Root permission to repair again</string>
-	<string name="root_permission_granted">Root permission granted successfully</string>
-	<string name="root_permission_denied">Root permission denied, please try to remove Root hiding for BetterVia</string>
 	<string name="tamper_dialog_title">Security Detection Exception</string>
 	<string name="tamper_dialog_message">Application modification detected or security risk exists!\nFor your system security, the program will exit automatically.\nPlease download the official version or clear storage and try again.</string>
 	<string name="description">让Via变得更好\nMake Via Better</string>

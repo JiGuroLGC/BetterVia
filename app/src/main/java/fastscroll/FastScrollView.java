@@ -5,15 +5,15 @@ import android.view.View;
 
 public interface FastScrollView {
 
-  View getFastScrollableView();
+    View getFastScrollableView();
 
-  int getVerticalScrollRange();
+    int getVerticalScrollRange();
 
-  int getVerticalScrollExtent();
+    int getVerticalScrollExtent();
 
-  int getVerticalScrollOffset();
+    int getVerticalScrollOffset();
 
-  void onTouchEventForward(MotionEvent ev);
+    void onTouchEventForward(MotionEvent ev);
 
-  FastScroll getFastScrollDelegate();
+    FastScroll getFastScrollDelegate();
 }

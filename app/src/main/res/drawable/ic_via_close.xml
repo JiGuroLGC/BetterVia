@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 清除（X）图标，复刻 Via 7.3.3 搜索框末端清除按钮 drawable 0x7f08002a（ic_close）；
+         Via 原图为位图，此处以矢量重建，tint 由调用方按主题设置 -->
+    <path
+        android:pathData="M6,6 L18,18"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M18,6 L6,18"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+</vector>

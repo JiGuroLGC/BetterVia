@@ -4,16 +4,16 @@ import android.animation.ValueAnimator;
 
 final class StretchSharedState {
 
-  ValueAnimator springAnim;
+    ValueAnimator springAnim;
 
-  boolean hasRunningSpring() {
-    return springAnim != null && springAnim.isRunning();
-  }
-
-  void cancel() {
-    if (springAnim != null) {
-      springAnim.cancel();
-      springAnim = null;
+    boolean hasRunningSpring() {
+        return springAnim != null && springAnim.isRunning();
     }
-  }
+
+    void cancel() {
+        if (springAnim != null) {
+            springAnim.cancel();
+            springAnim = null;
+        }
+    }
 }

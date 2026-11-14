@@ -10,9 +10,6 @@
         android:id="@+id/menu_withdraw_agreement"
         android:title="@string/withdraw_agreement" />
     <item
-        android:id="@+id/menu_security_fix"
-        android:title="@string/security_fix" />
-    <item
         android:id="@+id/menu_exit"
         android:title="@string/exit" />
 </menu>

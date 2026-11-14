@@ -7,9 +7,9 @@ android {
     defaultConfig {
         applicationId "com.jiguro.bettervia"
         minSdkVersion 21
-        targetSdkVersion 35
-        versionCode 20260824
-        versionName "2.2.0"
+        targetSdkVersion 36
+        versionCode 20261114
+        versionName "2.3.0"
         multiDexEnabled true
     }
 
