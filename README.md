@@ -162,7 +162,7 @@
 | <img src="https://avatars.githubusercontent.com/in/15368?s=64&v=4" width="30" height="30" alt="LOGO"/> | [GitHub Releases](https://github.com/JiGuroLGC/BetterVia/releases) | 正式版 |
 | <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/gitee.png" width="30" height="30" alt="LOGO"/> | [Gitee Releases](https://gitee.com/jiguro/BetterVia/releases) | 正式版 |
 | <img src="https://avatars.githubusercontent.com/u/78217009?s=200&v=4?raw=true" width="30" height="30" alt="LOGO"/> | [Xposed-Modules-Repo](https://modules.lsposed.org/module/com.jiguro.bettervia) | 正式版 |
-| <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/lanzou.jpg" width="30" height="30" alt="LOGO"/> | [蓝奏云网盘 **(密码：8888)**](https://jiguro.lanzouw.com/ivECb3ifc4jc) | 正式版 (备用) |
+| <img src="https://raw.githubusercontent.com/JiGuroLGC/BetterVia/main/img/lanzou.jpg" width="30" height="30" alt="LOGO"/> | [蓝奏云网盘 **(密码：8888)**](https://jiguro.lanzouw.com/izue24fy5guf) | 正式版 (备用) |
 
 本模块发布地址仅限于上述所列出的地址，从其他非正规渠道下载到的版本或对您造成任何影响均与我们无关。
 

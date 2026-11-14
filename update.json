@@ -1,9 +1,9 @@
 {
-  "versionName": "2.2.1",
+  "versionName": "2.3.0",
   "updateLog": {
-    "en": "⚠️ Emergency fix for a critical bug in the previous version\n\n1. Completely redesigned most of the UI to closely mimic the Via style\n2. Completely redesigned basic animations to enhance the user experience\n3. Added native support for Via version 7.3.3\n4. Added the ability to block focus on the address bar\n5. Added enhanced URL correction features\n6. Added a \"Perfect Exit\" feature\n7. Added a time synchronization mechanism\n8. Added \"About\" cards and entries\n9. Optimized the frequency of connections to network sources\n10. Fixed several issues\n11. The official Telegram group has been created — come join us!",
-    "zh-CN": "⚠️ 紧急修复上版本中的一个严重错误\n\n1. 完全重构大部分 UI，高仿 Via 风格\n2. 完全重构基础动画，增强使用体验\n3. 添加 Via 7.3.3 版本本地支持\n4. 新增屏蔽聚焦地址栏功能\n5. 新增网址纠错增强功能\n6. 新增完美退出功能\n7. 新增同步时间机制\n8. 新增关于卡片和条目\n9. 优化网络源连接频次\n10. 修复了若干问题\n11. 官方 Telegram 群组已创建，快来加入吧！",
-    "zh-TW": "⚠️ 緊急修復上個版本中的一個嚴重錯誤\n\n1. 完全重構大部分 UI，高仿 Via 風格\n2. 完全重構基礎動畫，增強使用體驗\n3. 加入 Via 7.3.3 版本本地支援\n4. 新增封鎖聚焦網址列功能\n5. 新增網址糾錯增強功能\n6. 新增完美退出功能\n7. 新增同步時間機制\n8. 新增關於卡片與條目\n9. 最佳化網路來源連線頻次\n10. 修復若干問題\n11. 官方 Telegram 群組已建立，快來加入吧！"
+    "en": "1. Added native support for Via version 7.4.1\n2. Added list search functionality\n3. Added scheduled refresh functionality\n4. Added a feature where the long-press menu always expands downward\n5. Added an information screen\n6. Expanded the scope for removing whitelist restrictions\n7. Rewrote the Cookie Manager to significantly improve performance\n8. Rewrote code for various features to reduce stuttering and frame drops\n9. Updated some interfaces to match the new UI\n10. Added support for searching settings in the latest version of Via\n11. Optimized page animation adaptation\n12. Fixed several issues",
+    "zh-CN": "1. 添加 Via 7.4.1 版本本地支持\n2. 新增列表搜索功能\n3. 新增定时刷新功能\n4. 新增长按菜单始终向下展开功能\n5. 新增信息界面\n6. 拓宽解除白名单限制工作面\n7. 重构 Cookie 管理器，大幅提高性能\n8. 重构多种功能代码，降低卡顿掉帧\n9. 一些界面适配新 UI\n10. 支持接入 Via 最新版设置项搜索\n11. 优化页面动画适配\n12. 修复了数个问题",
+    "zh-TW": "1. 加入 Via 7.4.1 版本本地支援\n2. 新增列表搜尋功能\n3. 新增定時重新整理功能\n4. 新增長按選單始終向下展開功能\n5. 新增資訊介面\n6. 擴展解除白名單限制的適用範圍\n7. 重構 Cookie 管理器，大幅提高效能\n8. 重構多種功能程式碼，降低卡頓掉幀\n9. 部分介面適配新 UI\n10. 支援接入 Via 最新版設定項搜尋\n11. 最佳化頁面動畫適配\n12. 修復了數個問題"
   },
-  "apkUrl": "https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN@2.0.0/Releases/BetterVia_2.2.1.apk"
+  "apkUrl": "https://cdn.jsdelivr.net/gh/JiGuroLGC/CDN@2.0.2/Releases/BetterVia_2.3.0.apk"
 }
